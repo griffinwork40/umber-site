@@ -1,0 +1,77 @@
+/*
+ * Design tokens for the Umber landing page.
+ *
+ * All colour values are drawn from ThemeValues.swift (the canonical source).
+ * No component file should contain a hex value — this file is the single source.
+ *
+ * Classic Repaired palette — Terminal.app Basic with readable blue and quiet body text.
+ * background: #000000 (true black), chromeForeground: #CBCCCD (ANSI 7 white).
+ */
+
+:root {
+  /* ── Colour tokens ────────────────────────────────────────────────────────── */
+
+  /* Base: true black background */
+  --color-bg: #000000;
+  /* Chrome foreground (ANSI 7 white) — brighter than terminal body text for web readability */
+  --color-fg: #CBCCCD;
+  /* Lavender cursor / accent (ANSI 12 bright blue) */
+  --color-cursor: #A1A8FD;
+  --color-accent: #A1A8FD;
+  /* Deep indigo selection */
+  --color-selection: #262952;
+  /* Surface — lifted from true black for card backgrounds */
+  --color-surface: #111118;
+  /* Muted — ANSI 8 (bright black, quiet text) */
+  --color-muted: #818383;
+  /* Border — subtle lift from surface */
+  --color-border: #2A2A35;
+  /* ANSI 2 green */
+  --color-ansi-green: #25BC24;
+  /* ANSI 4 blue */
+  --color-ansi-blue: #818AFC;
+
+  /* macOS traffic-light dots — OS chrome constants, NOT app design tokens.
+   * These are the standard macOS window control colours and are intentionally
+   * hardcoded here rather than in component files. They never change with theme.
+   * Using CSS custom properties here satisfies the "no hex in component files" rule. */
+  --color-dot-close: #FF5F57;    /* macOS red   */
+  --color-dot-minimize: #FFBD2E; /* macOS yellow */
+  --color-dot-maximize: #28C840; /* macOS green  */
+  /* macOS terminal chrome — title bar and shadow */
+  --color-titlebar: #0A0A10;     /* near-black with a hint of blue, matching the indigo selection */
+  --color-shadow: rgba(0, 0, 0, 0.7); /* chrome drop shadow — stronger on true black */
+
+  /* ── Spacing (4px grid) ───────────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* ── Border radius ────────────────────────────────────────────────────────── */
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;
+  --radius-4: 16px;
+
+  /* ── Typography ───────────────────────────────────────────────────────────── */
+  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* ── Motion ───────────────────────────────────────────────────────────────── */
+  --motion-duration: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0ms;
+  }
+}
