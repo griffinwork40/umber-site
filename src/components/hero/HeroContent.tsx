@@ -73,7 +73,7 @@ export default function HeroContent() {
       {/* CTAs */}
       <div style={ctaGroupStyle}>
         <Button href={SITE_META.dmgUrl} variant="primary">
-          Download v0.2.0
+          Download {SITE_META.version}
         </Button>
         <Button href={SITE_META.repoUrl} variant="secondary">
           GitHub →
