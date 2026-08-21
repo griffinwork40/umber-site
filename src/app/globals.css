@@ -114,6 +114,16 @@ kbd {
     display: none;
   }
 
+  /* Editor grid: single column */
+  .editor-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Showcase rows: stack vertically */
+  .showcase-row {
+    flex-direction: column !important;
+  }
+
   /* Keymap grid: single column */
   .keymap-grid {
     grid-template-columns: 1fr !important;

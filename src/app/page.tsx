@@ -3,6 +3,7 @@ import SiteHeader from '@/components/header/SiteHeader'
 import HeroSection from '@/components/hero/HeroSection'
 import AgentSection from '@/components/agents/AgentSection'
 import FeaturesSection from '@/components/features/FeaturesSection'
+import EditorSection from '@/components/editor/EditorSection'
 import ThemeShowcase from '@/components/themes/ThemeShowcase'
 import InstallSection from '@/components/install/InstallSection'
 import KeymapSection from '@/components/keymap/KeymapSection'
@@ -20,6 +21,7 @@ export default function Page() {
         <HeroSection />
         <AgentSection />
         <FeaturesSection />
+        <EditorSection />
         <ThemeShowcase />
         <InstallSection />
         <KeymapSection />
