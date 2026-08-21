@@ -20,7 +20,7 @@ describe('HeroSection', () => {
 
   it('renders the Download CTA linking to the DMG', () => {
     render(<HeroSection />)
-    expect(screen.getByRole('link', { name: /Download v0\.2\.0/ })).toHaveAttribute('href', expect.stringContaining('.dmg'))
+    expect(screen.getByRole('link', { name: new RegExp(`Download ${SITE_META.version}`) })).toHaveAttribute('href', expect.stringContaining('.dmg'))
   })
 
   it('renders the GitHub CTA with correct href', () => {

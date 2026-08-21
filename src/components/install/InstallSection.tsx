@@ -161,10 +161,10 @@ export default function InstallSection() {
         {/* DMG download — primary path */}
         <div style={downloadBoxStyle}>
           <Button href={SITE_META.dmgUrl} variant="primary">
-            Download Umber v0.2.0
+            Download Umber {SITE_META.version}
           </Button>
           <p style={downloadSubStyle}>
-            Universal binary · 1.9 MB · signed &amp; notarized
+            Universal binary · 1.7 MB · signed &amp; notarized
           </p>
         </div>
 

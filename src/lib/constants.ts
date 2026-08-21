@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'The native Mac terminal built for AI agents.',
   description:
     'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v0.2.0',
+  version: 'v0.2.1',
   repoUrl: 'https://github.com/griffinwork40/umber',
-  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.2.0/Umber-v0.2.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.2.1/Umber-v0.2.1.dmg',
   releasesUrl: 'https://github.com/griffinwork40/umber/releases',
 } as const
 
