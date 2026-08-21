@@ -76,6 +76,7 @@ export default function SiteHeader() {
         <ul style={navListStyle}>
           <li><a href="#agents" style={navLinkStyle}>Agents</a></li>
           <li><a href="#features" style={navLinkStyle}>Features</a></li>
+          <li><a href="#editor" style={navLinkStyle}>Editor</a></li>
           <li><a href="#themes" style={navLinkStyle}>Themes</a></li>
           <li><a href="#install" style={navLinkStyle}>Install</a></li>
           <li><a href="#keymap" style={navLinkStyle}>Keymap</a></li>
