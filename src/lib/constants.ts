@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'The native Mac terminal built for AI agents.',
   description:
     'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v0.2.1',
+  version: 'v0.2.2',
   repoUrl: 'https://github.com/griffinwork40/umber',
-  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.2.1/Umber-v0.2.1.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.2.2/Umber-v0.2.2.dmg',
   releasesUrl: 'https://github.com/griffinwork40/umber/releases',
 } as const
 
@@ -108,7 +108,7 @@ export const INSTALL_STEPS: InstallStep[] = [
   },
   {
     step: 3,
-    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 6 patches)',
+    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 7 patches)',
     code: './Scripts/bootstrap-vendor.sh',
     language: 'bash',
   },
