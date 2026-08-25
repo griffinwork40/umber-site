@@ -17,6 +17,53 @@ export const SITE_META = {
   releasesUrl: 'https://github.com/griffinwork40/umber/releases',
 } as const
 
+export interface ReleaseHighlight {
+  title: string
+  description: string
+  configExample?: string
+}
+
+export const RELEASE: {
+  version: string
+  date: string
+  highlights: ReleaseHighlight[]
+} = {
+  version: 'v0.3.0',
+  date: 'August 25, 2026',
+  highlights: [
+    {
+      title: 'Community Themes',
+      description:
+        'Catppuccin Mocha, Nord, and Dracula — ported verbatim from their upstream specs and gated by the contrast harness (474 assertions).',
+      configExample: '"preset": "catppuccin-mocha"',
+    },
+    {
+      title: 'Auto Dark / Light',
+      description:
+        'Follow macOS appearance automatically. Umber switches between a dark and light palette when System Settings changes.',
+      configExample: '"preset": "auto"',
+    },
+    {
+      title: 'Split-Pane Dimming',
+      description:
+        'Unfocused split panes dim to visually distinguish the active pane. Fully configurable.',
+      configExample: '"unfocusedPaneOpacity": 0.85',
+    },
+    {
+      title: 'Typography Controls',
+      description:
+        'Font dilation for white-on-black text (the same technique Terminal.app uses) and configurable line height.',
+      configExample: '"fontThicken": true, "lineHeight": 1.2',
+    },
+    {
+      title: 'Terminal Padding',
+      description:
+        'Configurable inner margin around terminal content with seamless background color matching.',
+      configExample: '"padding": 8',
+    },
+  ],
+}
+
 export interface Feature {
   title: string
   description: string
