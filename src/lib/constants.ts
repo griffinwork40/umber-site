@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'The native Mac terminal built for AI agents.',
   description:
     'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v0.2.2',
+  version: 'v0.3.0',
   repoUrl: 'https://github.com/griffinwork40/umber',
-  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.2.2/Umber-v0.2.2.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.3.0/Umber-v0.3.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/umber/releases',
 } as const
 
@@ -45,7 +45,7 @@ export const FEATURES: Feature[] = [
   {
     title: 'Measured Themes',
     description:
-      'Five palettes tested for readability — every color verified against contrast standards. Long sessions reading agent output stay legible.',
+      'Eight palettes tested for readability — every color verified against contrast standards. Includes Catppuccin Mocha, Nord, and Dracula. Long sessions reading agent output stay legible.',
     icon: 'palette',
   },
   {
@@ -258,7 +258,7 @@ export interface ThemePalette {
 }
 
 /**
- * Five theme palettes, hex values verbatim from ThemeValues.swift.
+ * Eight theme palettes, hex values verbatim from ThemeValues.swift.
  * This is the canonical source on the site for all theme colours.
  */
 export const THEMES: ThemePalette[] = [
@@ -275,7 +275,7 @@ export const THEMES: ThemePalette[] = [
       '#818383', '#FC391F', '#31E722', '#EAEC23',
       '#A1A8FD', '#F935F8', '#14F0F0', '#FFFFFF',
     ],
-    isDefault: true,
+    isDefault: false,
   },
   {
     name: 'umber',
@@ -290,7 +290,7 @@ export const THEMES: ThemePalette[] = [
       '#AAA19B', '#FDAAA0', '#B4FCC3', '#F7D179',
       '#9DBEFC', '#FFD2F2', '#80E5E2', '#F9F6F2',
     ],
-    isDefault: false,
+    isDefault: true,
   },
   {
     name: 'afk-dark',
@@ -334,6 +334,51 @@ export const THEMES: ThemePalette[] = [
       '#7AA2F7', '#BB9AF7', '#7DCFFF', '#A9B1D6',
       '#414868', '#F7768E', '#9ECE6A', '#E0AF68',
       '#7AA2F7', '#BB9AF7', '#7DCFFF', '#C0CAF5',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'catppuccin-mocha',
+    displayName: 'Catppuccin Mocha',
+    background: '#1E1E2E',
+    foreground: '#CDD6F4',
+    cursor: '#F5E0DC',
+    selection: '#45475A',
+    ansi: [
+      '#45475A', '#F38BA8', '#A6E3A1', '#F9E2AF',
+      '#89B4FA', '#F5C2E7', '#94E2D5', '#BAC2DE',
+      '#585B70', '#F38BA8', '#A6E3A1', '#F9E2AF',
+      '#89B4FA', '#F5C2E7', '#94E2D5', '#A6ADC8',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'nord',
+    displayName: 'Nord',
+    background: '#2E3440',
+    foreground: '#D8DEE9',
+    cursor: '#D8DEE9',
+    selection: '#434C5E',
+    ansi: [
+      '#3B4252', '#BF616A', '#A3BE8C', '#EBCB8B',
+      '#81A1C1', '#B48EAD', '#88C0D0', '#E5E9F0',
+      '#4C566A', '#BF616A', '#A3BE8C', '#EBCB8B',
+      '#81A1C1', '#B48EAD', '#8FBCBB', '#ECEFF4',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'dracula',
+    displayName: 'Dracula',
+    background: '#282A36',
+    foreground: '#F8F8F2',
+    cursor: '#F8F8F2',
+    selection: '#44475A',
+    ansi: [
+      '#21222C', '#FF5555', '#50FA7B', '#F1FA8C',
+      '#BD93F9', '#FF79C6', '#8BE9FD', '#F8F8F2',
+      '#6272A4', '#FF6E6E', '#69FF94', '#FFFFA5',
+      '#D6ACFF', '#FF92DF', '#A4FFFF', '#FFFFFF',
     ],
     isDefault: false,
   },
