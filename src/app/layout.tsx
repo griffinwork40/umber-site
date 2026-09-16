@@ -17,8 +17,12 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_META.siteUrl),
   title: SITE_META.title,
   description: SITE_META.description,
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },

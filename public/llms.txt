@@ -1,0 +1,26 @@
+# Goblin Portal
+
+> A native macOS terminal built for AI agents. Swift/AppKit. No Electron.
+
+Goblin Portal is a macOS terminal designed for running AI coding agents. Built with Swift and AppKit, it delivers native performance without Electron overhead. Agent workspaces, a sidebar file tree with git status, measured themes verified across 474 contrast assertions, GPU or CPU rendering, and a built-in editor with 23-language syntax highlighting. Current version: v1.1.0 (September 2026).
+
+## Product
+
+- [Homepage](https://goblinportal.app): Feature overview, install instructions, and theme previews
+- [Download v1.1.0 DMG](https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg): macOS installer
+- [All Releases](https://github.com/griffinwork40/goblin-portal/releases): Release history and changelogs
+
+## Source
+
+- [GitHub Repository](https://github.com/griffinwork40/goblin-portal): Source code, issues, and contributions
+
+## Agents Supported
+
+- [Agent AFK](https://github.com/griffinwork40/agent-afk): Autonomous agent runtime with daemon, Telegram, and REPL surfaces
+- Claude Code: Anthropic's terminal-native coding agent
+- Codex: OpenAI's CLI agent for code generation and multi-file edits
+- Hermes: Terminal agent framework with tool use and conversation memory
+
+## Optional
+
+- [llms-full.txt](https://goblinportal.app/llms-full.txt): Expanded reference with all features, keyboard shortcuts, themes, and install steps

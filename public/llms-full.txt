@@ -1,0 +1,134 @@
+# Goblin Portal
+
+> A native macOS terminal built for AI agents. Swift/AppKit. No Electron.
+
+## Overview
+
+Goblin Portal is a macOS terminal application designed for running AI coding agents like Claude Code, Codex, Hermes, and Agent AFK. Built entirely in Swift and AppKit, it delivers native macOS performance without Electron, V8, or a renderer process. The RAM that other terminals consume goes back to your agent.
+
+Current version: v1.1.0 (September 16, 2026).
+
+## Key Features
+
+### Zero-Overhead Host
+Swift and AppKit. No Electron, no V8, no renderer process. The RAM your terminal was quietly consuming goes back to your agent.
+
+### Agent Workspaces
+One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a reimplemented version of them.
+
+### Sidebar File Tree
+Browse files alongside the terminal with git status badges on every row. See what your agent changed without opening a second app.
+
+### Measured Themes
+Eight built-in palettes, each verified against contrast standards across 474 assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.
+
+### GPU or CPU Rendering
+Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and a quick Cmd+R. High-throughput agent output scrolls without drama.
+
+### Agent Status at a Glance
+Green dot when a command succeeds, red when it fails. OSC 133 shell integration does the tracking. No polling, no tab switching, no guessing.
+
+## Built-in Editor
+
+### Syntax Highlighting
+23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. Tree-sitter grammars with scope-aware token coloring.
+
+### Command Palette and Symbols
+Cmd+Shift+P fuzzy-filters every app command. Cmd+Shift+O jumps to symbols. Cmd+L goes to a line number. All keyboard-driven, no mouse required.
+
+### Code Folding and Navigation
+Indent-based fold and unfold with Cmd+Opt+[ and Cmd+Opt+]. Sticky scroll keeps the enclosing scope visible. Bracket pair highlighting.
+
+### Multi-Cursor Editing
+Cmd+D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code, without VS Code.
+
+## Supported Agents
+
+- **Agent AFK**: Autonomous agent runtime with daemon, Telegram, and REPL surfaces
+- **Claude Code**: Anthropic's terminal-native coding agent. Runs entirely in your shell
+- **Codex**: OpenAI's CLI agent for code generation and multi-file edits
+- **Hermes**: Terminal agent framework with tool use and conversation memory
+
+## Installation
+
+### From source
+
+1. Clone the repository:
+   git clone https://github.com/griffinwork40/goblin-portal.git
+
+2. Enter the app directory:
+   cd goblin-portal/app
+
+3. Bootstrap the vendored SwiftTerm dependency (clones and applies all 7 patches):
+   ./Scripts/bootstrap-vendor.sh
+
+4. Build a release bundle and launch:
+   ./Scripts/make-app-bundle.sh release
+   open build/GoblinPortal.app
+
+If macOS Gatekeeper blocks the app:
+   xattr -dr com.apple.quarantine build/GoblinPortal.app
+
+### Pre-built DMG
+
+Download: https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg
+
+## Keyboard Shortcuts
+
+### Spaces and Documents
+- Cmd+N: New Space (window tab)
+- Cmd+T: New document in current Space
+- Cmd+Shift+[ / Cmd+Shift+]: Previous / Next Space
+- Cmd+Opt+Left / Cmd+Opt+Right: Previous / Next document
+- Cmd+1 through Cmd+9: Jump to document by index
+
+### View and Splits
+- Cmd+B: Toggle sidebar
+- Cmd+Shift+\: Split pane right
+- Cmd+Shift+-: Split pane down
+- Cmd+Shift+H/J/K/L: Focus pane left / down / up / right
+- Ctrl+Cmd+F: Full screen
+- Cmd+R: Reload config
+- Cmd+,: Open Settings
+
+### Font Size
+- Cmd++: Zoom in (persists across tabs and relaunches)
+- Cmd+-: Zoom out
+- Cmd+0: Reset zoom to config font.size
+
+### Line Editing
+- Cmd+Delete: Delete to start of line
+- Cmd+Fn+Delete: Delete to end of line
+- Cmd+Left: Jump to start of line
+- Cmd+Right: Jump to end of line
+- Opt+Left: Jump back one word
+- Opt+Right: Jump forward one word
+
+## Themes
+
+Eight built-in themes, all contrast-verified across 474 assertions:
+
+1. Classic Repaired
+2. Umber (default)
+3. AFK Dark
+4. AFK Light
+5. Tokyo Night
+6. Catppuccin Mocha
+7. Nord
+8. Dracula
+
+## What's New in v1.1.0
+
+Released September 16, 2026.
+
+- **New Icon**: Acid-green >_ prompt with a layered portal bloom. The Goblin Portal identity lives in the colour, not a literal portal shape.
+- **CLI --wait for $EDITOR**: GoblinPortal --wait <file> opens a file in the editor and blocks until the tab closes. Set it as your $EDITOR for git commit messages, crontab, and anything else that expects a blocking editor.
+- **Ghostty Engine Removed**: SwiftTerm is now the sole terminal engine. Smaller binary, cleaner build, simpler codebase.
+- **Vertical Splits**: Split panes vertically with Cmd+Shift+-. The v2 split architecture now supports both horizontal and vertical layouts.
+
+## Links
+
+- Homepage: https://goblinportal.app
+- GitHub: https://github.com/griffinwork40/goblin-portal
+- Releases: https://github.com/griffinwork40/goblin-portal/releases
+- Issues: https://github.com/griffinwork40/goblin-portal/issues

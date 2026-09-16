@@ -7,6 +7,7 @@
  */
 
 export const SITE_META = {
+  siteUrl: 'https://goblinportal.app',
   title: 'Goblin Portal',
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
