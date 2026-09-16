@@ -19,13 +19,13 @@
   /* Dark green selection */
   --color-selection: #162A1F;
   /* Surface — lifted from base for card backgrounds */
-  --color-surface: #0F1612;
-  /* Muted — quiet text, sage-tinted */
-  --color-muted: #6B7F73;
-  /* Border — subtle green lift from surface */
-  --color-border: #1C2B22;
-  /* ANSI 2 green — matches accent family */
-  --color-ansi-green: #3DDC84;
+  --color-surface: #172119;
+  /* Muted — quiet text, sage-tinted (clears WCAG AA 4.5:1 on both bg and surface) */
+  --color-muted: #7D9488;
+  /* Border — visible green lift from surface */
+  --color-border: #2A4035;
+  /* ANSI 2 green — dimmer than accent to avoid semantic collision in mockups */
+  --color-ansi-green: #2FC573;
   /* ANSI 4 blue — cooler complement */
   --color-ansi-blue: #7CAAFF;
 
@@ -36,6 +36,8 @@
   --color-dot-close: #FF5F57;    /* macOS red   */
   --color-dot-minimize: #FFBD2E; /* macOS yellow */
   --color-dot-maximize: #28C840; /* macOS green  */
+  /* Header backdrop — tokenized for SiteHeader frosted glass */
+  --color-header-bg: rgba(8, 13, 11, 0.85);
   /* macOS terminal chrome — title bar and shadow */
   --color-titlebar: #060A08;     /* darker than bg, green-tinted */
   --color-shadow: rgba(0, 15, 8, 0.7); /* green-tinted drop shadow */

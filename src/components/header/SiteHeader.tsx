@@ -12,7 +12,7 @@ const headerStyle: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: 'var(--space-3) var(--space-6)',
-  backgroundColor: 'rgba(8, 13, 11, 0.85)',
+  backgroundColor: 'var(--color-header-bg)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
   borderBottom: '1px solid var(--color-border)',
