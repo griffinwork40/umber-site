@@ -31,9 +31,9 @@ describe('Footer', () => {
     expect(screen.getByRole('link', { name: 'MIT License' })).toBeInTheDocument()
   })
 
-  it('renders "Built by Griffin Long" text', () => {
+  it('renders "Built by goblins for goblins" text', () => {
     render(<Footer />)
-    expect(screen.getByText('Built by Griffin Long')).toBeInTheDocument()
+    expect(screen.getByText('Built by goblins for goblins')).toBeInTheDocument()
   })
 
   it('renders the Goblin Portal brand name', () => {

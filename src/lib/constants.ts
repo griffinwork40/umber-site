@@ -8,7 +8,7 @@
 
 export const SITE_META = {
   title: 'Goblin Portal',
-  tagline: 'The native Mac terminal built for AI agents.',
+  tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
   version: 'v1.0.0',
@@ -74,37 +74,37 @@ export const FEATURES: Feature[] = [
   {
     title: 'Zero-Overhead Host',
     description:
-      'Swift and AppKit. No Electron, no V8, no renderer process. Your agents get the RAM.',
+      'Swift and AppKit. No Electron, no V8, no renderer process. The RAM your terminal was quietly consuming goes back to your agent.',
     icon: 'apple',
   },
   {
     title: 'Agent Workspaces',
     description:
-      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a custom layer.',
+      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a reimplemented version of them.',
     icon: 'tabs',
   },
   {
     title: 'Sidebar File Tree',
     description:
-      'Browse files alongside the terminal with git status badges on every row. See what your agent changed without leaving the window.',
+      'Browse files alongside the terminal with git status badges on every row. See what your agent changed without opening a second app.',
     icon: 'sidebar',
   },
   {
     title: 'Measured Themes',
     description:
-      'Eight built-in palettes. Every color verified against contrast standards (474 assertions). Catppuccin Mocha, Nord, Dracula, and more.',
+      'Eight built-in palettes, each verified against contrast standards across 474 assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.',
     icon: 'palette',
   },
   {
     title: 'GPU or CPU Rendering',
     description:
-      'Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and ⌘R. High-throughput agent output stays smooth.',
+      'Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and a quick ⌘R. High-throughput agent output scrolls without drama.',
     icon: 'cpu',
   },
   {
     title: 'Agent Status at a Glance',
     description:
-      'Green dot when a command succeeds, red when it fails. OSC 133 shell integration. No polling, no tab switching.',
+      'Green dot when a command succeeds, red when it fails. OSC 133 shell integration does the tracking. No polling, no tab switching, no guessing.',
     icon: 'shell',
   },
 ]
@@ -253,7 +253,7 @@ export const EDITOR_FEATURES: EditorFeature[] = [
   {
     title: 'Multi-Cursor Editing',
     description:
-      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code.',
+      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code, without VS Code.',
     icon: 'cursor',
   },
 ]
@@ -282,7 +282,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     title: 'Edit without leaving the terminal',
     description:
-      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to the terminal.',
+      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to work.',
     bullets: [
       'Syntax highlighting for 23 languages with tree-sitter grammars',
       'Line numbers, indent guides, and a column guide at 80 characters',

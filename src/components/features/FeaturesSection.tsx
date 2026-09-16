@@ -59,7 +59,7 @@ export default function FeaturesSection() {
           No AI built in, on purpose
         </h2>
         <p style={subheadStyle}>
-          The intelligence belongs to your agent, not the terminal chrome.
+          The intelligence belongs to your agent. The terminal&apos;s job is to stay out of the way.
         </p>
         <div style={gridStyle} className="features-grid">
           <FeatureCard feature={hero} variant="hero" />

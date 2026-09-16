@@ -107,11 +107,11 @@ const emphStyle: React.CSSProperties = {
 const SELLING_POINTS = [
   {
     text: 'agents run in terminals',
-    detail: '. The terminal shouldn\'t compete with them for CPU, RAM, or your attention.',
+    detail: '. The terminal should not be competing with them for CPU, RAM, or your attention.',
   },
   {
     text: 'OSC 133 command tracking',
-    detail: '. See which agent task succeeded or failed at a glance, across every tab.',
+    detail: '. See which agent task succeeded or failed at a glance, across every tab, without reading scroll-back.',
   },
   {
     text: 'Split panes',
@@ -119,7 +119,7 @@ const SELLING_POINTS = [
   },
   {
     text: 'tmux-native',
-    detail: '. Proper focus events, DCS passthrough, and mouse reporting. Your tmux sessions just work.',
+    detail: '. Proper focus events, DCS passthrough, and mouse reporting. Your tmux sessions work the way you expect.',
   },
 ]
 
@@ -139,8 +139,8 @@ export default function AgentSection() {
         <div style={labelStyle}>agent-native</div>
         <h2 style={headingStyle}>Built for AI agents</h2>
         <p style={leadStyle}>
-          The best terminal agents run in your shell, not in a browser. Goblin Portal
-          gives them a fast, native host that stays out of their way.
+          The best terminal agents run in your shell, not in a browser tab. Goblin Portal
+          gives them a fast, native host and otherwise leaves them alone.
         </p>
 
         <div style={gridStyle}>
