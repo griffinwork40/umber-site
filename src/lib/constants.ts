@@ -8,7 +8,7 @@
 
 export const SITE_META = {
   title: 'Goblin Portal',
-  tagline: 'The native Mac terminal built for AI agents.',
+  tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
   version: 'v1.0.0',

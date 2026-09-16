@@ -86,7 +86,7 @@ export default function Footer() {
           >
             GitHub
           </a>
-          <span style={textStyle}>Built by Griffin Long</span>
+          <span style={textStyle}>Built by goblins for goblins</span>
         </div>
       </div>
     </footer>
