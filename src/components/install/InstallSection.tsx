@@ -174,7 +174,7 @@ export default function InstallSection() {
             Download Goblin Portal {SITE_META.version}
           </Button>
           <p style={downloadSubStyle}>
-            Universal binary · 1.7 MB · signed &amp; notarized
+            Universal binary · signed &amp; notarized
           </p>
         </div>
 

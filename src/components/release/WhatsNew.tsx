@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. Eight measured themes, system appearance following, split-pane dimming, and typography controls.
+          {RELEASE.date}. New icon, $EDITOR support, vertical splits, and a leaner engine.
         </p>
 
         <div style={gridStyle} className="release-grid">

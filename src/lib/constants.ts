@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.0.0',
+  version: 'v1.1.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.0.0/GoblinPortal-v1.0.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -28,38 +28,30 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.0.0',
-  date: 'August 25, 2026',
+  version: 'v1.1.0',
+  date: 'September 16, 2026',
   highlights: [
     {
-      title: 'Community Themes',
+      title: 'New Icon',
       description:
-        'Catppuccin Mocha, Nord, and Dracula, ported verbatim from their upstream specs and gated by the contrast harness (474 assertions).',
-      configExample: '"preset": "catppuccin-mocha"',
+        'Acid-green >_ prompt with a layered portal bloom. The Goblin Portal identity lives in the colour, not a literal portal shape.',
     },
     {
-      title: 'Auto Dark / Light',
+      title: 'CLI --wait for $EDITOR',
       description:
-        'Follow macOS appearance automatically. Goblin Portal switches between a dark and light palette when System Settings changes.',
-      configExample: '"preset": "auto"',
+        'GoblinPortal --wait <file> opens a file in the editor and blocks until the tab closes. Set it as your $EDITOR for git commit messages, crontab, and anything else that expects a blocking editor.',
+      configExample: 'EDITOR="/path/to/GoblinPortal.app/Contents/MacOS/GoblinPortal --wait"',
     },
     {
-      title: 'Split-Pane Dimming',
+      title: 'Ghostty Engine Removed',
       description:
-        'Unfocused split panes dim to visually distinguish the active pane. Fully configurable.',
-      configExample: '"unfocusedPaneOpacity": 0.85',
+        'SwiftTerm is now the sole terminal engine. Smaller binary, cleaner build, simpler codebase.',
     },
     {
-      title: 'Typography Controls',
+      title: 'Vertical Splits',
       description:
-        'Font dilation for white-on-black text (the same technique Terminal.app uses) and configurable line height.',
-      configExample: '"fontThicken": true, "lineHeight": 1.2',
-    },
-    {
-      title: 'Terminal Padding',
-      description:
-        'Configurable inner margin around terminal content with seamless background color matching.',
-      configExample: '"padding": 8',
+        'Split panes vertically with \u2318\u21E7-. The v2 split architecture now supports both horizontal and vertical layouts.',
+      configExample: '\u2318\u21E7- to split down, \u2318\u21E7\\ to split right',
     },
   ],
 }
@@ -198,6 +190,7 @@ export const KEYMAP: KeymapGroup[] = [
     entries: [
       { shortcut: '⌘B', description: 'Toggle sidebar' },
       { shortcut: '⌘⇧\\', description: 'Split pane right' },
+      { shortcut: '⌘⇧-', description: 'Split pane down' },
       { shortcut: '⌘⇧H/J/K/L', description: 'Focus pane left / down / up / right' },
       { shortcut: '⌃⌘F', description: 'Full screen' },
       { shortcut: '⌘R', description: 'Reload config' },
