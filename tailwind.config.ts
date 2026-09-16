@@ -7,16 +7,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'umber-bg': 'var(--color-bg)',
-        'umber-fg': 'var(--color-fg)',
-        'umber-cursor': 'var(--color-cursor)',
-        'umber-selection': 'var(--color-selection)',
-        'umber-accent': 'var(--color-accent)',
-        'umber-surface': 'var(--color-surface)',
-        'umber-muted': 'var(--color-muted)',
-        'umber-border': 'var(--color-border)',
-        'umber-ansi-green': 'var(--color-ansi-green)',
-        'umber-ansi-blue': 'var(--color-ansi-blue)',
+        'gp-bg': 'var(--color-bg)',
+        'gp-fg': 'var(--color-fg)',
+        'gp-cursor': 'var(--color-cursor)',
+        'gp-selection': 'var(--color-selection)',
+        'gp-accent': 'var(--color-accent)',
+        'gp-surface': 'var(--color-surface)',
+        'gp-muted': 'var(--color-muted)',
+        'gp-border': 'var(--color-border)',
+        'gp-ansi-green': 'var(--color-ansi-green)',
+        'gp-ansi-blue': 'var(--color-ansi-blue)',
       },
       fontFamily: {
         mono: 'var(--font-mono)',

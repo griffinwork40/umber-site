@@ -13,8 +13,8 @@ describe('TerminalMockup', () => {
   })
 
   it('accepts a custom aria-label', () => {
-    render(<TerminalMockup aria-label="Umber theme preview">content</TerminalMockup>)
-    expect(screen.getByLabelText('Umber theme preview')).toBeInTheDocument()
+    render(<TerminalMockup aria-label="Goblin Portal theme preview">content</TerminalMockup>)
+    expect(screen.getByLabelText('Goblin Portal theme preview')).toBeInTheDocument()
   })
 
   it('renders all three traffic-light dots', () => {

@@ -70,7 +70,7 @@ export default function SiteHeader() {
   return (
     <header style={visible ? headerStyle : hiddenStyle} aria-label="Site navigation">
       <a href="#main-content" style={wordmarkStyle}>
-        Umber
+        Goblin Portal
       </a>
       <nav aria-label="Page sections" className="site-header-nav">
         <ul style={navListStyle}>

@@ -51,7 +51,7 @@ export default function HeroContent() {
       <div style={iconWrapStyle}>
         <Image
           src="/images/icon-1024.png"
-          alt="Umber app icon"
+          alt="Goblin Portal app icon"
           width={48}
           height={48}
           style={{ borderRadius: 'var(--radius-3)' }}

@@ -1,5 +1,5 @@
 /**
- * Site-wide constants for the Umber landing page.
+ * Site-wide constants for the Goblin Portal landing page.
  *
  * Hex colour values are drawn verbatim from ThemeValues.swift — the canonical source.
  * This is the ONLY file on the site that may contain hex values; all component files
@@ -7,14 +7,14 @@
  */
 
 export const SITE_META = {
-  title: 'Umber',
+  title: 'Goblin Portal',
   tagline: 'The native Mac terminal built for AI agents.',
   description:
     'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
   version: 'v0.3.0',
-  repoUrl: 'https://github.com/griffinwork40/umber',
-  dmgUrl: 'https://github.com/griffinwork40/umber/releases/download/v0.3.0/Umber-v0.3.0.dmg',
-  releasesUrl: 'https://github.com/griffinwork40/umber/releases',
+  repoUrl: 'https://github.com/griffinwork40/goblin-portal',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v0.3.0/GoblinPortal-v0.3.0.dmg',
+  releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
 export interface ReleaseHighlight {
@@ -40,7 +40,7 @@ export const RELEASE: {
     {
       title: 'Auto Dark / Light',
       description:
-        'Follow macOS appearance automatically. Umber switches between a dark and light palette when System Settings changes.',
+        'Follow macOS appearance automatically. Goblin Portal switches between a dark and light palette when System Settings changes.',
       configExample: '"preset": "auto"',
     },
     {
@@ -144,13 +144,13 @@ export const INSTALL_STEPS: InstallStep[] = [
   {
     step: 1,
     description: 'Clone the repository',
-    code: 'git clone https://github.com/griffinwork40/umber.git',
+    code: 'git clone https://github.com/griffinwork40/goblin-portal.git',
     language: 'bash',
   },
   {
     step: 2,
     description: 'Enter the app directory',
-    code: 'cd umber/app',
+    code: 'cd goblin-portal/app',
     language: 'bash',
   },
   {
@@ -162,13 +162,13 @@ export const INSTALL_STEPS: InstallStep[] = [
   {
     step: 4,
     description: 'Build a release bundle and launch',
-    code: './Scripts/make-app-bundle.sh release\nopen build/Umber.app',
+    code: './Scripts/make-app-bundle.sh release\nopen build/GoblinPortal.app',
     language: 'bash',
   },
 ]
 
 export const GATEKEEPER_COMMAND =
-  'xattr -dr com.apple.quarantine build/Umber.app'
+  'xattr -dr com.apple.quarantine build/GoblinPortal.app'
 
 export interface KeymapEntry {
   shortcut: string
@@ -276,8 +276,8 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
       'Git status badges on every file — staged, modified, untracked, deleted',
       'Double-click any file to open it in the built-in editor',
     ],
-    image: '/images/umber-workspace.png',
-    imageAlt: 'Umber workspace showing a project file tree with multiple terminal tabs and git status indicators',
+    image: '/images/goblin-portal-workspace.png',
+    imageAlt: 'Goblin Portal workspace showing a project file tree with multiple terminal tabs and git status indicators',
   },
   {
     title: 'Edit without leaving the terminal',
@@ -288,8 +288,8 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
       'Line numbers, indent guides, and a column guide at 80 characters',
       'Auto-indent, bracket matching, and indent-rainbow coloring',
     ],
-    image: '/images/umber-editor.png',
-    imageAlt: 'Umber editor tab showing syntax-highlighted TypeScript alongside the terminal',
+    image: '/images/goblin-portal-editor.png',
+    imageAlt: 'Goblin Portal editor tab showing syntax-highlighted TypeScript alongside the terminal',
   },
 ]
 

@@ -52,7 +52,7 @@ export default function Footer() {
         <div style={brandStyle}>
           <Image
             src="/images/icon-1024.png"
-            alt="Umber app icon"
+            alt="Goblin Portal app icon"
             width={32}
             height={32}
             style={{ borderRadius: 'var(--radius-2)' }}

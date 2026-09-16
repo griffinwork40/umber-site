@@ -76,10 +76,10 @@ function ThemePreview({ theme }: { theme: typeof THEMES[0] }) {
       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem', lineHeight: 1.8, color: 'var(--color-fg)' }}>
         <div>
           <span style={{ color: theme.ansi[2] }}>✓</span>
-          <span style={{ color: 'var(--color-fg)' }}> umber </span>
-          <span style={{ color: theme.ansi[4] }}>~/Projects/umber</span>
+          <span style={{ color: 'var(--color-fg)' }}> goblin-portal </span>
+          <span style={{ color: theme.ansi[4] }}>~/Projects/goblin-portal</span>
         </div>
-        <div style={{ color: theme.ansi[8] }}>$ swift run Umber</div>
+        <div style={{ color: theme.ansi[8] }}>$ swift run GoblinPortal</div>
         <div style={{ color: theme.ansi[2] }}>Build complete (0.3s)</div>
         <div style={{ color: theme.ansi[0], backgroundColor: theme.cursor, display: 'inline' }}>▊</div>
       </div>

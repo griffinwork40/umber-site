@@ -8,9 +8,9 @@ describe('HeroSection', () => {
     render(<HeroSection />)
   })
 
-  it('renders h1 with text "Umber"', () => {
+  it('renders h1 with text "Goblin Portal"', () => {
     render(<HeroSection />)
-    expect(screen.getByRole('heading', { level: 1, name: 'Umber' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'Goblin Portal' })).toBeInTheDocument()
   })
 
   it('renders the tagline', () => {
@@ -33,12 +33,12 @@ describe('HeroSection', () => {
 
   it('renders app icon with correct alt text', () => {
     render(<HeroSection />)
-    expect(screen.getByAltText('Umber app icon')).toBeInTheDocument()
+    expect(screen.getByAltText('Goblin Portal app icon')).toBeInTheDocument()
   })
 
   it('renders screenshot with correct alt text', () => {
     render(<HeroSection />)
-    expect(screen.getByAltText(/Umber running agent-afk/)).toBeInTheDocument()
+    expect(screen.getByAltText(/Goblin Portal running agent-afk/)).toBeInTheDocument()
   })
 
   it('has aria-labelledby="hero-heading" on the section', () => {

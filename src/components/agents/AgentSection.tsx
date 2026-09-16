@@ -127,7 +127,7 @@ export default function AgentSection() {
       <div style={innerStyle}>
         <h2 style={headingStyle}>Built for AI agents</h2>
         <p style={leadStyle}>
-          The best terminal agents run in your shell, not in a browser. Umber
+          The best terminal agents run in your shell, not in a browser. Goblin Portal
           gives them a fast, native host that stays out of their way.
         </p>
 
