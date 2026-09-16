@@ -1,6 +1,15 @@
 import type { Metadata, Viewport } from 'next'
+import { Space_Grotesk } from 'next/font/google'
 import { SITE_META } from '@/lib/constants'
 import './globals.css'
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+  preload: true,
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -10,10 +19,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: SITE_META.title,
   description: SITE_META.description,
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: SITE_META.title,
     description: SITE_META.description,
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: SITE_META.title }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.png'],
   },
 }
 
@@ -23,7 +44,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" className={spaceGrotesk.variable}>
       <body>
         <a
           href="#main-content"

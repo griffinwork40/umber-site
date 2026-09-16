@@ -29,7 +29,7 @@ describe('InstallSection', () => {
 
   it('renders the DMG download button', () => {
     render(<InstallSection />)
-    const link = screen.getByRole('link', { name: /Download Umber/i })
+    const link = screen.getByRole('link', { name: /Download Goblin Portal/i })
     expect(link).toBeInTheDocument()
     expect(link).toHaveAttribute('href', SITE_META.dmgUrl)
   })

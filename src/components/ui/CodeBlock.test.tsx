@@ -73,7 +73,7 @@ describe('CodeBlock', () => {
   })
 
   it('renders multiline code correctly', () => {
-    const multiline = './Scripts/make-app-bundle.sh release\nopen build/Umber.app'
+    const multiline = './Scripts/make-app-bundle.sh release\nopen build/GoblinPortal.app'
     render(<CodeBlock code={multiline} />)
     // Use a function matcher to handle whitespace normalization by RTL
     expect(

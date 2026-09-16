@@ -1,35 +1,33 @@
 /*
- * Design tokens for the Umber landing page.
+ * Design tokens for the Goblin Portal landing page.
  *
- * All colour values are drawn from ThemeValues.swift (the canonical source).
- * No component file should contain a hex value — this file is the single source.
- *
- * Classic Repaired palette — Terminal.app Basic with readable blue and quiet body text.
- * background: #000000 (true black), chromeForeground: #CBCCCD (ANSI 7 white).
+ * Modern code goblin palette: dark base with green-tinted depth and
+ * a signature goblin-green accent. Techy, not cartoonish.
+ * No component file should contain a hex value. This file is the single source.
  */
 
 :root {
   /* ── Colour tokens ────────────────────────────────────────────────────────── */
 
-  /* Base: true black background */
-  --color-bg: #000000;
-  /* Chrome foreground (ANSI 7 white) — brighter than terminal body text for web readability */
-  --color-fg: #CBCCCD;
-  /* Lavender cursor / accent (ANSI 12 bright blue) */
-  --color-cursor: #A1A8FD;
-  --color-accent: #A1A8FD;
-  /* Deep indigo selection */
-  --color-selection: #262952;
-  /* Surface — lifted from true black for card backgrounds */
-  --color-surface: #111118;
-  /* Muted — ANSI 8 (bright black, quiet text) */
-  --color-muted: #818383;
-  /* Border — subtle lift from surface */
-  --color-border: #2A2A35;
-  /* ANSI 2 green */
-  --color-ansi-green: #25BC24;
-  /* ANSI 4 blue */
-  --color-ansi-blue: #818AFC;
+  /* Base: near-black with subtle green undertone */
+  --color-bg: #080D0B;
+  /* Foreground: light with a whisper of green warmth */
+  --color-fg: #C5D0C8;
+  /* Goblin green: signature accent */
+  --color-cursor: #3DDC84;
+  --color-accent: #3DDC84;
+  /* Dark green selection */
+  --color-selection: #162A1F;
+  /* Surface: lifted from base for card backgrounds */
+  --color-surface: #172119;
+  /* Muted: quiet text, sage-tinted (clears WCAG AA 4.5:1 on both bg and surface) */
+  --color-muted: #7D9488;
+  /* Border: visible green lift from surface */
+  --color-border: #2A4035;
+  /* ANSI 2 green: dimmer than accent to avoid semantic collision in mockups */
+  --color-ansi-green: #2FC573;
+  /* ANSI 4 blue: cooler complement */
+  --color-ansi-blue: #7CAAFF;
 
   /* macOS traffic-light dots — OS chrome constants, NOT app design tokens.
    * These are the standard macOS window control colours and are intentionally
@@ -38,9 +36,24 @@
   --color-dot-close: #FF5F57;    /* macOS red   */
   --color-dot-minimize: #FFBD2E; /* macOS yellow */
   --color-dot-maximize: #28C840; /* macOS green  */
-  /* macOS terminal chrome — title bar and shadow */
-  --color-titlebar: #0A0A10;     /* near-black with a hint of blue, matching the indigo selection */
-  --color-shadow: rgba(0, 0, 0, 0.7); /* chrome drop shadow — stronger on true black */
+  /* Header backdrop: tokenized for SiteHeader frosted glass */
+  --color-header-bg: rgba(8, 13, 11, 0.85);
+  /* macOS terminal chrome: title bar and shadow */
+  --color-titlebar: #060A08;     /* darker than bg, green-tinted */
+  --color-shadow: rgba(0, 15, 8, 0.7); /* green-tinted drop shadow */
+
+  /* ── Section accent palette (Umber theme ANSI slots) ──────────────────────── */
+  /* Each section picks one ANSI color as its accent. Components read
+   * --local-accent (set per-section) for labels, icons, and tinted borders.
+   * The primary --color-accent (goblin green) remains the global default. */
+  --accent-agents:   #6EA8FF;  /* cave crystal blue: cool, technical */
+  --accent-features: #3DDC84;  /* goblin green: the product identity */
+  --accent-editor:   #E8B84B;  /* firelight amber: warmth, craft */
+  --accent-themes:   #B07CFF;  /* mystic purple: enchantment, personality */
+  --accent-install:  #FFD166;  /* gold: torchlight, urgency */
+  --accent-keymap:   #4DD0B8;  /* poison teal: precision, reference */
+  /* Default: sections without an explicit accent inherit the global */
+  --local-accent: var(--color-accent);
 
   /* ── Spacing (4px grid) ───────────────────────────────────────────────────── */
   --space-1:  4px;
@@ -63,6 +76,7 @@
   --radius-4: 16px;
 
   /* ── Typography ───────────────────────────────────────────────────────────── */
+  --font-display: var(--font-space-grotesk), "SF Pro Display", system-ui, sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 

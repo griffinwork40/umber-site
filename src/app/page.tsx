@@ -1,9 +1,8 @@
 import React from 'react'
 import SiteHeader from '@/components/header/SiteHeader'
 import HeroSection from '@/components/hero/HeroSection'
-import WhatsNew from '@/components/release/WhatsNew'
-import AgentSection from '@/components/agents/AgentSection'
 import FeaturesSection from '@/components/features/FeaturesSection'
+import AgentSection from '@/components/agents/AgentSection'
 import EditorSection from '@/components/editor/EditorSection'
 import ThemeShowcase from '@/components/themes/ThemeShowcase'
 import InstallSection from '@/components/install/InstallSection'
@@ -20,9 +19,8 @@ export default function Page() {
       <SiteHeader />
       <main id="main-content">
         <HeroSection />
-        <WhatsNew />
-        <AgentSection />
         <FeaturesSection />
+        <AgentSection />
         <EditorSection />
         <ThemeShowcase />
         <InstallSection />

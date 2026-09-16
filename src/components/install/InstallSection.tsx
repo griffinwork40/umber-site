@@ -6,10 +6,21 @@ import CodeBlock from '@/components/ui/CodeBlock'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 
-const sectionStyle: React.CSSProperties = {
-  padding: 'var(--space-12) var(--space-6)',
+const sectionStyle = {
+  padding: 'var(--space-10) var(--space-6)',
   backgroundColor: 'var(--color-bg)',
   position: 'relative',
+  '--local-accent': 'var(--accent-install)',
+} as React.CSSProperties
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--local-accent)',
+  marginBottom: 'var(--space-3)',
 }
 
 const innerStyle: React.CSSProperties = {
@@ -20,6 +31,7 @@ const innerStyle: React.CSSProperties = {
 }
 
 const headingStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-display)',
   fontSize: '2rem',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
@@ -42,7 +54,6 @@ const downloadBoxStyle: React.CSSProperties = {
   padding: 'var(--space-8)',
   backgroundColor: 'var(--color-surface)',
   borderRadius: 'var(--radius-3)',
-  border: '1px solid var(--color-border)',
   textAlign: 'center' as const,
   marginBottom: 'var(--space-8)',
 }
@@ -69,15 +80,15 @@ const dividerLineStyle: React.CSSProperties = {
 }
 
 const toggleBtnStyle: React.CSSProperties = {
-  background: 'none',
-  border: '1px solid var(--color-border)',
+  background: 'var(--color-surface)',
+  border: 'none',
   borderRadius: 'var(--radius-3)',
   color: 'var(--color-muted)',
   padding: 'var(--space-2) var(--space-5)',
   cursor: 'pointer',
   fontFamily: 'var(--font-sans)',
   fontSize: '0.875rem',
-  transition: 'all var(--motion-duration) ease',
+  transition: 'color 150ms ease, border-color 150ms ease',
 }
 
 const stepsListStyle: React.CSSProperties = {
@@ -125,9 +136,7 @@ const calloutStyle: React.CSSProperties = {
   marginTop: 'var(--space-8)',
   padding: 'var(--space-5)',
   backgroundColor: 'var(--color-surface)',
-  border: '1px solid var(--color-border)',
   borderRadius: 'var(--radius-3)',
-  borderLeft: '3px solid var(--color-accent)',
 }
 
 const calloutHeadingStyle: React.CSSProperties = {
@@ -151,6 +160,7 @@ export default function InstallSection() {
   return (
     <section id="install" className="scope-rule elevated-field" style={sectionStyle}>
       <div style={innerStyle}>
+        <div style={labelStyle}>get started</div>
         <h2 style={headingStyle}>Install</h2>
 
         <div style={requirementsStyle}>
@@ -161,7 +171,7 @@ export default function InstallSection() {
         {/* DMG download — primary path */}
         <div style={downloadBoxStyle}>
           <Button href={SITE_META.dmgUrl} variant="primary">
-            Download Umber {SITE_META.version}
+            Download Goblin Portal {SITE_META.version}
           </Button>
           <p style={downloadSubStyle}>
             Universal binary · 1.7 MB · signed &amp; notarized

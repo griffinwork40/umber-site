@@ -2,14 +2,26 @@ import React from 'react'
 import { KEYMAP } from '@/lib/constants'
 import CodeBlock from '@/components/ui/CodeBlock'
 
-const sectionStyle: React.CSSProperties = {
-  padding: 'var(--space-12) var(--space-6)',
+const sectionStyle = {
+  padding: 'var(--space-9) var(--space-6)',
   maxWidth: 1100,
   margin: '0 auto',
+  '--local-accent': 'var(--accent-keymap)',
+} as React.CSSProperties
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--local-accent)',
+  marginBottom: 'var(--space-2)',
 }
 
 const headingStyle: React.CSSProperties = {
   fontSize: '2rem',
+  fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-8)',
   color: 'var(--color-fg)',
@@ -24,14 +36,12 @@ const groupsStyle: React.CSSProperties = {
 const groupStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-surface)',
   borderRadius: 'var(--radius-3)',
-  border: '1px solid var(--color-border)',
   overflow: 'hidden',
 }
 
 const groupHeadingStyle: React.CSSProperties = {
   padding: 'var(--space-3) var(--space-5)',
   backgroundColor: 'var(--color-bg)',
-  borderBottom: '1px solid var(--color-border)',
   fontFamily: 'var(--font-sans)',
   fontSize: '0.75rem',
   fontWeight: 600,
@@ -53,13 +63,11 @@ const thStyle: React.CSSProperties = {
   color: 'var(--color-muted)',
   fontSize: '0.75rem',
   fontWeight: 500,
-  borderBottom: '1px solid var(--color-border)',
 }
 
 const tdStyle: React.CSSProperties = {
   padding: 'var(--space-2) var(--space-5)',
   color: 'var(--color-fg)',
-  borderBottom: '1px solid var(--color-border)',
   fontSize: '0.875rem',
 }
 
@@ -68,6 +76,7 @@ export default function KeymapSection() {
   return (
     <section id="keymap" className="earned-path" style={{ backgroundColor: 'var(--color-bg)', position: 'relative' as const }}>
       <div style={sectionStyle}>
+        <div style={labelStyle}>reference</div>
         <h2 style={headingStyle}>Keyboard Shortcuts</h2>
         <div style={groupsStyle} className="keymap-grid">
           {KEYMAP.map((group) => (

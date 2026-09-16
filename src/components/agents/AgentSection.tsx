@@ -1,10 +1,21 @@
 import React from 'react'
 import { AGENT_TOOLS, type AgentPoint } from '@/lib/constants'
 
-const sectionStyle: React.CSSProperties = {
-  padding: 'var(--space-12) var(--space-6)',
+const sectionStyle = {
+  padding: 'var(--space-12) var(--space-6) 120px',
   backgroundColor: 'var(--color-bg)',
   position: 'relative',
+  '--local-accent': 'var(--accent-agents)',
+} as React.CSSProperties
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--local-accent)',
+  marginBottom: 'var(--space-3)',
 }
 
 const innerStyle: React.CSSProperties = {
@@ -16,6 +27,7 @@ const innerStyle: React.CSSProperties = {
 
 const headingStyle: React.CSSProperties = {
   fontSize: '2rem',
+  fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-3)',
   color: 'var(--color-fg)',
@@ -38,7 +50,6 @@ const gridStyle: React.CSSProperties = {
 
 const toolCardStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-surface)',
-  border: '1px solid var(--color-border)',
   borderRadius: 'var(--radius-3)',
   padding: 'var(--space-5)',
   display: 'flex',
@@ -74,7 +85,7 @@ const pointStyle: React.CSSProperties = {
 }
 
 const bulletStyle: React.CSSProperties = {
-  color: 'var(--color-accent)',
+  color: 'var(--local-accent)',
   fontFamily: 'var(--font-mono)',
   fontSize: '0.875rem',
   flexShrink: 0,
@@ -88,7 +99,7 @@ const pointTextStyle: React.CSSProperties = {
 }
 
 const emphStyle: React.CSSProperties = {
-  color: 'var(--color-accent)',
+  color: 'var(--local-accent)',
   fontWeight: 600,
   fontStyle: 'normal',
 }
@@ -96,19 +107,19 @@ const emphStyle: React.CSSProperties = {
 const SELLING_POINTS = [
   {
     text: 'agents run in terminals',
-    detail: ' — the terminal shouldn\'t compete with them for CPU, RAM, or your attention.',
+    detail: '. The terminal shouldn\'t compete with them for CPU, RAM, or your attention.',
   },
   {
     text: 'OSC 133 command tracking',
-    detail: ' — see which agent task succeeded or failed at a glance, across every tab.',
+    detail: '. See which agent task succeeded or failed at a glance, across every tab.',
   },
   {
     text: 'Split panes',
-    detail: ' — run an agent and its supervisor side by side. ⌘⇧\\ to split, ⌘⇧H/J/K/L to navigate.',
+    detail: '. Run an agent and its supervisor side by side. ⌘⇧\\ to split, ⌘⇧H/J/K/L to navigate.',
   },
   {
-    text: 'Dual engines',
-    detail: ' — SwiftTerm or libghostty, same window. Pick the emulator that fits the workload.',
+    text: 'tmux-native',
+    detail: '. Proper focus events, DCS passthrough, and mouse reporting. Your tmux sessions just work.',
   },
 ]
 
@@ -125,9 +136,10 @@ export default function AgentSection() {
   return (
     <section id="agents" className="earned-path deep-field" style={sectionStyle}>
       <div style={innerStyle}>
+        <div style={labelStyle}>agent-native</div>
         <h2 style={headingStyle}>Built for AI agents</h2>
         <p style={leadStyle}>
-          The best terminal agents run in your shell, not in a browser. Umber
+          The best terminal agents run in your shell, not in a browser. Goblin Portal
           gives them a fast, native host that stays out of their way.
         </p>
 

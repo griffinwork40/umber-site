@@ -15,7 +15,7 @@ describe('Footer', () => {
 
   it('renders app icon with correct alt text', () => {
     render(<Footer />)
-    expect(screen.getByAltText('Umber app icon')).toBeInTheDocument()
+    expect(screen.getByAltText('Goblin Portal app icon')).toBeInTheDocument()
   })
 
   it('renders GitHub link with correct href', () => {
@@ -36,8 +36,8 @@ describe('Footer', () => {
     expect(screen.getByText('Built by Griffin Long')).toBeInTheDocument()
   })
 
-  it('renders the Umber brand name', () => {
+  it('renders the Goblin Portal brand name', () => {
     render(<Footer />)
-    expect(screen.getByText('Umber')).toBeInTheDocument()
+    expect(screen.getByText('Goblin Portal')).toBeInTheDocument()
   })
 })

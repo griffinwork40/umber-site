@@ -1,6 +1,6 @@
-# Umber Site
+# Goblin Portal Site
 
-Landing page for [Umber](https://github.com/griffinwork40/umber), a native macOS terminal built for AI agents. Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS. Deployed on Vercel.
+Landing page for [Goblin Portal](https://github.com/griffinwork40/goblin-portal), a native macOS terminal built for AI agents. Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS. Deployed on Vercel.
 
 Single-page marketing site — hero, feature showcase, theme preview, editor section, install steps, keymap reference, and footer. No backend, no API routes.
 
@@ -25,7 +25,7 @@ pnpm tsc          # Type-check (no emit)
 | `src/app/globals.css` | Reset, base styles, mobile responsive overrides |
 | `src/components/` | Section components, one directory per section |
 | `src/components/ui/` | Shared primitives — Badge, Button, CodeBlock, TerminalMockup |
-| `src/lib/constants.ts` | **All site data** — features, themes, keymap, install steps, meta. Hex colours are from `ThemeValues.swift` in the Umber app repo |
+| `src/lib/constants.ts` | **All site data** — features, themes, keymap, install steps, meta. Hex colours are from `ThemeValues.swift` in the Goblin Portal app repo |
 | `src/styles/tokens.css` | Design tokens (colours, spacing, radii, fonts, motion) |
 | `src/styles/signature.css` | Visual signature system — signal-field, earned-path, scope-rule, contour/elevated fields |
 | `src/test/setup.ts` | Vitest setup (jsdom + testing-library) |
@@ -41,8 +41,8 @@ Tests are colocated: `FeaturesSection.test.tsx` sits next to `FeaturesSection.ts
 
 ## Conventions
 
-- **No hex values in component files.** All colours come from CSS custom properties in `tokens.css` or Tailwind `umber-*` classes. The only file that may contain hex is `lib/constants.ts` (theme palettes sourced from `ThemeValues.swift`).
-- **CSS custom properties for design tokens**, extended into Tailwind via `tailwind.config.ts`. Components use `var(--token)` in inline styles or `umber-*` Tailwind classes.
+- **No hex values in component files.** All colours come from CSS custom properties in `tokens.css` or Tailwind `gp-*` classes. The only file that may contain hex is `lib/constants.ts` (theme palettes sourced from `ThemeValues.swift`).
+- **CSS custom properties for design tokens**, extended into Tailwind via `tailwind.config.ts`. Components use `var(--token)` in inline styles or `gp-*` Tailwind classes.
 - **Inline styles over utility classes** for layout — `React.CSSProperties` objects. Media queries live in `globals.css` as responsive utility classes (Tailwind can't express all breakpoint overrides inline).
 - **Signature CSS classes** (`signal-field`, `earned-path`, `scope-rule`, `deep-field`, `elevated-field`, `contour-layer`, `contour-frame`) are pure CSS — no JS, no images.
 - **`@/*` path alias** maps to `./src/*` (tsconfig + vitest).

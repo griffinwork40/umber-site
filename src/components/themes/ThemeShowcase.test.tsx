@@ -22,9 +22,9 @@ describe('ThemeShowcase', () => {
     expect(screen.getByText('default')).toBeInTheDocument()
   })
 
-  it('classic-repaired tab is selected by default', () => {
+  it('umber tab is selected by default (easter egg theme)', () => {
     render(<ThemeShowcase />)
-    expect(screen.getByRole('tab', { name: /Classic Repaired/ })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.getByRole('tab', { name: /Umber/ })).toHaveAttribute('aria-selected', 'true')
   })
 
   it('non-default themes are not selected initially', () => {
@@ -38,10 +38,10 @@ describe('ThemeShowcase', () => {
     expect(screen.getByRole('tab', { name: /Tokyo Night/ })).toHaveAttribute('aria-selected', 'true')
   })
 
-  it('clicking a theme tab deselects classic-repaired', async () => {
+  it('clicking a theme tab deselects umber', async () => {
     render(<ThemeShowcase />)
     await userEvent.click(screen.getByRole('tab', { name: /Tokyo Night/ }))
-    expect(screen.getByRole('tab', { name: /Classic Repaired/ })).toHaveAttribute('aria-selected', 'false')
+    expect(screen.getByRole('tab', { name: /Umber/ })).toHaveAttribute('aria-selected', 'false')
   })
 
   it('renders a tabpanel for the active theme', () => {
@@ -56,6 +56,6 @@ describe('ThemeShowcase', () => {
 
   it('has h2 heading', () => {
     render(<ThemeShowcase />)
-    expect(screen.getByRole('heading', { level: 2, name: 'Themes' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Measured themes' })).toBeInTheDocument()
   })
 })

@@ -20,8 +20,8 @@ export default function HeroScreenshot() {
   return (
     <div style={screenshotWrapStyle} className="hero-screenshot contour-frame">
       <Image
-        src="/images/umber-screenshot.png"
-        alt="Umber running agent-afk with sidebar file tree and syntax-highlighted output"
+        src="/images/goblin-portal-screenshot.png"
+        alt="Goblin Portal running agent-afk with sidebar file tree and syntax-highlighted output"
         width={720}
         height={472}
         style={screenshotImgStyle}
