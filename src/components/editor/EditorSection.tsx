@@ -101,7 +101,7 @@ export default function EditorSection() {
         <p style={subheadStyle}>
           Open files from the sidebar into editor tabs that sit alongside your
           terminals. Syntax highlighting, code folding, symbol outline, multi-cursor.
-          Enough to review and edit without switching apps.
+          Enough to review and edit without switching apps, which is all most people actually need.
         </p>
 
         <div style={showcaseStackStyle}>
