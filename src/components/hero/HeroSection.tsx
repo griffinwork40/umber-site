@@ -37,7 +37,7 @@ export default function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero-section signal-field"
+      className="hero-section"
       style={{
         ...sectionStyle,
         opacity: visible ? 1 : 0,
