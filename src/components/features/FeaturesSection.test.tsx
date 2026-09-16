@@ -10,7 +10,7 @@ describe('FeaturesSection', () => {
 
   it('renders the h2 heading', () => {
     render(<FeaturesSection />)
-    expect(screen.getByRole('heading', { level: 2, name: 'Features' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'No AI built in, on purpose' })).toBeInTheDocument()
   })
 
   it('renders exactly 6 feature cards', () => {

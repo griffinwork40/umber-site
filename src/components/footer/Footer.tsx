@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { SITE_META } from '@/lib/constants'
 
 const footerStyle: React.CSSProperties = {
-  borderTop: '1px solid var(--color-border)',
   backgroundColor: 'var(--color-surface)',
 }
 

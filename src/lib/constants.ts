@@ -1,7 +1,7 @@
 /**
  * Site-wide constants for the Goblin Portal landing page.
  *
- * Hex colour values are drawn verbatim from ThemeValues.swift — the canonical source.
+ * Hex colour values are drawn verbatim from ThemeValues.swift (the canonical source).
  * This is the ONLY file on the site that may contain hex values; all component files
  * must reference tokens from tokens.css or data from this file.
  */
@@ -10,7 +10,7 @@ export const SITE_META = {
   title: 'Goblin Portal',
   tagline: 'The native Mac terminal built for AI agents.',
   description:
-    'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
+    'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
   version: 'v1.0.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
   dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.0.0/GoblinPortal-v1.0.0.dmg',
@@ -34,7 +34,7 @@ export const RELEASE: {
     {
       title: 'Community Themes',
       description:
-        'Catppuccin Mocha, Nord, and Dracula — ported verbatim from their upstream specs and gated by the contrast harness (474 assertions).',
+        'Catppuccin Mocha, Nord, and Dracula, ported verbatim from their upstream specs and gated by the contrast harness (474 assertions).',
       configExample: '"preset": "catppuccin-mocha"',
     },
     {
@@ -74,13 +74,13 @@ export const FEATURES: Feature[] = [
   {
     title: 'Zero-Overhead Host',
     description:
-      'Swift and AppKit — no Electron, no V8, no renderer process. Your agents get the RAM. Launches instantly and stays out of the way.',
+      'Swift and AppKit. No Electron, no V8, no renderer process. Your agents get the RAM.',
     icon: 'apple',
   },
   {
     title: 'Agent Workspaces',
     description:
-      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context — real macOS window tabs, not a custom layer.',
+      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a custom layer.',
     icon: 'tabs',
   },
   {
@@ -92,7 +92,7 @@ export const FEATURES: Feature[] = [
   {
     title: 'Measured Themes',
     description:
-      'Eight palettes tested for readability — every color verified against contrast standards. Includes Catppuccin Mocha, Nord, and Dracula. Long sessions reading agent output stay legible.',
+      'Eight built-in palettes. Every color verified against contrast standards (474 assertions). Catppuccin Mocha, Nord, Dracula, and more.',
     icon: 'palette',
   },
   {
@@ -104,7 +104,7 @@ export const FEATURES: Feature[] = [
   {
     title: 'Agent Status at a Glance',
     description:
-      'Background tabs show a green dot when a command succeeds, red when it fails. OSC 133 shell integration — no polling, no tab switching.',
+      'Green dot when a command succeeds, red when it fails. OSC 133 shell integration. No polling, no tab switching.',
     icon: 'shell',
   },
 ]
@@ -116,16 +116,16 @@ export interface AgentPoint {
 
 export const AGENT_TOOLS: AgentPoint[] = [
   {
+    name: 'Agent AFK',
+    description: 'Autonomous agent runtime with daemon, Telegram, and REPL surfaces.',
+  },
+  {
     name: 'Claude Code',
     description: 'Anthropic\'s terminal-native coding agent. Runs entirely in your shell.',
   },
   {
     name: 'Codex',
     description: 'OpenAI\'s CLI agent for code generation and multi-file edits.',
-  },
-  {
-    name: 'Agent AFK',
-    description: 'Autonomous agent runtime with daemon, Telegram, and REPL surfaces.',
   },
   {
     name: 'Hermes',
@@ -190,7 +190,7 @@ export const KEYMAP: KeymapGroup[] = [
       { shortcut: '⌘⇧]', description: 'Next Space' },
       { shortcut: '⌘⌥←', description: 'Previous document' },
       { shortcut: '⌘⌥→', description: 'Next document' },
-      { shortcut: '⌘1–⌘9', description: 'Jump to document by index' },
+      { shortcut: '⌘1-⌘9', description: 'Jump to document by index' },
     ],
   },
   {
@@ -235,7 +235,7 @@ export const EDITOR_FEATURES: EditorFeature[] = [
   {
     title: 'Syntax Highlighting',
     description:
-      '23 languages out of the box — Swift, TypeScript, Python, Rust, Go, Markdown, and more. Tree-sitter grammars with scope-aware token coloring.',
+      '23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. Tree-sitter grammars with scope-aware token coloring.',
     icon: 'syntax',
   },
   {
@@ -253,7 +253,7 @@ export const EDITOR_FEATURES: EditorFeature[] = [
   {
     title: 'Multi-Cursor Editing',
     description:
-      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file — the same muscle memory as VS Code.',
+      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code.',
     icon: 'cursor',
   },
 ]
@@ -273,7 +273,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
       'Each project gets its own Space with a full file tree, git status, and as many terminal tabs as you need. Your agents see the same directory structure you do.',
     bullets: [
       'Sidebar follows the focused shell\'s working directory automatically',
-      'Git status badges on every file — staged, modified, untracked, deleted',
+      'Git status badges on every file: staged, modified, untracked, deleted',
       'Double-click any file to open it in the built-in editor',
     ],
     image: '/images/goblin-portal-workspace.png',
@@ -282,7 +282,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     title: 'Edit without leaving the terminal',
     description:
-      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, and get back to the terminal — no app switching.',
+      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to the terminal.',
     bullets: [
       'Syntax highlighting for 23 languages with tree-sitter grammars',
       'Line numbers, indent guides, and a column guide at 80 characters',

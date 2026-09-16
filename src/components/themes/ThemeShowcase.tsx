@@ -5,10 +5,21 @@ import { THEMES } from '@/lib/constants'
 import TerminalMockup from '@/components/ui/TerminalMockup'
 import Badge from '@/components/ui/Badge'
 
-const sectionStyle: React.CSSProperties = {
+const sectionStyle = {
   backgroundColor: 'var(--color-surface)',
-  padding: 'var(--space-12) var(--space-6)',
+  padding: 'var(--space-11) var(--space-6)',
   position: 'relative',
+  '--local-accent': 'var(--accent-themes)',
+} as React.CSSProperties
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--local-accent)',
+  marginBottom: 'var(--space-3)',
 }
 
 const innerStyle: React.CSSProperties = {
@@ -45,14 +56,13 @@ const getTabStyle = (isActive: boolean): React.CSSProperties => ({
   gap: 'var(--space-2)',
   padding: 'var(--space-2) var(--space-4)',
   borderRadius: 'var(--radius-3)',
-  border: `1px solid ${isActive ? 'var(--color-accent)' : 'var(--color-border)'}`,
   backgroundColor: isActive ? 'var(--color-selection)' : 'var(--color-bg)',
   color: isActive ? 'var(--color-fg)' : 'var(--color-muted)',
   cursor: 'pointer',
   fontFamily: 'var(--font-sans)',
   fontSize: '0.875rem',
   fontWeight: isActive ? 600 : 400,
-  transition: 'all var(--motion-duration) ease',
+  transition: 'color 150ms ease, background-color 150ms ease, border-color 150ms ease',
 })
 
 const previewStyle: React.CSSProperties = {
@@ -62,7 +72,7 @@ const previewStyle: React.CSSProperties = {
 
 function ThemePreview({ theme }: { theme: typeof THEMES[0] }) {
   // Inject per-theme colours as CSS custom property overrides so TerminalMockup
-  // continues to consume var(--color-bg) / var(--color-fg) — token-first architecture.
+  // continues to consume var(--color-bg) / var(--color-fg). Token-first architecture.
   const themeVars: Record<string, string> = {
     '--color-bg': theme.background,
     '--color-fg': theme.foreground,
@@ -72,7 +82,7 @@ function ThemePreview({ theme }: { theme: typeof THEMES[0] }) {
     <TerminalMockup
       aria-label={`${theme.displayName} theme preview`}
       themeVars={themeVars}
-      title={`zsh — ${theme.displayName}`}
+      title={`zsh - ${theme.displayName}`}
     >
       <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem', lineHeight: 1.8, color: 'var(--color-fg)' }}>
         <div>
@@ -97,7 +107,8 @@ export default function ThemeShowcase() {
   return (
     <section id="themes" className="earned-path" style={sectionStyle}>
       <div style={innerStyle}>
-        <h2 style={headingStyle}>Themes</h2>
+        <div style={labelStyle}>color</div>
+        <h2 style={headingStyle}>Measured themes</h2>
         <p style={subheadStyle}>
           Five palettes ship out of the box. Each is gated by 345 contrast assertions.
         </p>

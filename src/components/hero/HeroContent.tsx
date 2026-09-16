@@ -1,12 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import { SITE_META } from '@/lib/constants'
-import Button from '@/components/ui/Button'
 
 const contentStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  gap: 'var(--space-6)',
+  gap: 'var(--space-5)',
   maxWidth: 520,
 }
 
@@ -41,8 +40,42 @@ const taglineStyle: React.CSSProperties = {
 
 const ctaGroupStyle: React.CSSProperties = {
   display: 'flex',
-  gap: 'var(--space-3)',
+  gap: 'var(--space-4)',
   flexWrap: 'wrap',
+  alignItems: 'center',
+}
+
+const primaryBtnStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 'var(--space-3)',
+  padding: 'var(--space-4) var(--space-7)',
+  borderRadius: 'var(--radius-3)',
+  fontFamily: 'var(--font-sans)',
+  fontSize: '1rem',
+  fontWeight: 600,
+  textDecoration: 'none',
+  cursor: 'pointer',
+  lineHeight: 1.5,
+  backgroundColor: 'var(--color-accent)',
+  color: 'var(--color-bg)',
+  border: '1px solid var(--color-accent)',
+  transition: 'opacity 150ms ease',
+}
+
+const detailStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  color: 'var(--color-muted)',
+  letterSpacing: '0.01em',
+}
+
+const githubLinkStyle: React.CSSProperties = {
+  color: 'var(--color-muted)',
+  fontSize: '0.9375rem',
+  textDecoration: 'none',
+  transition: 'color 150ms ease',
 }
 
 export default function HeroContent() {
@@ -65,21 +98,29 @@ export default function HeroContent() {
         {SITE_META.title}
       </h1>
 
-      {/* Tagline + description */}
+      {/* Tagline */}
       <p style={taglineStyle}>{SITE_META.tagline}</p>
       <p style={{ ...taglineStyle, fontSize: '0.9375rem' }}>
         Swift and AppKit. No Electron overhead. Your agents get the full machine.
       </p>
 
-      {/* CTAs */}
+      {/* Primary CTA: dominant download */}
       <div style={ctaGroupStyle}>
-        <Button href={SITE_META.dmgUrl} variant="primary">
+        <a
+          href={SITE_META.dmgUrl}
+          style={primaryBtnStyle}
+          download="GoblinPortal-v1.0.0.dmg"
+          rel="noopener noreferrer"
+        >
           Download {SITE_META.version}
-        </Button>
-        <Button href={SITE_META.repoUrl} variant="secondary">
-          GitHub →
-        </Button>
+        </a>
+        <span style={detailStyle}>Universal binary · 1.7 MB</span>
       </div>
+
+      {/* Secondary: text link, not a button */}
+      <a href={SITE_META.repoUrl} style={githubLinkStyle}>
+        Source on GitHub →
+      </a>
     </div>
   )
 }

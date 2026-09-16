@@ -3,10 +3,21 @@ import { EDITOR_FEATURES, SHOWCASE_ITEMS } from '@/lib/constants'
 import FeatureShowcase from '@/components/features/FeatureShowcase'
 import Icon from '@/components/ui/Icon'
 
-const sectionStyle: React.CSSProperties = {
-  padding: 'var(--space-12) var(--space-6)',
+const sectionStyle = {
+  padding: 'var(--space-11) var(--space-6) var(--space-12)',
   backgroundColor: 'var(--color-bg)',
   position: 'relative',
+  '--local-accent': 'var(--accent-editor)',
+} as React.CSSProperties
+
+const labelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  fontWeight: 500,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--local-accent)',
+  marginBottom: 'var(--space-3)',
 }
 
 const innerStyle: React.CSSProperties = {
@@ -47,7 +58,6 @@ const gridStyle: React.CSSProperties = {
 
 const cardStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-surface)',
-  border: '1px solid var(--color-border)',
   borderRadius: 'var(--radius-3)',
   padding: 'var(--space-5)',
   display: 'flex',
@@ -60,7 +70,6 @@ const iconWrapStyle: React.CSSProperties = {
   height: 36,
   borderRadius: 'var(--radius-2)',
   backgroundColor: 'var(--color-bg)',
-  border: '1px solid var(--color-border)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -87,11 +96,12 @@ export default function EditorSection() {
   return (
     <section id="editor" className="earned-path contour-layer" style={sectionStyle}>
       <div style={innerStyle}>
+        <div style={labelStyle}>editor</div>
         <h2 style={headingStyle}>More than a terminal</h2>
         <p style={subheadStyle}>
           Open files from the sidebar into editor tabs that sit alongside your
-          terminals. Syntax highlighting, code folding, symbol outline, multi-cursor —
-          enough to review and edit without switching apps.
+          terminals. Syntax highlighting, code folding, symbol outline, multi-cursor.
+          Enough to review and edit without switching apps.
         </p>
 
         <div style={showcaseStackStyle}>
@@ -104,7 +114,7 @@ export default function EditorSection() {
           {EDITOR_FEATURES.map((feature) => (
             <article key={feature.title} style={cardStyle}>
               <div style={iconWrapStyle}>
-                <Icon name={feature.icon} size={18} style={{ color: 'var(--color-accent)' }} />
+                <Icon name={feature.icon} size={18} style={{ color: 'var(--local-accent)' }} />
               </div>
               <h3 style={cardTitleStyle}>{feature.title}</h3>
               <p style={cardDescStyle}>{feature.description}</p>

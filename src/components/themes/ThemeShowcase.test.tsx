@@ -56,6 +56,6 @@ describe('ThemeShowcase', () => {
 
   it('has h2 heading', () => {
     render(<ThemeShowcase />)
-    expect(screen.getByRole('heading', { level: 2, name: 'Themes' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Measured themes' })).toBeInTheDocument()
   })
 })

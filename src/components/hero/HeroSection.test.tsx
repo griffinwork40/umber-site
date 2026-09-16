@@ -25,7 +25,7 @@ describe('HeroSection', () => {
 
   it('renders the GitHub CTA with correct href', () => {
     render(<HeroSection />)
-    expect(screen.getByRole('link', { name: 'GitHub →' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Source on GitHub →' })).toHaveAttribute(
       'href',
       SITE_META.repoUrl
     )

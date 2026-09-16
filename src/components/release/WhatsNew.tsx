@@ -3,10 +3,9 @@ import { RELEASE, SITE_META } from '@/lib/constants'
 import Badge from '@/components/ui/Badge'
 
 const sectionStyle: React.CSSProperties = {
-  padding: 'var(--space-12) var(--space-6)',
+  padding: 'var(--space-9) var(--space-6)',
   backgroundColor: 'var(--color-surface)',
-  borderTop: '1px solid var(--color-border)',
-  borderBottom: '1px solid var(--color-border)',
+
 }
 
 const innerStyle: React.CSSProperties = {
@@ -50,7 +49,6 @@ const gridStyle: React.CSSProperties = {
 
 const cardStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-bg)',
-  border: '1px solid var(--color-border)',
   borderRadius: 'var(--radius-3)',
   padding: 'var(--space-5)',
   display: 'flex',
@@ -80,7 +78,6 @@ const configStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-surface)',
   borderRadius: 'var(--radius-2)',
   padding: 'var(--space-2) var(--space-3)',
-  border: '1px solid var(--color-border)',
   whiteSpace: 'nowrap',
   overflow: 'auto',
 }
@@ -109,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date} &mdash; eight measured themes, system appearance following, split-pane dimming, and typography controls.
+          {RELEASE.date}. Eight measured themes, system appearance following, split-pane dimming, and typography controls.
         </p>
 
         <div style={gridStyle} className="release-grid">

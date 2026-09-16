@@ -99,9 +99,12 @@ kbd {
     display: none !important;
   }
 
-  /* Features grid: allow cards narrower than 300px */
+  /* Features grid: single column, hero card un-spans */
   .features-grid {
     grid-template-columns: 1fr !important;
+  }
+  .features-grid > article:first-child {
+    grid-column: span 1 !important;
   }
 
   /* Theme tabs: allow horizontal scroll */

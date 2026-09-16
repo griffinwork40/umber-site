@@ -15,8 +15,7 @@ const headerStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-header-bg)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  borderBottom: '1px solid var(--color-border)',
-  transition: 'transform var(--motion-duration) ease, opacity var(--motion-duration) ease',
+  transition: 'transform 150ms ease, opacity 150ms ease',
 }
 
 const hiddenStyle: React.CSSProperties = {
@@ -74,8 +73,8 @@ export default function SiteHeader() {
       </a>
       <nav aria-label="Page sections" className="site-header-nav">
         <ul style={navListStyle}>
-          <li><a href="#agents" style={navLinkStyle}>Agents</a></li>
           <li><a href="#features" style={navLinkStyle}>Features</a></li>
+          <li><a href="#agents" style={navLinkStyle}>Agents</a></li>
           <li><a href="#editor" style={navLinkStyle}>Editor</a></li>
           <li><a href="#themes" style={navLinkStyle}>Themes</a></li>
           <li><a href="#install" style={navLinkStyle}>Install</a></li>

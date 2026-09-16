@@ -15,20 +15,20 @@
 /* ── Signature tokens ────────────────────────────────────────────────────── */
 :root {
   /* Depth zone — cool, dense, inward (goblin green family) */
-  --sig-depth-1: rgba(45, 140, 80, 0.03);     /* faint green wash */
-  --sig-depth-2: rgba(45, 140, 80, 0.06);
-  --sig-depth-3: rgba(45, 140, 80, 0.10);
-  --sig-contour: rgba(45, 140, 80, 0.08);     /* contour line stroke */
-  --sig-contour-bright: rgba(61, 220, 132, 0.15);
+  --sig-depth-1: rgba(45, 140, 80, 0.07);     /* faint green wash */
+  --sig-depth-2: rgba(45, 140, 80, 0.12);
+  --sig-depth-3: rgba(45, 140, 80, 0.18);
+  --sig-contour: rgba(45, 140, 80, 0.14);     /* contour line stroke */
+  --sig-contour-bright: rgba(61, 220, 132, 0.25);
 
   /* Embodiment zone — warmer, clearer, more resolved (lighter green) */
-  --sig-warm-1: rgba(61, 220, 132, 0.04);
-  --sig-warm-2: rgba(61, 220, 132, 0.08);
-  --sig-warm-glow: rgba(61, 220, 132, 0.12);
+  --sig-warm-1: rgba(61, 220, 132, 0.08);
+  --sig-warm-2: rgba(61, 220, 132, 0.14);
+  --sig-warm-glow: rgba(61, 220, 132, 0.22);
 
   /* Structural elements */
-  --sig-rule-color: rgba(61, 220, 132, 0.20);
-  --sig-path-color: rgba(45, 140, 80, 0.07);
+  --sig-rule-color: rgba(61, 220, 132, 0.30);
+  --sig-path-color: rgba(45, 140, 80, 0.14);
 
   /* Motion */
   --sig-drift: 120s;

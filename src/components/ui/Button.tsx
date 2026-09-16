@@ -15,12 +15,12 @@ const styles: Record<ButtonVariant, React.CSSProperties> = {
   primary: {
     backgroundColor: 'var(--color-accent)',
     color: 'var(--color-bg)',
-    border: '1px solid var(--color-accent)',
+    border: 'none',
   },
   secondary: {
     backgroundColor: 'var(--color-surface)',
     color: 'var(--color-fg)',
-    border: '1px solid var(--color-border)',
+    border: 'none',
   },
 }
 
