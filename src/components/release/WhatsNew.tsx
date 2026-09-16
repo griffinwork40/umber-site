@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. Eight measured themes, system appearance following, split-pane dimming, and typography controls.
+          {RELEASE.date}. $EDITOR support, vertical splits, SwiftTerm-only engine, new icon, and the completed Goblin Portal rename.
         </p>
 
         <div style={gridStyle} className="release-grid">

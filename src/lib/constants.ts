@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.0.0',
+  version: 'v1.1.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.0.0/GoblinPortal-v1.0.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -28,38 +28,38 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.0.0',
-  date: 'August 25, 2026',
+  version: 'v1.1.0',
+  date: 'September 16, 2026',
   highlights: [
     {
-      title: 'Community Themes',
+      title: '$EDITOR Support',
       description:
-        'Catppuccin Mocha, Nord, and Dracula, ported verbatim from their upstream specs and gated by the contrast harness (474 assertions).',
-      configExample: '"preset": "catppuccin-mocha"',
+        'GoblinPortal --wait opens a file and blocks until you close it. Set EDITOR="GoblinPortal --wait" and use Goblin Portal with git commit, crontab -e, and any tool that honors $EDITOR.',
+      configExample: 'EDITOR="GoblinPortal --wait"',
     },
     {
-      title: 'Auto Dark / Light',
+      title: 'Vertical Splits',
       description:
-        'Follow macOS appearance automatically. Goblin Portal switches between a dark and light palette when System Settings changes.',
-      configExample: '"preset": "auto"',
+        '⌘⇧- splits the current pane down. Up to 4 panes per tab. ⌘⇧H/J/K/L moves focus between them. Fully wired in the v2 architecture.',
+      configExample: undefined,
     },
     {
-      title: 'Split-Pane Dimming',
+      title: 'SwiftTerm Engine',
       description:
-        'Unfocused split panes dim to visually distinguish the active pane. Fully configurable.',
-      configExample: '"unfocusedPaneOpacity": 0.85',
+        'Ghostty removed. SwiftTerm is the sole rendering engine — smaller binary, simpler codebase, one rendering path to maintain.',
+      configExample: undefined,
     },
     {
-      title: 'Typography Controls',
+      title: 'New Icon',
       description:
-        'Font dilation for white-on-black text (the same technique Terminal.app uses) and configurable line height.',
-      configExample: '"fontThicken": true, "lineHeight": 1.2',
+        'Acid-green >_ on dark blue-purple with a layered portal bloom: tight green inner glow and a magenta outer halo. The warm-ember Umber icon is retired.',
+      configExample: undefined,
     },
     {
-      title: 'Terminal Padding',
+      title: 'Full Goblin Portal Rename',
       description:
-        'Configurable inner margin around terminal content with seamless background color matching.',
-      configExample: '"padding": 8',
+        'The app was formerly called Umber. v1.1.0 completes the rename with UserDefaults migration — existing preferences carry over automatically.',
+      configExample: undefined,
     },
   ],
 }
@@ -96,9 +96,9 @@ export const FEATURES: Feature[] = [
     icon: 'palette',
   },
   {
-    title: 'GPU or CPU Rendering',
+    title: 'SwiftTerm Rendering',
     description:
-      'Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and a quick ⌘R. High-throughput agent output scrolls without drama.',
+      'One engine, not two. SwiftTerm drives every terminal pane — Metal GPU-accelerated or Core Text, toggled with one config line and ⌘R. Smaller binary, one rendering path to maintain.',
     icon: 'cpu',
   },
   {
@@ -106,6 +106,18 @@ export const FEATURES: Feature[] = [
     description:
       'Green dot when a command succeeds, red when it fails. OSC 133 shell integration does the tracking. No polling, no tab switching, no guessing.',
     icon: 'shell',
+  },
+  {
+    title: '$EDITOR Support',
+    description:
+      'GoblinPortal --wait opens a file and blocks until you close it. Set EDITOR="GoblinPortal --wait" to use Goblin Portal with git commit, crontab -e, and any tool that respects $EDITOR.',
+    icon: 'wait',
+  },
+  {
+    title: 'Vertical Splits',
+    description:
+      '⌘⇧- splits down. ⌘⇧\\ splits right. Up to 4 panes per tab. ⌘⇧H/J/K/L moves focus. Split your agent sessions without opening a second window.',
+    icon: 'split',
   },
 ]
 
@@ -198,6 +210,7 @@ export const KEYMAP: KeymapGroup[] = [
     entries: [
       { shortcut: '⌘B', description: 'Toggle sidebar' },
       { shortcut: '⌘⇧\\', description: 'Split pane right' },
+      { shortcut: '⌘⇧-', description: 'Split pane down' },
       { shortcut: '⌘⇧H/J/K/L', description: 'Focus pane left / down / up / right' },
       { shortcut: '⌃⌘F', description: 'Full screen' },
       { shortcut: '⌘R', description: 'Reload config' },

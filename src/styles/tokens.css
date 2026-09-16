@@ -42,7 +42,7 @@
   --color-titlebar: #060A08;     /* darker than bg, green-tinted */
   --color-shadow: rgba(0, 15, 8, 0.7); /* green-tinted drop shadow */
 
-  /* ── Section accent palette (Umber theme ANSI slots) ──────────────────────── */
+  /* ── Section accent palette ──────────────────────────────────────────────── */
   /* Each section picks one ANSI color as its accent. Components read
    * --local-accent (set per-section) for labels, icons, and tinted borders.
    * The primary --color-accent (goblin green) remains the global default. */

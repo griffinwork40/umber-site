@@ -13,9 +13,9 @@ describe('FeaturesSection', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'No AI built in, on purpose' })).toBeInTheDocument()
   })
 
-  it('renders exactly 6 feature cards', () => {
+  it('renders exactly 8 feature cards', () => {
     render(<FeaturesSection />)
-    expect(screen.getAllByRole('article')).toHaveLength(6)
+    expect(screen.getAllByRole('article')).toHaveLength(8)
   })
 
   it('renders all 6 feature titles as h3 headings', () => {
@@ -47,8 +47,18 @@ describe('FeaturesSection', () => {
     expect(screen.getByText('Measured Themes')).toBeInTheDocument()
   })
 
-  it('renders "GPU or CPU Rendering" feature', () => {
+  it('renders "SwiftTerm Rendering" feature', () => {
     render(<FeaturesSection />)
-    expect(screen.getByText('GPU or CPU Rendering')).toBeInTheDocument()
+    expect(screen.getByText('SwiftTerm Rendering')).toBeInTheDocument()
+  })
+
+  it('renders "$EDITOR Support" feature', () => {
+    render(<FeaturesSection />)
+    expect(screen.getByText('$EDITOR Support')).toBeInTheDocument()
+  })
+
+  it('renders "Vertical Splits" feature', () => {
+    render(<FeaturesSection />)
+    expect(screen.getByText('Vertical Splits')).toBeInTheDocument()
   })
 })
