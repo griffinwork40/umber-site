@@ -1,0 +1,14 @@
+/* TEAM */
+Creator: Griffin Long
+GitHub: https://github.com/griffinwork40
+Location: United States
+
+/* THANKS */
+SwiftTerm: terminal rendering engine
+
+/* SITE */
+Last update: 2026/09/16
+Language: English
+Standards: HTML5, CSS3
+Technology: Next.js 14, React 18, TypeScript, Tailwind CSS
+Hosted: Vercel

@@ -1,0 +1,5 @@
+Contact: https://github.com/griffinwork40/goblin-portal/security/advisories
+Contact: https://github.com/griffinwork40/goblin-portal/issues
+Expires: 2027-09-16T00:00:00.000Z
+Canonical: https://goblinportal.app/.well-known/security.txt
+Preferred-Languages: en
