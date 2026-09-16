@@ -11,9 +11,9 @@ export const SITE_META = {
   tagline: 'The native Mac terminal built for AI agents.',
   description:
     'The native macOS terminal for AI agents — Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v0.3.0',
+  version: 'v4.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v0.3.0/GoblinPortal-v0.3.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v4.0/GoblinPortal-v4.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -28,7 +28,7 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v0.3.0',
+  version: 'v4.0',
   date: 'August 25, 2026',
   highlights: [
     {
