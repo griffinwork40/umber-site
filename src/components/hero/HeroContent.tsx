@@ -101,7 +101,7 @@ export default function HeroContent() {
       {/* Tagline */}
       <p style={taglineStyle}>{SITE_META.tagline}</p>
       <p style={{ ...taglineStyle, fontSize: '0.9375rem' }}>
-        Your agents get the full machine. Swift and AppKit, no Electron.
+        Your agents get the full machine, without paying framework taxes.
       </p>
 
       {/* Primary CTA: dominant download */}
