@@ -107,6 +107,10 @@ const SELLING_POINTS = [
     text: 'Split panes',
     detail: ' — run an agent and its supervisor side by side. ⌘⇧\\ to split, ⌘⇧H/J/K/L to navigate.',
   },
+  {
+    text: 'tmux-native',
+    detail: ' — proper focus events, DCS passthrough, and mouse reporting. Your tmux sessions just work.',
+  },
 ]
 
 function ToolCard({ tool }: { tool: AgentPoint }) {
