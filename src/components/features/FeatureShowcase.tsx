@@ -25,6 +25,7 @@ const textStyle: React.CSSProperties = {
 }
 
 const titleStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-display)',
   fontSize: '1.5rem',
   fontWeight: 700,
   color: 'var(--color-fg)',

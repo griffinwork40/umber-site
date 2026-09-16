@@ -19,6 +19,7 @@ const config: Config = {
         'gp-ansi-blue': 'var(--color-ansi-blue)',
       },
       fontFamily: {
+        display: 'var(--font-display)',
         mono: 'var(--font-mono)',
         sans: 'var(--font-sans)',
       },

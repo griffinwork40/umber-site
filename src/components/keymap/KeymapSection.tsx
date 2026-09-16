@@ -10,6 +10,7 @@ const sectionStyle: React.CSSProperties = {
 
 const headingStyle: React.CSSProperties = {
   fontSize: '2rem',
+  fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-8)',
   color: 'var(--color-fg)',

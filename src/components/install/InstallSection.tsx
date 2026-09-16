@@ -20,6 +20,7 @@ const innerStyle: React.CSSProperties = {
 }
 
 const headingStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-display)',
   fontSize: '2rem',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',

@@ -23,8 +23,9 @@ const versionStyle: React.CSSProperties = {
 }
 
 const h1Style: React.CSSProperties = {
+  fontFamily: 'var(--font-display)',
   fontSize: 'clamp(3rem, 8vw, 5rem)',
-  fontWeight: 800,
+  fontWeight: 700,
   letterSpacing: '-0.04em',
   lineHeight: 1,
   color: 'var(--color-fg)',
