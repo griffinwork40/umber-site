@@ -1,6 +1,7 @@
 import React from 'react'
 import { EDITOR_FEATURES, SHOWCASE_ITEMS } from '@/lib/constants'
 import FeatureShowcase from '@/components/features/FeatureShowcase'
+import Icon from '@/components/ui/Icon'
 
 const sectionStyle: React.CSSProperties = {
   padding: 'var(--space-12) var(--space-6)',
@@ -81,12 +82,6 @@ const cardDescStyle: React.CSSProperties = {
   margin: 0,
 }
 
-const EDITOR_ICON_MAP: Record<string, string> = {
-  syntax:  '🎨',
-  command: '⌘',
-  fold:    '⌥',
-  cursor:  '⎁',
-}
 
 export default function EditorSection() {
   return (
@@ -108,8 +103,8 @@ export default function EditorSection() {
         <div style={gridStyle} className="editor-grid">
           {EDITOR_FEATURES.map((feature) => (
             <article key={feature.title} style={cardStyle}>
-              <div style={iconWrapStyle} aria-hidden="true">
-                <span>{EDITOR_ICON_MAP[feature.icon] ?? '●'}</span>
+              <div style={iconWrapStyle}>
+                <Icon name={feature.icon} size={18} style={{ color: 'var(--color-accent)' }} />
               </div>
               <h3 style={cardTitleStyle}>{feature.title}</h3>
               <p style={cardDescStyle}>{feature.description}</p>

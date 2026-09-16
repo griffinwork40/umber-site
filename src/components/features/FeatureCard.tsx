@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Feature } from '@/lib/constants'
+import Icon from '@/components/ui/Icon'
 
 interface FeatureCardProps {
   feature: Feature
@@ -43,24 +44,11 @@ const descStyle: React.CSSProperties = {
   margin: 0,
 }
 
-// Map icon name strings to emoji/unicode icons
-// Keeps icon resolution in one place; no SVG import needed for MVP
-const ICON_MAP: Record<string, string> = {
-  apple:   '⌘',
-  tabs:    '⊟',
-  sidebar: '▥',
-  palette: '◎',
-  cpu:     '⚙',
-  shell:   '⬡',
-}
-
 export default function FeatureCard({ feature }: FeatureCardProps) {
-  const icon = ICON_MAP[feature.icon] ?? '●'
-
   return (
     <article style={cardStyle}>
-      <div style={iconWrapStyle} aria-hidden="true">
-        <span>{icon}</span>
+      <div style={iconWrapStyle}>
+        <Icon name={feature.icon} size={20} style={{ color: 'var(--color-accent)' }} />
       </div>
       <h3 style={titleStyle}>{feature.title}</h3>
       <p style={descStyle}>{feature.description}</p>
