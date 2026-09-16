@@ -107,10 +107,6 @@ const SELLING_POINTS = [
     text: 'Split panes',
     detail: ' — run an agent and its supervisor side by side. ⌘⇧\\ to split, ⌘⇧H/J/K/L to navigate.',
   },
-  {
-    text: 'Dual engines',
-    detail: ' — SwiftTerm or libghostty, same window. Pick the emulator that fits the workload.',
-  },
 ]
 
 function ToolCard({ tool }: { tool: AgentPoint }) {
