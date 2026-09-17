@@ -1,6 +1,5 @@
 import React from 'react'
 import { FEATURES } from '@/lib/constants'
-import FeatureCard from './FeatureCard'
 
 const sectionStyle = {
   padding: 'var(--space-11) var(--space-6)',
@@ -41,11 +40,55 @@ const subheadStyle: React.CSSProperties = {
   fontSize: '1rem',
 }
 
-/* Bento grid: hero feature spans 2 cols, rest are 1 col */
-const gridStyle: React.CSSProperties = {
+/* ── Hero: full-width prose callout, no card chrome ──────────────────────── */
+const heroStyle: React.CSSProperties = {
+  borderLeft: '2px solid var(--local-accent)',
+  paddingLeft: 'var(--space-6)',
+  marginBottom: 'var(--space-9)',
+}
+
+const heroTitleStyle: React.CSSProperties = {
+  fontSize: '1.375rem',
+  fontFamily: 'var(--font-display)',
+  fontWeight: 700,
+  color: 'var(--color-fg)',
+  letterSpacing: '-0.01em',
+  marginBottom: 'var(--space-3)',
+}
+
+const heroDescStyle: React.CSSProperties = {
+  fontSize: '1rem',
+  color: 'var(--color-muted)',
+  lineHeight: 1.7,
+  margin: 0,
+  maxWidth: 600,
+}
+
+/* ── Compact list: secondary capabilities ────────────────────────────────── */
+const compactGridStyle: React.CSSProperties = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: 'var(--space-5)',
+  gap: 'var(--space-7) var(--space-8)',
+}
+
+const compactItemStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'var(--space-1)',
+}
+
+const compactTitleStyle: React.CSSProperties = {
+  fontSize: '0.875rem',
+  fontWeight: 600,
+  color: 'var(--color-fg)',
+  lineHeight: 1.3,
+}
+
+const compactDescStyle: React.CSSProperties = {
+  fontSize: '0.8125rem',
+  color: 'var(--color-muted)',
+  lineHeight: 1.6,
+  margin: 0,
 }
 
 export default function FeaturesSection() {
@@ -59,12 +102,20 @@ export default function FeaturesSection() {
           No AI built in, on purpose
         </h2>
         <p style={subheadStyle}>
-          The intelligence belongs to your agent. The terminal&apos;s job is to stay out of the way.
+          The intelligence belongs to your agent. The terminal&#39;s job is to stay out of the way.
         </p>
-        <div style={gridStyle} className="features-grid">
-          <FeatureCard feature={hero} variant="hero" />
+
+        <article style={heroStyle}>
+          <h3 style={heroTitleStyle}>{hero.title}</h3>
+          <p style={heroDescStyle}>{hero.description}</p>
+        </article>
+
+        <div style={compactGridStyle} className="features-compact">
           {rest.map((feature) => (
-            <FeatureCard key={feature.title} feature={feature} variant="default" />
+            <article key={feature.title} style={compactItemStyle}>
+              <h3 style={compactTitleStyle}>{feature.title}</h3>
+              <p style={compactDescStyle}>{feature.description}</p>
+            </article>
           ))}
         </div>
       </div>

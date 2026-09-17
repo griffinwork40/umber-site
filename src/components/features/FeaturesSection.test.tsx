@@ -13,7 +13,7 @@ describe('FeaturesSection', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'No AI built in, on purpose' })).toBeInTheDocument()
   })
 
-  it('renders exactly 6 feature cards', () => {
+  it('renders all 6 features as articles', () => {
     render(<FeaturesSection />)
     expect(screen.getAllByRole('article')).toHaveLength(6)
   })
