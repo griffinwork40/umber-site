@@ -11,7 +11,6 @@ const sectionStyle: React.CSSProperties = {
   padding: 'var(--space-12) var(--space-6)',
   backgroundColor: 'var(--color-bg)',
   position: 'relative',
-  overflow: 'hidden',
 }
 
 const innerStyle: React.CSSProperties = {
@@ -43,6 +42,7 @@ export default function HeroSection() {
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(16px)',
         transition: `opacity var(--motion-duration) ease, transform var(--motion-duration) ease`,
+        willChange: 'transform, opacity',
       }}
     >
       <div style={innerStyle} className="hero-inner">
