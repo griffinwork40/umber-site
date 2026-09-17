@@ -13,19 +13,19 @@
   --color-bg: #080D0B;
   /* Foreground: light with a whisper of green warmth */
   --color-fg: #C5D0C8;
-  /* Goblin green: signature accent */
-  --color-cursor: #3DDC84;
-  --color-accent: #3DDC84;
-  /* Dark green selection */
-  --color-selection: #162A1F;
+  /* Goblin green: signature accent — bright jade from icon_goblin_palette.py RAMP[1] */
+  --color-cursor: #2ED066;
+  --color-accent: #2ED066;
+  /* Dark green selection — derived from icon dark forest (#05592D), lifted for bg */
+  --color-selection: #0E1F15;
   /* Surface: lifted from base for card backgrounds */
-  --color-surface: #172119;
+  --color-surface: #131D17;
   /* Muted: quiet text, sage-tinted (clears WCAG AA 4.5:1 on both bg and surface) */
   --color-muted: #7D9488;
-  /* Border: visible green lift from surface */
-  --color-border: #2A4035;
-  /* ANSI 2 green: dimmer than accent to avoid semantic collision in mockups */
-  --color-ansi-green: #2FC573;
+  /* Border: visible green lift from surface — between icon emerald and forest */
+  --color-border: #1A3D2A;
+  /* ANSI 2 green: icon deep emerald RAMP[2] — dimmer than accent */
+  --color-ansi-green: #168A40;
   /* ANSI 4 blue: cooler complement */
   --color-ansi-blue: #7CAAFF;
 
@@ -47,7 +47,7 @@
    * --local-accent (set per-section) for labels, icons, and tinted borders.
    * The primary --color-accent (goblin green) remains the global default. */
   --accent-agents:   #6EA8FF;  /* cave crystal blue: cool, technical */
-  --accent-features: #3DDC84;  /* goblin green: the product identity */
+  --accent-features: #2ED066;  /* goblin green: icon bright jade */
   --accent-editor:   #E8B84B;  /* firelight amber: warmth, craft */
   --accent-themes:   #B07CFF;  /* mystic purple: enchantment, personality */
   --accent-install:  #FFD166;  /* gold: torchlight, urgency */
