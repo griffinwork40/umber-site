@@ -15,7 +15,6 @@ html {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   color: var(--color-fg);
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

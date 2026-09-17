@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { SITE_META } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 
@@ -16,6 +16,7 @@ const headerStyle: React.CSSProperties = {
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
   transition: 'transform 150ms ease, opacity 150ms ease',
+  willChange: 'transform',
 }
 
 const hiddenStyle: React.CSSProperties = {
@@ -56,14 +57,26 @@ const rightGroupStyle: React.CSSProperties = {
 
 export default function SiteHeader() {
   const [visible, setVisible] = useState(false)
+  const rafId = useRef(0)
+  const lastVisible = useRef(false)
 
   useEffect(() => {
     const onScroll = () => {
-      // Show header after scrolling past the hero (~600px)
-      setVisible(window.scrollY > 500)
+      if (rafId.current) return
+      rafId.current = requestAnimationFrame(() => {
+        rafId.current = 0
+        const shouldShow = window.scrollY > 500
+        if (shouldShow !== lastVisible.current) {
+          lastVisible.current = shouldShow
+          setVisible(shouldShow)
+        }
+      })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (rafId.current) cancelAnimationFrame(rafId.current)
+    }
   }, [])
 
   return (

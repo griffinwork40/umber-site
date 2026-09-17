@@ -58,6 +58,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
   /* Concentric rings: multiple radial gradients at offset centers */
   background:
     /* Central signal — small, bright */
@@ -244,6 +245,7 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
+  will-change: opacity;
   background:
     radial-gradient(ellipse 200px 200px at 15% 30%, var(--sig-contour) 0%, transparent 70%),
     radial-gradient(ellipse 180px 180px at 75% 70%, var(--sig-contour) 0%, transparent 70%),
