@@ -305,6 +305,32 @@
     0 0 80px 20px var(--sig-depth-2);
 }
 
+/* ── Goblin Glow — name as signal source ──────────────────────────────────── */
+
+/*
+ * The word "Goblin" in the hero H1 is the origin point of the topographic
+ * system. A faint radial glow behind the text ties the brand name to the
+ * signal-field visual language without introducing a figure.
+ */
+.goblin-glow {
+  position: relative;
+}
+
+.goblin-glow::before {
+  content: '';
+  position: absolute;
+  inset: -50% -30%;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    var(--sig-depth-3) 0%,
+    var(--sig-depth-1) 40%,
+    transparent 70%
+  );
+}
+
 /* ── Utility: relative z-index for content above pseudo-elements ─────────── */
 .sig-content {
   position: relative;

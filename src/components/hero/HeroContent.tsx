@@ -95,7 +95,7 @@ export default function HeroContent() {
 
       {/* Heading */}
       <h1 id="hero-heading" style={h1Style}>
-        {SITE_META.title}
+        <span className="goblin-glow" style={{ color: 'var(--color-accent)' }}>Goblin</span>{' '}Portal
       </h1>
 
       {/* Tagline */}
