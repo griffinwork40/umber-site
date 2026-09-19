@@ -12,9 +12,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.1.0',
+  version: 'v1.2.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.2.0/GoblinPortal-v1.2.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -29,30 +29,28 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.1.0',
-  date: 'September 16, 2026',
+  version: 'v1.2.0',
+  date: 'September 19, 2026',
   highlights: [
     {
-      title: 'New Icon',
+      title: 'In-Place Auto-Update',
       description:
-        'Acid-green >_ prompt with a layered portal bloom. The Goblin Portal identity lives in the colour, not a literal portal shape.',
+        'Goblin Portal can now update itself. When a new release is available, a dialog downloads the zip, verifies its SHA-256 sidecar, swaps the app bundle, and relaunches. Codesign failure triggers automatic rollback.',
     },
     {
-      title: 'CLI --wait for $EDITOR',
+      title: 'Pill-Shaped Tabs',
       description:
-        'GoblinPortal --wait <file> opens a file in the editor and blocks until the tab closes. Set it as your $EDITOR for git commit messages, crontab, and anything else that expects a blocking editor.',
-      configExample: 'EDITOR="/path/to/GoblinPortal.app/Contents/MacOS/GoblinPortal --wait"',
+        'The document strip now draws pill-shaped tab backgrounds with refined spacing. Sidebar spacing updated to match.',
     },
     {
-      title: 'Ghostty Engine Removed',
+      title: 'Drag-to-Reorder Tabs',
       description:
-        'SwiftTerm is now the sole terminal engine. Smaller binary, cleaner build, simpler codebase.',
+        'Tabs in the document strip can be reordered by dragging.',
     },
     {
-      title: 'Vertical Splits',
+      title: 'Liquid Glass Tokens',
       description:
-        'Split panes vertically with \u2318\u21E7-. The v2 split architecture now supports both horizontal and vertical layouts.',
-      configExample: '\u2318\u21E7- to split down, \u2318\u21E7\\ to split right',
+        'GlassDrawingStyle provides shared visual constants for glass-aware custom drawing on macOS 26+.',
     },
   ],
 }
