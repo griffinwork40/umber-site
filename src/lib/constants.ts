@@ -12,9 +12,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.2.0',
+  version: 'v1.3.1',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.2.0/GoblinPortal-v1.2.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.3.1/GoblinPortal-v1.3.1.zip',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -29,28 +29,28 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.2.0',
-  date: 'September 19, 2026',
+  version: 'v1.3.1',
+  date: 'September 20, 2026',
   highlights: [
     {
-      title: 'In-Place Auto-Update',
+      title: 'Split State Persistence',
       description:
-        'Goblin Portal can now update itself. When a new release is available, a dialog downloads the zip, verifies its SHA-256 sidecar, swaps the app bundle, and relaunches. Codesign failure triggers automatic rollback.',
+        'Split direction, divider position, and working directory per pane are saved and restored across launches. Your workspace layout survives a quit.',
     },
     {
-      title: 'Pill-Shaped Tabs',
+      title: 'Sidebar Filter Field',
       description:
-        'The document strip now draws pill-shaped tab backgrounds with refined spacing. Sidebar spacing updated to match.',
+        'Type to filter the file tree. The active file auto-reveals as you type, and clearing the field restores your previous expansion state.',
     },
     {
-      title: 'Drag-to-Reorder Tabs',
+      title: 'Running Command Indicator',
       description:
-        'Tabs in the document strip can be reordered by dragging.',
+        'A dim status dot on the tab signals a command is in flight, tracked via OSC 133 shell integration. No polling, no guessing.',
     },
     {
-      title: 'Liquid Glass Tokens',
+      title: 'Tier 1 UI Polish',
       description:
-        'GlassDrawingStyle provides shared visual constants for glass-aware custom drawing on macOS 26+.',
+        'Unfocused pane dimming at 0.7 opacity and a themed split divider keep the active pane visually prominent.',
     },
   ],
 }
@@ -153,13 +153,13 @@ export const INSTALL_STEPS: InstallStep[] = [
   {
     step: 4,
     description: 'Build a release bundle and launch',
-    code: './Scripts/make-app-bundle.sh release\nopen build/GoblinPortal.app',
+    code: './Scripts/make-app-bundle.sh release\nopen "build/Goblin Portal.app"',
     language: 'bash',
   },
 ]
 
 export const GATEKEEPER_COMMAND =
-  'xattr -dr com.apple.quarantine build/GoblinPortal.app'
+  'xattr -dr com.apple.quarantine "Goblin Portal.app"'
 
 export interface KeymapEntry {
   shortcut: string

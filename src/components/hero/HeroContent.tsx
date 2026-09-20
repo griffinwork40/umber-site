@@ -109,7 +109,7 @@ export default function HeroContent() {
         <a
           href={SITE_META.dmgUrl}
           style={primaryBtnStyle}
-          download="GoblinPortal-v1.2.0.dmg"
+          download="GoblinPortal-v1.3.1.zip"
           rel="noopener noreferrer"
         >
           Download {SITE_META.version}
