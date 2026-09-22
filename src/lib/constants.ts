@@ -12,9 +12,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.3.1',
+  version: 'v1.4.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.3.1/GoblinPortal-v1.3.1.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.4.0/GoblinPortal-v1.4.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -29,28 +29,23 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.3.1',
-  date: 'September 20, 2026',
+  version: 'v1.4.0',
+  date: 'September 22, 2026',
   highlights: [
     {
-      title: 'Split State Persistence',
+      title: 'Source Control Panel',
       description:
-        'Split direction, divider position, and working directory per pane are saved and restored across launches. Your workspace layout survives a quit.',
+        'VS Code-style source control sidebar. Stage, unstage, commit, and diff files without leaving the terminal. Full git status integration.',
     },
     {
-      title: 'Sidebar Filter Field',
+      title: 'Idle CPU Fix',
       description:
-        'Type to filter the file tree. The active file auto-reveals as you type, and clearing the field restores your previous expansion state.',
+        'Default cursor changed from blinking to steady, eliminating a 0.7s GPU timer that drove ~11% idle CPU and 60%+ WindowServer load. Blinking is still one config line away.',
     },
     {
-      title: 'Running Command Indicator',
+      title: 'Sidebar Stability',
       description:
-        'A dim status dot on the tab signals a command is in flight, tracked via OSC 133 shell integration. No polling, no guessing.',
-    },
-    {
-      title: 'Tier 1 UI Polish',
-      description:
-        'Unfocused pane dimming at 0.7 opacity and a themed split divider keep the active pane visually prominent.',
+        'Fixed stale expansion state when switching project roots, and added a missing failure polarity case to the command-outcome gate.',
     },
   ],
 }
