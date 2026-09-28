@@ -12,9 +12,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.4.0',
+  version: 'v1.5.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.4.0/GoblinPortal-v1.4.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.5.0/GoblinPortal-v1.5.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -29,23 +29,24 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.4.0',
-  date: 'September 22, 2026',
+  version: 'v1.5.0',
+  date: 'September 28, 2026',
   highlights: [
     {
-      title: 'Source Control Panel',
+      title: 'All-Match Search Highlighting',
       description:
-        'VS Code-style source control sidebar. Stage, unstage, commit, and diff files without leaving the terminal. Full git status integration.',
+        '⌘F scrollback search now highlights every match at once, not just the current one. Scan a long session for a pattern and see all occurrences in a single pass.',
     },
     {
-      title: 'Idle CPU Fix',
+      title: 'Smoother Redraws',
       description:
-        'Default cursor changed from blinking to steady, eliminating a 0.7s GPU timer that drove ~11% idle CPU and 60%+ WindowServer load. Blinking is still one config line away.',
+        'Frames are now paced on the display\'s refresh rate instead of a free-running timer. The previous approach dropped every other frame of 60 fps output; this fixes that.',
     },
     {
-      title: 'Sidebar Stability',
+      title: 'Metal GPU Renderer Default',
       description:
-        'Fixed stale expansion state when switching project roots, and added a missing failure polarity case to the command-outcome gate.',
+        'The Metal GPU renderer is now on by default for all users. Core Text is still available for machines that need it — set "renderer": "coretext" in config to restore it.',
+      configExample: '"renderer": "coretext"',
     },
   ],
 }

@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. New icon, $EDITOR support, vertical splits, and a leaner engine.
+          {RELEASE.date}. All-match search highlighting, smoother redraws, and Metal GPU renderer now default.
         </p>
 
         <div style={gridStyle} className="release-grid">
