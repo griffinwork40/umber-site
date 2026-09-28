@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. All-match search highlighting, smoother redraws, and Metal GPU renderer now default.
+          {RELEASE.date}. Smooth trackpad scrolling with momentum, and tmux borders that stay aligned on external displays.
         </p>
 
         <div style={gridStyle} className="release-grid">
