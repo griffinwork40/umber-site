@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. Smooth trackpad scrolling with momentum, and tmux borders that stay aligned on external displays.
+          {RELEASE.date}. A small patch release: lighter redraws in panes with animated agent spinners.
         </p>
 
         <div style={gridStyle} className="release-grid">

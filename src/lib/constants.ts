@@ -12,9 +12,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.6.0',
+  version: 'v1.6.1',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.6.0/GoblinPortal-v1.6.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.6.1/GoblinPortal-v1.6.1.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -29,19 +29,13 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.6.0',
-  date: 'September 28, 2026',
+  version: 'v1.6.1',
+  date: 'October 4, 2026',
   highlights: [
     {
-      title: 'Smooth Trackpad Scrolling',
+      title: 'Less Redraw Work Behind Agent Spinners',
       description:
-        'Scrollback now moves pixel by pixel under your fingers and coasts with native macOS momentum after a flick, instead of jumping a whole line at a time. Full-screen programs like tmux and vim keep their own scrolling, so nothing changes there.',
-      configExample: '"smoothScrolling": false',
-    },
-    {
-      title: 'tmux Borders Stay Put on External Displays',
-      description:
-        'Moving a window between a Retina screen and a standard-resolution monitor no longer knocks tmux pane borders several columns out of line. The character grid is re-aligned whenever a window changes displays.',
+        'Panes running an agent with an animated spinner now do less work per frame. The GPU renderer used to re-measure every blank cell with Core Text each time a row was redrawn; it now remembers them. Nothing on screen looks any different.',
     },
   ],
 }
