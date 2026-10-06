@@ -1,9 +1,18 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
+import { act } from 'react'
 import HeroSection from './HeroSection'
 import { SITE_META } from '@/lib/constants'
 
 describe('HeroSection', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
   it('renders without throwing', () => {
     render(<HeroSection />)
   })
@@ -59,5 +68,23 @@ describe('HeroSection', () => {
     render(<HeroSection />)
     expect(screen.getByText('Your agents get the full machine, without paying framework taxes.')).toBeInTheDocument()
     expect(screen.getByText('1.7 MB')).toBeInTheDocument()
+  })
+
+  it('sets willChange to "auto" after the entrance animation completes', async () => {
+    const { container } = render(<HeroSection />)
+    const section = container.querySelector('section')!
+
+    // Before timers run: willChange should promote the element for the animation
+    expect(section.style.willChange).toBe('transform, opacity')
+
+    // Advance 50ms to fire setVisible(true), then 250ms more to fire setAnimationDone(true).
+    // Two separate act() calls are required so React flushes the state update from the
+    // first timer before the second useEffect (keyed on visible) can schedule its own timer.
+    await act(async () => { vi.advanceTimersByTime(50) })
+    await act(async () => { vi.advanceTimersByTime(250) })
+
+    // After the transition window: willChange should be released to 'auto'
+    // so the element no longer holds a permanent promoted compositor layer
+    expect(section.style.willChange).toBe('auto')
   })
 })

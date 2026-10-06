@@ -247,7 +247,8 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.5;
-  will-change: opacity;
+  /* No will-change: opacity is static and there is no animation targeting it.
+     Adding will-change here would promote a compositor layer with no benefit. */
   background:
     radial-gradient(ellipse 200px 200px at 15% 30%, var(--sig-contour) 0%, transparent 70%),
     radial-gradient(ellipse 180px 180px at 75% 70%, var(--sig-contour) 0%, transparent 70%),
@@ -328,6 +329,8 @@
   pointer-events: none;
   z-index: -1;
   border-radius: 50%;
+  /* No will-change: static radial-gradient, no animation or transition.
+     Promoting a compositor layer here would burn GPU memory with no benefit. */
   background: radial-gradient(
     ellipse at 50% 60%,
     var(--sig-depth-3) 0%,
