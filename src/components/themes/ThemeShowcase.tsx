@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { THEMES } from '@/lib/constants'
+import { THEMES, ASSERTION_COUNT } from '@/lib/constants'
 import ThemePreview, { previewFrameStyle } from './ThemePreview'
 import Badge from '@/components/ui/Badge'
 
@@ -77,7 +77,7 @@ export default function ThemeShowcase() {
         <div style={labelStyle}>color</div>
         <h2 style={headingStyle}>Measured themes</h2>
         <p style={subheadStyle}>
-          Eight palettes ship out of the box. Each one has been run through 474 contrast
+          Eight palettes ship out of the box. Each one has been run through {ASSERTION_COUNT} contrast
           assertions, because {'"'}it looks fine{'"'} is not a QA strategy.
         </p>
 

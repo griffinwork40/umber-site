@@ -31,7 +31,7 @@ export interface TranscriptLine {
   segments: TranscriptSegment[]
 }
 
-export const DEMO_TRANSCRIPT: TranscriptLine[] = [
+export const DEMO_TRANSCRIPT: readonly TranscriptLine[] = [
   // ✓ goblin-portal ~/Projects/goblin-portal (main)
   {
     segments: [

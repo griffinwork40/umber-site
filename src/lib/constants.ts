@@ -10,11 +10,12 @@
  */
 
 export {
-  ASSERTION_COUNT,
   DEMO_TRANSCRIPT,
   PROOF_POINTS,
 } from './demo'
 export type { TranscriptSegment, TranscriptLine } from './demo'
+import { ASSERTION_COUNT } from './demo'
+export { ASSERTION_COUNT }
 
 export const SITE_META = {
   siteUrl: 'https://goblinportal.app',
@@ -78,7 +79,7 @@ export const FEATURES: Feature[] = [
   {
     title: 'Measured Themes',
     description:
-      'Eight built-in palettes, each verified against contrast standards across 474 assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.',
+      `Eight built-in palettes, each verified against contrast standards across ${ASSERTION_COUNT} assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.`,
     icon: 'palette',
   },
   {
