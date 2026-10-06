@@ -51,4 +51,27 @@ describe('FeaturesSection', () => {
     render(<FeaturesSection />)
     expect(screen.getByText('GPU or CPU Rendering')).toBeInTheDocument()
   })
+
+  it('renders an accent icon for every feature, lead included', () => {
+    const { container } = render(<FeaturesSection />)
+    const articles = container.querySelectorAll('article')
+    articles.forEach((article) => {
+      expect(article.querySelector('.feature-icon svg')).not.toBeNull()
+    })
+    expect(articles).toHaveLength(6)
+  })
+
+  it('gives compact features a hoverable card surface', () => {
+    const { container } = render(<FeaturesSection />)
+    expect(container.querySelectorAll('article.feature-card')).toHaveLength(5)
+  })
+
+  it('hero feature article has a border-left style', () => {
+    const { container } = render(<FeaturesSection />)
+    // The first article is the hero article with borderLeft style
+    const articles = container.querySelectorAll('article')
+    const heroArticle = articles[0]
+    const style = heroArticle.getAttribute('style') ?? ''
+    expect(style).toMatch(/border-left/)
+  })
 })

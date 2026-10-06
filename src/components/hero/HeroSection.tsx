@@ -14,12 +14,12 @@ const sectionStyle: React.CSSProperties = {
 }
 
 const innerStyle: React.CSSProperties = {
-  maxWidth: 1200,
+  maxWidth: 1280,
   margin: '0 auto',
   width: '100%',
   display: 'flex',
   alignItems: 'center',
-  gap: 'var(--space-10)',
+  gap: 'var(--space-9)',
   flexWrap: 'wrap',
   position: 'relative',
   zIndex: 1,

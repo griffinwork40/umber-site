@@ -12,10 +12,6 @@ import Footer from '@/components/footer/Footer'
 export default function Page() {
   return (
     <>
-      {/* Skip-nav for keyboard / screen-reader users */}
-      <a href="#main-content" className="sr-only focus:not-sr-only">
-        Skip to content
-      </a>
       <SiteHeader />
       <main id="main-content">
         <HeroSection />

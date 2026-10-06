@@ -6,7 +6,8 @@ const contentStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: 'var(--space-5)',
-  maxWidth: 520,
+  maxWidth: 480,
+  flex: '0 1 480px',
 }
 
 const iconWrapStyle: React.CSSProperties = {
@@ -32,10 +33,22 @@ const h1Style: React.CSSProperties = {
 }
 
 const taglineStyle: React.CSSProperties = {
-  fontSize: '1.125rem',
+  fontFamily: 'var(--font-display)',
+  fontSize: 'var(--text-lead)',
+  fontWeight: 500,
+  letterSpacing: '-0.015em',
+  color: 'var(--color-fg)',
+  lineHeight: 1.3,
+  maxWidth: 460,
+  margin: 0,
+}
+
+const subTaglineStyle: React.CSSProperties = {
+  fontSize: '1rem',
   color: 'var(--color-muted)',
   lineHeight: 1.6,
-  maxWidth: 460,
+  maxWidth: 440,
+  margin: 0,
 }
 
 const ctaGroupStyle: React.CSSProperties = {
@@ -61,15 +74,46 @@ const primaryBtnStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-accent)',
   color: 'var(--color-bg)',
   border: '1px solid var(--color-accent)',
-  transition: 'opacity 150ms ease',
+  boxShadow: '0 8px 32px var(--glow-jade-soft)',
 }
 
 const detailStyle: React.CSSProperties = {
   fontFamily: 'var(--font-mono)',
-  fontSize: '0.75rem',
+  fontSize: '0.8125rem',
   color: 'var(--color-muted)',
   letterSpacing: '0.01em',
+  lineHeight: 1.5,
 }
+
+const detailStrongStyle: React.CSSProperties = {
+  display: 'block',
+  color: 'var(--color-accent)',
+  fontSize: '1.125rem',
+  fontWeight: 600,
+}
+
+const proofRowStyle: React.CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: 'var(--space-2) var(--space-5)',
+  marginTop: 'var(--space-2)',
+  borderTop: '1px solid var(--hairline)',
+  listStyle: 'none',
+  padding: 'var(--space-5) 0 0',
+}
+
+const proofChipStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 'var(--space-2)',
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.75rem',
+  color: 'var(--color-fg)',
+  letterSpacing: '0.02em',
+}
+
+/* Facts already stated elsewhere on the page (FEATURES + Themes copy). */
+const PROOF_POINTS = ['Swift and AppKit', 'No Electron', '474 contrast assertions'] as const
 
 const githubLinkStyle: React.CSSProperties = {
   color: 'var(--color-muted)',
@@ -100,7 +144,7 @@ export default function HeroContent() {
 
       {/* Tagline */}
       <p style={taglineStyle}>{SITE_META.tagline}</p>
-      <p style={{ ...taglineStyle, fontSize: '0.9375rem' }}>
+      <p style={subTaglineStyle}>
         Your agents get the full machine, without paying framework taxes.
       </p>
 
@@ -109,18 +153,31 @@ export default function HeroContent() {
         <a
           href={SITE_META.dmgUrl}
           style={primaryBtnStyle}
+          className="hero-cta"
           download={`GoblinPortal-${SITE_META.version}.dmg`}
           rel="noopener noreferrer"
         >
           Download {SITE_META.version}
         </a>
-        <span style={detailStyle}>Universal binary · 1.7 MB</span>
+        <span style={detailStyle}>
+          <span style={detailStrongStyle}>1.7 MB</span>
+          Universal binary
+        </span>
       </div>
 
       {/* Secondary: text link, not a button */}
       <a href={SITE_META.repoUrl} style={githubLinkStyle}>
         Source on GitHub →
       </a>
+
+      {/* Proof row: engineering facts, surfaced instead of buried in prose */}
+      <ul style={proofRowStyle} aria-label="Highlights">
+        {PROOF_POINTS.map((point) => (
+          <li key={point} className="proof-chip" style={proofChipStyle}>
+            {point}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

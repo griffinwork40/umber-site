@@ -7,7 +7,7 @@ import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 
 const sectionStyle = {
-  padding: 'var(--space-10) var(--space-6)',
+  padding: 'var(--space-12) var(--space-6)',
   backgroundColor: 'var(--color-bg)',
   position: 'relative',
   '--local-accent': 'var(--accent-install)',
@@ -32,7 +32,7 @@ const innerStyle: React.CSSProperties = {
 
 const headingStyle: React.CSSProperties = {
   fontFamily: 'var(--font-display)',
-  fontSize: '2rem',
+  fontSize: 'var(--text-h2)',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
   color: 'var(--color-fg)',
@@ -51,9 +51,11 @@ const requirementsLabelStyle: React.CSSProperties = {
 }
 
 const downloadBoxStyle: React.CSSProperties = {
-  padding: 'var(--space-8)',
+  padding: 'var(--space-10) var(--space-8)',
   backgroundColor: 'var(--color-surface)',
-  borderRadius: 'var(--radius-3)',
+  border: '1px solid var(--color-border)',
+  borderRadius: 'var(--radius-4)',
+  boxShadow: '0 0 0 1px var(--hairline), 0 30px 90px var(--color-shadow), 0 0 120px var(--glow-jade-soft)',
   textAlign: 'center' as const,
   marginBottom: 'var(--space-8)',
 }
@@ -169,8 +171,8 @@ export default function InstallSection() {
         </div>
 
         {/* DMG download — primary path */}
-        <div style={downloadBoxStyle}>
-          <Button href={SITE_META.dmgUrl} variant="primary">
+        <div style={downloadBoxStyle} className="install-stage">
+          <Button href={SITE_META.dmgUrl} variant="primary" size="lg">
             Download Goblin Portal {SITE_META.version}
           </Button>
           <p style={downloadSubStyle}>

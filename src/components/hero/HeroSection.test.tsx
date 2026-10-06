@@ -46,4 +46,18 @@ describe('HeroSection', () => {
     const section = container.querySelector('section')
     expect(section).toHaveAttribute('aria-labelledby', 'hero-heading')
   })
+
+  it('surfaces proof points that already appear in page copy', () => {
+    render(<HeroSection />)
+    const list = screen.getByRole('list', { name: 'Highlights' })
+    expect(list).toHaveTextContent('Swift and AppKit')
+    expect(list).toHaveTextContent('No Electron')
+    expect(list).toHaveTextContent('474 contrast assertions')
+  })
+
+  it('keeps the secondary tagline and binary size', () => {
+    render(<HeroSection />)
+    expect(screen.getByText('Your agents get the full machine, without paying framework taxes.')).toBeInTheDocument()
+    expect(screen.getByText('1.7 MB')).toBeInTheDocument()
+  })
 })
