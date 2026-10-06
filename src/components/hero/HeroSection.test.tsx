@@ -70,6 +70,36 @@ describe('HeroSection', () => {
     expect(screen.getByText('1.7 MB')).toBeInTheDocument()
   })
 
+  it('releases willChange immediately under prefers-reduced-motion', async () => {
+    // Mock matchMedia to report reduced-motion preference
+    const original = window.matchMedia
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query === '(prefers-reduced-motion: reduce)',
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }))
+
+    const { container } = render(<HeroSection />)
+    const section = container.querySelector('section')!
+
+    expect(section.style.willChange).toBe('transform, opacity')
+
+    // Advance 50ms to fire setVisible(true)
+    await act(async () => { vi.advanceTimersByTime(50) })
+    // With reducedMotion=true, delay is 0 — animationDone fires in the same tick
+    await act(async () => { vi.advanceTimersByTime(0) })
+
+    // Should be released immediately, not after 250ms
+    expect(section.style.willChange).toBe('auto')
+
+    window.matchMedia = original
+  })
+
   it('sets willChange to "auto" after the entrance animation completes', async () => {
     const { container } = render(<HeroSection />)
     const section = container.querySelector('section')!
@@ -81,6 +111,8 @@ describe('HeroSection', () => {
     // Two separate act() calls are required so React flushes the state update from the
     // first timer before the second useEffect (keyed on visible) can schedule its own timer.
     await act(async () => { vi.advanceTimersByTime(50) })
+    // After setVisible(true) but before animationDone: element still promoted
+    expect(section.style.willChange).toBe('transform, opacity')
     await act(async () => { vi.advanceTimersByTime(250) })
 
     // After the transition window: willChange should be released to 'auto'

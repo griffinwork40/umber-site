@@ -38,9 +38,16 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (!visible) return
-    // --motion-duration is 200ms (0ms under prefers-reduced-motion).
-    // Wait for the transition to finish before releasing the layer.
-    const timer = setTimeout(() => setAnimationDone(true), 250)
+    // --motion-duration is 200ms (0ms under prefers-reduced-motion: reduce).
+    // Guard: matchMedia may be absent in jsdom/SSR environments.
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // When motion is reduced the transition fires at 0ms, so release
+    // the compositor layer immediately instead of waiting 250ms.
+    const delay = reducedMotion ? 0 : 250
+    const timer = setTimeout(() => setAnimationDone(true), delay)
     return () => clearTimeout(timer)
   }, [visible])
 
