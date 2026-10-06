@@ -1,4 +1,5 @@
 import React from 'react'
+import { DEMO_TRANSCRIPT } from '@/lib/constants'
 import type { ThemePalette } from '@/lib/constants'
 import TerminalMockup from '@/components/ui/TerminalMockup'
 
@@ -47,7 +48,7 @@ export default function ThemePreview({ theme }: { theme: ThemePalette }) {
     '--color-fg': theme.foreground,
   }
   const a = theme.ansi
-  const dim: React.CSSProperties = { color: a[8] }
+  const dimColor = a[8]
 
   return (
     <TerminalMockup
@@ -56,38 +57,25 @@ export default function ThemePreview({ theme }: { theme: ThemePalette }) {
       title={`zsh - ${theme.displayName}`}
     >
       <div style={bodyStyle}>
-        <div>
-          <span style={{ color: a[2] }}>✓</span>
-          <span> goblin-portal </span>
-          <span style={{ color: a[4] }}>~/Projects/goblin-portal</span>
-          <span style={{ color: a[5] }}> (main)</span>
-        </div>
-        <div style={dim}>$ swift run GoblinPortal</div>
-        <div style={{ color: a[2] }}>Build complete (0.3s)</div>
-        <div>
-          <span style={{ color: a[5] }}>◆ agent</span>
-          <span style={dim}> · refactor </span>
-          <span style={{ color: a[6] }}>ThemeValues.swift</span>
-        </div>
-        <div>
-          <span style={{ color: a[3] }}>  ● read_file</span>
-          <span style={dim}> ×4 </span>
-          <span style={{ color: a[2] }}>done</span>
-        </div>
-        <div>
-          <span style={{ color: a[1] }}>  - let accent = Color(red: 0.18, green: 0.82, blue: 0.4)</span>
-        </div>
-        <div>
-          <span style={{ color: a[2] }}>  + let accent = palette.accent</span>
-        </div>
-        <div>
-          <span style={{ color: a[2] }}>✓ 474 assertions passed</span>
-          <span style={dim}> · 0 failed</span>
-        </div>
-        <div>
-          <span style={{ color: a[2] }}>❯ </span>
-          <span style={{ color: a[0], backgroundColor: theme.cursor }}>▊</span>
-        </div>
+        {DEMO_TRANSCRIPT.map((line, lineIdx) => (
+          <div key={lineIdx}>
+            {line.segments.map((seg, segIdx) => {
+              let segStyle: React.CSSProperties
+              if (seg.ansiSlot === 'cursor-bg') {
+                segStyle = { color: a[0], backgroundColor: theme.cursor }
+              } else if (seg.ansiSlot === null) {
+                segStyle = { color: dimColor }
+              } else {
+                segStyle = { color: a[seg.ansiSlot] }
+              }
+              return (
+                <span key={segIdx} style={segStyle}>
+                  {seg.text}
+                </span>
+              )
+            })}
+          </div>
+        ))}
       </div>
       <div style={swatchRowStyle} aria-hidden="true">
         {a.slice(0, 16).map((color, i) => (

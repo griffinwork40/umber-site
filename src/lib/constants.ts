@@ -4,7 +4,17 @@
  * Hex colour values are drawn verbatim from ThemeValues.swift (the canonical source).
  * This is the ONLY file on the site that may contain hex values; all component files
  * must reference tokens from tokens.css or data from this file.
+ *
+ * Demo transcript and proof-copy data live in src/lib/demo.ts (re-exported below)
+ * to keep this file under the 350-LOC limit.
  */
+
+export {
+  ASSERTION_COUNT,
+  DEMO_TRANSCRIPT,
+  PROOF_POINTS,
+} from './demo'
+export type { TranscriptSegment, TranscriptLine } from './demo'
 
 export const SITE_META = {
   siteUrl: 'https://goblinportal.app',
