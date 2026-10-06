@@ -14,6 +14,12 @@
     opacity var(--motion-duration) ease;
 }
 
+/* Resting glow lives here so the :hover rule can override it without fighting
+ * an inline style. Moved from HeroContent.tsx inline primaryBtnStyle. */
+.hero-cta {
+  box-shadow: 0 8px 32px var(--glow-jade-soft);
+}
+
 .btn-primary:hover,
 .hero-cta:hover {
   text-decoration: none;

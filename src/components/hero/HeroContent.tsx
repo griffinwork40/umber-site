@@ -74,7 +74,6 @@ const primaryBtnStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-accent)',
   color: 'var(--color-bg)',
   border: '1px solid var(--color-accent)',
-  boxShadow: '0 8px 32px var(--glow-jade-soft)',
 }
 
 const detailStyle: React.CSSProperties = {

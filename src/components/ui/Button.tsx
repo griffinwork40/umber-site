@@ -9,6 +9,12 @@ interface ButtonProps {
   children: React.ReactNode
   href?: string
   onClick?: () => void
+  /**
+   * Additional CSS class names to apply to the button.
+   * The variant class (`btn-primary` or `btn-secondary`) is always present
+   * so polish.css hover/focus rules continue to work; this value is appended
+   * after it rather than replacing it.
+   */
   className?: string
   type?: 'button' | 'submit' | 'reset'
 }
