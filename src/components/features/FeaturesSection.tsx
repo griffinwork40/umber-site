@@ -32,7 +32,6 @@ const headingStyle: React.CSSProperties = {
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
   color: 'var(--color-fg)',
-  letterSpacing: '-0.02em',
 }
 
 const subheadStyle: React.CSSProperties = {
