@@ -27,11 +27,29 @@ const innerStyle: React.CSSProperties = {
 
 export default function HeroSection() {
   const [visible, setVisible] = useState(false)
+  // After the entrance animation settles, clear willChange so the element
+  // no longer holds a promoted compositor layer on a static element.
+  const [animationDone, setAnimationDone] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 50)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (!visible) return
+    // --motion-duration is 200ms (0ms under prefers-reduced-motion: reduce).
+    // Guard: matchMedia may be absent in jsdom/SSR environments.
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // When motion is reduced the transition fires at 0ms, so release
+    // the compositor layer immediately instead of waiting 250ms.
+    const delay = reducedMotion ? 0 : 250
+    const timer = setTimeout(() => setAnimationDone(true), delay)
+    return () => clearTimeout(timer)
+  }, [visible])
 
   return (
     <section
@@ -42,7 +60,7 @@ export default function HeroSection() {
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(16px)',
         transition: `opacity var(--motion-duration) ease, transform var(--motion-duration) ease`,
-        willChange: 'transform, opacity',
+        willChange: animationDone ? 'auto' : 'transform, opacity',
       }}
     >
       <div style={innerStyle} className="hero-inner">
