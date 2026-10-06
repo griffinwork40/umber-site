@@ -25,17 +25,19 @@ const swatchRowStyle: React.CSSProperties = {
   overflow: 'hidden',
 }
 
-/** Theme-tinted frame: hairline in the palette's dim slot, glow in its cursor colour. */
+/**
+ * Theme-tinted frame: sets per-palette CSS custom properties so the static
+ * box-shadow rule in polish.css can reference them via color-mix(). No colour
+ * literals appear in the returned object — only CSS custom property assignments.
+ * The actual box-shadow lives on `.theme-preview-frame` in polish.css.
+ */
 export function previewFrameStyle(theme: ThemePalette): React.CSSProperties {
   return {
+    '--preview-dim': theme.ansi[8],
+    '--preview-glow': theme.cursor,
     borderRadius: 'var(--radius-4)',
     overflow: 'hidden',
-    boxShadow: [
-      `0 0 0 1px color-mix(in srgb, ${theme.ansi[8]} 45%, transparent)`,
-      '0 30px 90px var(--color-shadow)',
-      `0 0 120px color-mix(in srgb, ${theme.cursor} 22%, transparent)`,
-    ].join(', '),
-  }
+  } as React.CSSProperties
 }
 
 export default function ThemePreview({ theme }: { theme: ThemePalette }) {

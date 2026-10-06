@@ -106,7 +106,17 @@ main > section + section {
 }
 
 /* ── Themes preview: frame glows in the selected palette ─────────────────── */
+/*
+ * The box-shadow references per-palette CSS custom properties (--preview-dim,
+ * --preview-glow) injected by previewFrameStyle() in ThemePreview.tsx.
+ * Keeping the shadow here — not inline — avoids raw palette hex in component
+ * files and lets the transition on box-shadow work correctly.
+ */
 .theme-preview-frame {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--preview-dim) 45%, transparent),
+    0 30px 90px var(--color-shadow),
+    0 0 120px color-mix(in srgb, var(--preview-glow) 22%, transparent);
   transition: box-shadow var(--motion-duration) ease;
 }
 
@@ -155,11 +165,25 @@ main > section + section {
 }
 
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  /*
+   * `screen` is required here: without it the animation rule is inherited by
+   * print media, which leaves sections at opacity 0 in printed output because
+   * CSS scroll-driven timelines are inert at print time.
+   */
+  @media screen and (prefers-reduced-motion: no-preference) {
     main > section:not(.hero-section) > div {
       animation: gp-reveal linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 40%;
     }
+  }
+}
+
+/* Ensure sections are fully visible in print regardless of scroll state. */
+@media print {
+  main > section:not(.hero-section) > div {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
