@@ -1,5 +1,6 @@
 @import '../styles/tokens.css';
 @import '../styles/signature.css';
+@import '../styles/polish.css';
 
 /* ── Reset ───────────────────────────────────────────────────────────────────── */
 *,
@@ -91,6 +92,7 @@ kbd {
   }
   .hero-screenshot {
     max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   /* Sticky header: hide nav links, keep wordmark + download */

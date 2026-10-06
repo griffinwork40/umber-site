@@ -29,7 +29,7 @@ const innerStyle: React.CSSProperties = {
 
 const headingStyle: React.CSSProperties = {
   fontFamily: 'var(--font-display)',
-  fontSize: '2rem',
+  fontSize: 'var(--text-h2)',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
   color: 'var(--color-fg)',

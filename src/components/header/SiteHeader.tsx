@@ -15,6 +15,7 @@ const headerStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-header-bg)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
+  borderBottom: '1px solid var(--hairline)',
   transition: 'transform 150ms ease, opacity 150ms ease',
   willChange: 'transform',
 }
@@ -55,6 +56,10 @@ const rightGroupStyle: React.CSSProperties = {
   gap: 'var(--space-4)',
 }
 
+/** Scroll offset (px) past which the sticky header and its Download CTA appear:
+ * roughly when the hero headline leaves view. */
+export const HEADER_REVEAL_Y = 320
+
 export default function SiteHeader() {
   const [visible, setVisible] = useState(false)
   const rafId = useRef(0)
@@ -65,7 +70,7 @@ export default function SiteHeader() {
       if (rafId.current) return
       rafId.current = requestAnimationFrame(() => {
         rafId.current = 0
-        const shouldShow = window.scrollY > 500
+        const shouldShow = window.scrollY > HEADER_REVEAL_Y
         if (shouldShow !== lastVisible.current) {
           lastVisible.current = shouldShow
           setVisible(shouldShow)

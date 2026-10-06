@@ -20,7 +20,7 @@ const labelStyle: React.CSSProperties = {
 }
 
 const headingStyle: React.CSSProperties = {
-  fontSize: '2rem',
+  fontSize: 'var(--text-h2)',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-8)',

@@ -2,9 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 
 const screenshotWrapStyle: React.CSSProperties = {
-  flex: 1.4,
+  flex: '1 1 560px',
   minWidth: 0,
-  maxWidth: 720,
+  maxWidth: 880,
+  /* Bleed past the content column so the product shot dominates the fold. */
+  marginRight: 'calc(var(--space-10) * -1)',
   position: 'relative',
 }
 
@@ -22,8 +24,8 @@ export default function HeroScreenshot() {
       <Image
         src="/images/goblin-portal-screenshot.png"
         alt="Goblin Portal running agent-afk with sidebar file tree and syntax-highlighted output"
-        width={720}
-        height={472}
+        width={1392}
+        height={1006}
         style={screenshotImgStyle}
         priority
       />

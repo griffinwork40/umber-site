@@ -1,5 +1,6 @@
 import React from 'react'
 import { FEATURES } from '@/lib/constants'
+import Icon from '@/components/ui/Icon'
 
 const sectionStyle = {
   padding: 'var(--space-11) var(--space-6)',
@@ -26,7 +27,7 @@ const labelStyle: React.CSSProperties = {
 }
 
 const headingStyle: React.CSSProperties = {
-  fontSize: '2rem',
+  fontSize: 'var(--text-h2)',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
@@ -45,10 +46,26 @@ const heroStyle: React.CSSProperties = {
   borderLeft: '2px solid var(--local-accent)',
   paddingLeft: 'var(--space-6)',
   marginBottom: 'var(--space-9)',
+  display: 'flex',
+  gap: 'var(--space-5)',
+  alignItems: 'flex-start',
+}
+
+const heroIconStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 48,
+  height: 48,
+  flexShrink: 0,
+  borderRadius: 'var(--radius-3)',
+  border: '1px solid var(--color-border)',
+  backgroundColor: 'var(--surface-raised)',
+  boxShadow: '0 0 32px var(--glow-jade-soft)',
 }
 
 const heroTitleStyle: React.CSSProperties = {
-  fontSize: '1.375rem',
+  fontSize: '1.75rem',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
   color: 'var(--color-fg)',
@@ -57,7 +74,7 @@ const heroTitleStyle: React.CSSProperties = {
 }
 
 const heroDescStyle: React.CSSProperties = {
-  fontSize: '1rem',
+  fontSize: '1.0625rem',
   color: 'var(--color-muted)',
   lineHeight: 1.7,
   margin: 0,
@@ -68,24 +85,40 @@ const heroDescStyle: React.CSSProperties = {
 const compactGridStyle: React.CSSProperties = {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: 'var(--space-7) var(--space-8)',
+  gap: 'var(--space-5)',
 }
 
 const compactItemStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  gap: 'var(--space-1)',
+  gap: 'var(--space-2)',
+  padding: 'var(--space-6)',
+  borderRadius: 'var(--radius-4)',
+  border: '1px solid var(--color-border)',
+  backgroundColor: 'var(--surface-raised)',
+}
+
+const iconBadgeStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 32,
+  height: 32,
+  marginBottom: 'var(--space-2)',
+  borderRadius: 'var(--radius-3)',
+  border: '1px solid var(--color-border)',
+  backgroundColor: 'var(--color-bg)',
 }
 
 const compactTitleStyle: React.CSSProperties = {
-  fontSize: '0.875rem',
+  fontSize: '1rem',
   fontWeight: 600,
   color: 'var(--color-fg)',
   lineHeight: 1.3,
 }
 
 const compactDescStyle: React.CSSProperties = {
-  fontSize: '0.8125rem',
+  fontSize: '0.875rem',
   color: 'var(--color-muted)',
   lineHeight: 1.6,
   margin: 0,
@@ -106,13 +139,21 @@ export default function FeaturesSection() {
         </p>
 
         <article style={heroStyle}>
-          <h3 style={heroTitleStyle}>{hero.title}</h3>
-          <p style={heroDescStyle}>{hero.description}</p>
+          <span className="feature-icon" style={heroIconStyle} aria-hidden="true">
+            <Icon name={hero.icon} size={22} />
+          </span>
+          <div>
+            <h3 style={heroTitleStyle}>{hero.title}</h3>
+            <p style={heroDescStyle}>{hero.description}</p>
+          </div>
         </article>
 
         <div style={compactGridStyle} className="features-compact">
           {rest.map((feature) => (
-            <article key={feature.title} style={compactItemStyle}>
+            <article key={feature.title} style={compactItemStyle} className="feature-card">
+              <span className="feature-icon" style={iconBadgeStyle} aria-hidden="true">
+                <Icon name={feature.icon} size={16} />
+              </span>
               <h3 style={compactTitleStyle}>{feature.title}</h3>
               <p style={compactDescStyle}>{feature.description}</p>
             </article>

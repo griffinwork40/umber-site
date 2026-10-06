@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { THEMES } from '@/lib/constants'
-import TerminalMockup from '@/components/ui/TerminalMockup'
+import ThemePreview, { previewFrameStyle } from './ThemePreview'
 import Badge from '@/components/ui/Badge'
 
 const sectionStyle = {
@@ -30,7 +30,7 @@ const innerStyle: React.CSSProperties = {
 }
 
 const headingStyle: React.CSSProperties = {
-  fontSize: '2rem',
+  fontSize: 'var(--text-h2)',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
   marginBottom: 'var(--space-4)',
@@ -64,39 +64,6 @@ const getTabStyle = (isActive: boolean): React.CSSProperties => ({
   fontWeight: isActive ? 600 : 400,
   transition: 'color 150ms ease, background-color 150ms ease, border-color 150ms ease',
 })
-
-const previewStyle: React.CSSProperties = {
-  borderRadius: 'var(--radius-4)',
-  overflow: 'hidden',
-}
-
-function ThemePreview({ theme }: { theme: typeof THEMES[0] }) {
-  // Inject per-theme colours as CSS custom property overrides so TerminalMockup
-  // continues to consume var(--color-bg) / var(--color-fg). Token-first architecture.
-  const themeVars: Record<string, string> = {
-    '--color-bg': theme.background,
-    '--color-fg': theme.foreground,
-  }
-
-  return (
-    <TerminalMockup
-      aria-label={`${theme.displayName} theme preview`}
-      themeVars={themeVars}
-      title={`zsh - ${theme.displayName}`}
-    >
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem', lineHeight: 1.8, color: 'var(--color-fg)' }}>
-        <div>
-          <span style={{ color: theme.ansi[2] }}>✓</span>
-          <span style={{ color: 'var(--color-fg)' }}> goblin-portal </span>
-          <span style={{ color: theme.ansi[4] }}>~/Projects/goblin-portal</span>
-        </div>
-        <div style={{ color: theme.ansi[8] }}>$ swift run GoblinPortal</div>
-        <div style={{ color: theme.ansi[2] }}>Build complete (0.3s)</div>
-        <div style={{ color: theme.ansi[0], backgroundColor: theme.cursor, display: 'inline' }}>▊</div>
-      </div>
-    </TerminalMockup>
-  )
-}
 
 export default function ThemeShowcase() {
   const defaultTheme = THEMES.find((t) => t.isDefault) ?? THEMES[0]
@@ -140,7 +107,8 @@ export default function ThemeShowcase() {
           id={`theme-panel-${current.name}`}
           role="tabpanel"
           aria-labelledby={`theme-tab-${current.name}`}
-          style={previewStyle}
+          style={previewFrameStyle(current)}
+          className="theme-preview-frame"
         >
           <ThemePreview theme={current} />
         </div>

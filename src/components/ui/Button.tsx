@@ -1,9 +1,11 @@
 import React from 'react'
 
 export type ButtonVariant = 'primary' | 'secondary'
+export type ButtonSize = 'md' | 'lg'
 
 interface ButtonProps {
   variant?: ButtonVariant
+  size?: ButtonSize
   children: React.ReactNode
   href?: string
   onClick?: () => void
@@ -24,6 +26,12 @@ const styles: Record<ButtonVariant, React.CSSProperties> = {
   },
 }
 
+const sizes: Record<ButtonSize, React.CSSProperties> = {
+  md: {},
+  /* Matches the hero download CTA so closing CTAs carry equal weight. */
+  lg: { padding: 'var(--space-4) var(--space-7)', fontSize: '1rem' },
+}
+
 const baseStyle: React.CSSProperties = {
   display: 'inline-flex',
   alignItems: 'center',
@@ -35,19 +43,23 @@ const baseStyle: React.CSSProperties = {
   fontWeight: 600,
   textDecoration: 'none',
   cursor: 'pointer',
-  transition: 'opacity var(--motion-duration) ease',
+  transition:
+    'opacity var(--motion-duration) ease, transform var(--motion-duration) ease, box-shadow var(--motion-duration) ease',
   lineHeight: 1.5,
 }
 
 export default function Button({
   variant = 'primary',
+  size = 'md',
   children,
   href,
   onClick,
   className,
   type = 'button',
 }: ButtonProps) {
-  const combinedStyle = { ...baseStyle, ...styles[variant] }
+  const combinedStyle = { ...baseStyle, ...styles[variant], ...sizes[size] }
+  // Variant class is always present so polish.css hover/focus rules apply.
+  const resolvedClass = [`btn-${variant}`, className].filter(Boolean).join(' ')
 
   if (href) {
     // Auto-add download and rel attributes for direct file downloads
@@ -57,7 +69,7 @@ export default function Button({
       <a
         href={href}
         style={combinedStyle}
-        className={className}
+        className={resolvedClass}
         data-variant={variant}
         {...(isDmg ? { download: fileName, rel: 'noopener noreferrer' } : {})}
       >
@@ -71,7 +83,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       style={combinedStyle}
-      className={className}
+      className={resolvedClass}
       data-variant={variant}
     >
       {children}
