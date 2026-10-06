@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { SITE_META } from '@/lib/constants'
+import { SITE_META, PROOF_POINTS } from '@/lib/constants'
 
 const contentStyle: React.CSSProperties = {
   display: 'flex',
@@ -110,9 +110,6 @@ const proofChipStyle: React.CSSProperties = {
   color: 'var(--color-fg)',
   letterSpacing: '0.02em',
 }
-
-/* Facts already stated elsewhere on the page (FEATURES + Themes copy). */
-const PROOF_POINTS = ['Swift and AppKit', 'No Electron', '474 contrast assertions'] as const
 
 const githubLinkStyle: React.CSSProperties = {
   color: 'var(--color-muted)',

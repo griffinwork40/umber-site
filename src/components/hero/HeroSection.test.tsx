@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import HeroSection from './HeroSection'
-import { SITE_META } from '@/lib/constants'
+import { SITE_META, ASSERTION_COUNT } from '@/lib/constants'
 
 describe('HeroSection', () => {
   it('renders without throwing', () => {
@@ -52,7 +52,7 @@ describe('HeroSection', () => {
     const list = screen.getByRole('list', { name: 'Highlights' })
     expect(list).toHaveTextContent('Swift and AppKit')
     expect(list).toHaveTextContent('No Electron')
-    expect(list).toHaveTextContent('474 contrast assertions')
+    expect(list).toHaveTextContent(`${ASSERTION_COUNT} contrast assertions`)
   })
 
   it('keeps the secondary tagline and binary size', () => {
