@@ -57,4 +57,40 @@ describe('Button', () => {
     render(<Button>Default</Button>)
     expect(screen.getByRole('button')).toHaveAttribute('data-variant', 'primary')
   })
+
+  describe('className prop (additive)', () => {
+    it('carries both btn-primary and the supplied className', () => {
+      render(<Button className="x">Label</Button>)
+      const btn = screen.getByRole('button')
+      expect(btn).toHaveClass('btn-primary')
+      expect(btn).toHaveClass('x')
+    })
+
+    it('variant class is still present when className is supplied', () => {
+      render(<Button variant="secondary" className="extra">Label</Button>)
+      const btn = screen.getByRole('button')
+      expect(btn).toHaveClass('btn-secondary')
+      expect(btn).toHaveClass('extra')
+    })
+
+    it('variant class is present when no className is supplied', () => {
+      render(<Button>Label</Button>)
+      expect(screen.getByRole('button')).toHaveClass('btn-primary')
+    })
+  })
+
+  describe('size prop', () => {
+    it('size="lg" applies lg padding via inline style', () => {
+      render(<Button size="lg">Large</Button>)
+      const btn = screen.getByRole('button')
+      expect(btn).toHaveStyle({ padding: 'var(--space-4) var(--space-7)' })
+    })
+
+    it('size="md" does not override the base padding', () => {
+      render(<Button size="md">Medium</Button>)
+      const btn = screen.getByRole('button')
+      // md size map is empty — base padding should still apply
+      expect(btn).toHaveStyle({ padding: 'var(--space-3) var(--space-6)' })
+    })
+  })
 })
