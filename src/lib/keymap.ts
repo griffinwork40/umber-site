@@ -25,12 +25,15 @@ export const KEYMAP: KeymapGroup[] = [
       { shortcut: '⌘⌥←', description: 'Previous document' },
       { shortcut: '⌘⌥→', description: 'Next document' },
       { shortcut: '⌘1-⌘9', description: 'Jump to document by index' },
+      { shortcut: '⌘⇧A', description: 'Choose window: fuzzy-search every Space and tab' },
     ],
   },
   {
     group: 'View & Splits',
     entries: [
       { shortcut: '⌘B', description: 'Toggle sidebar' },
+      { shortcut: '⌘⇧E', description: 'Show Explorer (file tree)' },
+      { shortcut: '⌃⇧G', description: 'Show Source Control' },
       { shortcut: '⌘⇧\\', description: 'Split pane right' },
       { shortcut: '⌘⇧-', description: 'Split pane down' },
       { shortcut: '⌘⇧H/J/K/L', description: 'Focus pane left / down / up / right' },

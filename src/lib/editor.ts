@@ -13,7 +13,7 @@ export const EDITOR_FEATURES: EditorFeature[] = [
   {
     title: 'Syntax Highlighting',
     description:
-      '23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. Tree-sitter grammars with scope-aware token coloring.',
+      '23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. A regex tokenizer, not tree-sitter: about 200 lines of Swift you can actually read.',
     icon: 'syntax',
   },
   {
@@ -62,7 +62,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to work.',
     bullets: [
-      'Syntax highlighting for 23 languages with tree-sitter grammars',
+      'Syntax highlighting for 23 languages, no grammar bundles',
       'Line numbers, indent guides, and a column guide at 80 characters',
       'Auto-indent, bracket matching, and indent-rainbow coloring',
     ],

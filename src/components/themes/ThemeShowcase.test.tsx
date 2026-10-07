@@ -9,7 +9,7 @@ describe('ThemeShowcase', () => {
     render(<ThemeShowcase />)
   })
 
-  it('renders all 5 theme names as tabs', () => {
+  it('renders every theme name as a tab', () => {
     render(<ThemeShowcase />)
     THEMES.forEach((theme) => {
       expect(screen.getByRole('tab', { name: new RegExp(theme.displayName) })).toBeInTheDocument()

@@ -65,13 +65,13 @@ export const FEATURES: Feature[] = [
   {
     title: 'Measured Themes',
     description:
-      `Eight built-in palettes, each verified against contrast standards across ${ASSERTION_COUNT} assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.`,
+      `Ten built-in palettes, each verified against contrast standards across ${ASSERTION_COUNT} assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.`,
     icon: 'palette',
   },
   {
     title: 'GPU or CPU Rendering',
     description:
-      'Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and a quick ⌘R. High-throughput agent output scrolls without drama.',
+      'Metal GPU rendering by default, Core Text one config line away. High-throughput agent output scrolls without drama.',
     icon: 'cpu',
   },
   {
@@ -128,7 +128,7 @@ export const INSTALL_STEPS: InstallStep[] = [
   },
   {
     step: 3,
-    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 7 patches)',
+    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 12 patches)',
     code: './Scripts/bootstrap-vendor.sh',
     language: 'bash',
   },
@@ -155,7 +155,8 @@ export interface ThemePalette {
 }
 
 /**
- * Eight theme palettes, hex values verbatim from ThemeValues.swift.
+ * Ten theme palettes, hex values verbatim from ThemeValues.swift
+ * (Gruvbox Dark and Rosé Pine from ThemeValues+CommunityPresets.swift).
  * This is the canonical source on the site for all theme colours.
  */
 export const THEMES: ThemePalette[] = [
@@ -276,6 +277,36 @@ export const THEMES: ThemePalette[] = [
       '#BD93F9', '#FF79C6', '#8BE9FD', '#F8F8F2',
       '#6272A4', '#FF6E6E', '#69FF94', '#FFFFA5',
       '#D6ACFF', '#FF92DF', '#A4FFFF', '#FFFFFF',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'gruvbox-dark',
+    displayName: 'Gruvbox Dark',
+    background: '#282828',
+    foreground: '#EBDBB2',
+    cursor: '#EBDBB2',
+    selection: '#665C54',
+    ansi: [
+      '#282828', '#CC241D', '#98971A', '#D79921',
+      '#458588', '#B16286', '#689D6A', '#A89984',
+      '#928374', '#FB4934', '#B8BB26', '#FABD2F',
+      '#83A598', '#D3869B', '#8EC07C', '#EBDBB2',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'rose-pine',
+    displayName: 'Rosé Pine',
+    background: '#191724',
+    foreground: '#E0DEF4',
+    cursor: '#E0DEF4',
+    selection: '#403D52',
+    ansi: [
+      '#26233A', '#EB6F92', '#31748F', '#F6C177',
+      '#9CCFD8', '#C4A7E7', '#EBBCBA', '#E0DEF4',
+      '#6E6A86', '#EB6F92', '#31748F', '#F6C177',
+      '#9CCFD8', '#C4A7E7', '#EBBCBA', '#E0DEF4',
     ],
     isDefault: false,
   },

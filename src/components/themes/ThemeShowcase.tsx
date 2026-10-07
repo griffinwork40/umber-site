@@ -77,7 +77,7 @@ export default function ThemeShowcase() {
         <div style={labelStyle}>color</div>
         <h2 style={headingStyle}>Measured themes</h2>
         <p style={subheadStyle}>
-          Eight palettes ship out of the box. Each one has been run through {ASSERTION_COUNT} contrast
+          Ten palettes ship out of the box. Each one has been run through {ASSERTION_COUNT} contrast
           assertions, because {'"'}it looks fine{'"'} is not a QA strategy.
         </p>
 
