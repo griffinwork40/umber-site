@@ -56,7 +56,7 @@ export const RELEASE: {
     {
       title: 'Open Tabs Follow Renames and Moves',
       description:
-        'Renaming, moving, or trashing a file updates every open editor tab that was pointing at it. A tab with unsaved changes is never silently lost — the operation stops and tells you first.',
+        'Renaming, moving, or trashing a file updates every open editor tab that was pointing at it. A tab with unsaved changes is never silently lost: it stays open and Goblin Portal tells you where the file went.',
     },
   ],
 }
