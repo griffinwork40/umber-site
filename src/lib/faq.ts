@@ -30,6 +30,12 @@ export const FAQ: FaqEntry[] = [
       'If it runs macOS 14 Sonoma or later on Apple silicon, yes. The release build is arm64 only, so Intel Macs are not supported.',
   },
   {
+    // source: goblin-portal app/Package.swift:10 (platforms: [.macOS(.v14)]); AppKit imported across app/Sources/GoblinPortal
+    question: 'Is there a Windows version?',
+    answer:
+      'No. Goblin Portal is Swift and AppKit all the way down, which is where the speed and the 2.5 MB download come from. A Windows build would be a different app wearing the same name.',
+  },
+  {
     // source: spctl -a: "Notarized Developer ID"; stapler validate passed on the v1.7.0 bundle
     question: 'Will macOS let me open it?',
     answer:
