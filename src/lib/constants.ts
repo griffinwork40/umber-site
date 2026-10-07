@@ -23,9 +23,9 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
-  version: 'v1.6.1',
+  version: 'v1.7.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.6.1/GoblinPortal-v1.6.1.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.7.0/GoblinPortal-v1.7.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -40,13 +40,23 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.6.1',
-  date: 'October 4, 2026',
+  version: 'v1.7.0',
+  date: 'October 6, 2026',
   highlights: [
     {
-      title: 'Less Redraw Work Behind Agent Spinners',
+      title: 'VS Code-Style File Management',
       description:
-        'Panes running an agent with an animated spinner now do less work per frame. The GPU renderer used to re-measure every blank cell with Core Text each time a row was redrawn; it now remembers them. Nothing on screen looks any different.',
+        'The sidebar now manages files, not just displays them. New File and New Folder with inline naming, inline rename via Return or F2 (including case-only renames), Move to Trash via ⌘⌫ behind a confirmation, drag-to-move within the tree, and Cut / Copy / Paste / Duplicate — all without ever silently overwriting a file.',
+    },
+    {
+      title: 'Source Control Gets Its Own Tab',
+      description:
+        'The sidebar now has an Explorer / Source Control switcher. ⌘⇧E opens the file tree; ⌃⇧G opens Source Control. The tab is absent outside a git repo, so it only appears when it is useful.',
+    },
+    {
+      title: 'Open Tabs Follow Renames and Moves',
+      description:
+        'Renaming, moving, or trashing a file updates every open editor tab that was pointing at it. A tab with unsaved changes is never silently lost — the operation stops and tells you first.',
     },
   ],
 }
@@ -73,7 +83,7 @@ export const FEATURES: Feature[] = [
   {
     title: 'Sidebar File Tree',
     description:
-      'Browse files alongside the terminal with git status badges on every row. See what your agent changed without opening a second app.',
+      'Manage files alongside the terminal with git status badges on every row. Create, rename, move, and trash files without leaving the app. See what your agent changed without opening a second app.',
     icon: 'sidebar',
   },
   {

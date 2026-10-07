@@ -106,7 +106,7 @@ export default function WhatsNew() {
           <Badge>{RELEASE.version}</Badge>
         </div>
         <p style={subheadStyle}>
-          {RELEASE.date}. A small patch release: lighter redraws in panes with animated agent spinners.
+          {RELEASE.date}. VS Code-style file management in the sidebar, a dedicated Source Control tab, and open tabs that follow renames and moves.
         </p>
 
         <div style={gridStyle} className="release-grid">
