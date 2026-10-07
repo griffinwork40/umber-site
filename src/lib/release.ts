@@ -14,23 +14,26 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.7.0',
-  date: 'October 6, 2026',
+  version: 'v1.8.0',
+  date: 'October 7, 2026',
   highlights: [
     {
-      title: 'VS Code-Style File Management',
+      // source: goblin-portal #160 (StarterConfig.swift, check-starter-config.sh), #161 (PreferencesDiff.swift)
+      title: 'Your Config File Is Actually Read',
       description:
-        'The sidebar now manages files, not just displays them. New File and New Folder with inline naming, inline rename via Return or F2 (including case-only renames), Move to Trash via ⌘⌫ behind a confirmation, drag-to-move within the tree, and Cut / Copy / Paste / Duplicate — all without ever silently overwriting a file.',
+        'The starter config.json that ⌘, writes was not valid JSON, so every setting in it was quietly ignored. It parses now, and the Settings window\'s Apply writes only the keys you changed instead of switching your renderer back to Core Text.',
     },
     {
-      title: 'Source Control Gets Its Own Tab',
+      // source: goblin-portal #164 (AppMenu+Window.swift, GoblinPortalTerminalView+Clear.swift), #165 (check-palette-covers-menu.sh)
+      title: 'The Menus a Mac App Should Have',
       description:
-        'The sidebar now has an Explorer / Source Control switcher. ⌘⇧E opens the file tree; ⌃⇧G opens Source Control. The tab is absent outside a git repo, so it only appears when it is useful.',
+        'Minimize (⌘M), Zoom, Hide Others (⌥⌘H), a Help menu (⌘?), and Clear Buffer (⌘K), which wipes the focused pane\'s screen and scrollback. Every menu action is also in the ⌘⇧P command palette, and a gate script checks that none go missing.',
     },
     {
-      title: 'Open Tabs Follow Renames and Moves',
+      // source: goblin-portal #162 (SpaceWindowController+InitialFrame.swift), #163 (PaneDimming.swift, APCA Lc 45 floor)
+      title: 'A Sensible First Window and Readable Splits',
       description:
-        'Renaming, moving, or trashing a file updates every open editor tab that was pointing at it. A tab with unsaved changes is never silently lost: it stays open and Goblin Portal tells you where the file went.',
+        'The first window opens at 1100×680, centred, and a cramped 500×532 frame saved by older versions is repaired. Unfocused split panes dim only as far as keeps their text readable, measured for every built-in theme.',
     },
   ],
 }
