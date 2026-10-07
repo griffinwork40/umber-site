@@ -10,9 +10,9 @@
 
 /**
  * The number of contrast-compliance assertions run against the built-in themes.
- * source: goblin-portal AFK.md:40 (check-theme-contrast.sh, "345 assertions"), v1.7.0
+ * source: check-theme-contrast.sh run at goblin-portal v1.8.0 printed "ALL-OK  560 assertions passed"
  */
-export const ASSERTION_COUNT = 345 as const
+export const ASSERTION_COUNT = 560 as const
 
 /**
  * Structured transcript for the demo agent session shown in ThemePreview.
@@ -80,7 +80,7 @@ export const DEMO_TRANSCRIPT: readonly TranscriptLine[] = [
       { ansiSlot: 2, text: '  + let accent = palette.accent' },
     ],
   },
-  // ✓ 345 assertions passed · 0 failed
+  // ✓ 560 assertions passed · 0 failed
   {
     segments: [
       { ansiSlot: 2, text: `✓ ${ASSERTION_COUNT} assertions passed` },

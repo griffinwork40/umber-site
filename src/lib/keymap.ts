@@ -1,6 +1,7 @@
 /**
  * Keyboard shortcut reference.
- * Source: goblin-portal app/Sources/GoblinPortal/KeyBindings.swift and AppMenu.swift.
+ * Source: goblin-portal app/Sources/GoblinPortal/KeyBindings.swift, AppMenu.swift, AppMenu+Window.swift and
+ * AppMenu+Navigate.swift (v1.8.0).
  * Re-exported from src/lib/constants.ts; split out to keep that file under the 350-LOC limit.
  */
 
@@ -26,6 +27,8 @@ export const KEYMAP: KeymapGroup[] = [
       { shortcut: '⌘⌥→', description: 'Next document' },
       { shortcut: '⌘1-⌘9', description: 'Jump to document by index' },
       { shortcut: '⌘⇧A', description: 'Choose window: fuzzy-search every Space and tab' },
+      { shortcut: '⌘⇧P', description: 'Command palette: every menu action, searchable' },
+      { shortcut: '⌘K', description: 'Clear buffer: screen and scrollback of the focused pane' },
     ],
   },
   {
@@ -40,6 +43,9 @@ export const KEYMAP: KeymapGroup[] = [
       { shortcut: '⌃⌘F', description: 'Full screen' },
       { shortcut: '⌘R', description: 'Reload config' },
       { shortcut: '⌘,', description: 'Open Settings' },
+      { shortcut: '⌘M', description: 'Minimize window' },
+      { shortcut: '⌥⌘H', description: 'Hide other apps' },
+      { shortcut: '⌘?', description: 'Help (opens the README)' },
     ],
   },
   {
