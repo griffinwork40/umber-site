@@ -33,7 +33,7 @@ export const FAQ: FaqEntry[] = [
     // source: goblin-portal app/Package.swift:10 (platforms: [.macOS(.v14)]); AppKit imported across app/Sources/GoblinPortal
     question: 'Is there a Windows version?',
     answer:
-      'No. Goblin Portal is Swift and AppKit all the way down, which is where the speed and the 2.5 MB download come from. A Windows port would need a registry entry, a surprise restart, and a progress bar that sits at 99% to build character. Hard pass.',
+      'No. It is a native Mac app, which means no Windows build and no surprise restarts. We understand if that is a dealbreaker.',
   },
   {
     // source: spctl -a: "Notarized Developer ID"; stapler validate passed on the v1.7.0 bundle
