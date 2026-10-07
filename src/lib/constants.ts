@@ -21,9 +21,15 @@ export { ASSERTION_COUNT }
 export const SITE_META = {
   siteUrl: 'https://goblinportal.app',
   title: 'Goblin Portal',
+  seoTitle: 'Goblin Portal: a Mac terminal for AI agents',
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
-    'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
+    'A native macOS terminal for AI agents. Run Claude Code, Codex, Hermes and Agent AFK in Swift and AppKit, not Electron. Free and MIT licensed.',
+  // source: v1.7.0 release assets (GoblinPortal-v1.7.0.dmg = 2,500,796 bytes; binary is arm64-only,
+  // LSMinimumSystemVersion 14.0; Developer ID signed + notarized + stapled, checked with spctl/stapler)
+  downloadSize: '2.5 MB',
+  requirements: 'macOS 14+ · Apple silicon',
+  license: 'MIT',
   version: 'v1.7.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
   dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.7.0/GoblinPortal-v1.7.0.dmg',
@@ -53,32 +59,29 @@ export const FEATURES: Feature[] = [
   {
     title: 'Agent Workspaces',
     description:
-      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a reimplemented version of them.',
+      'One Space per project, as many agent sessions inside as you like. Real macOS window tabs, not a reimplemented version of them, and every Space reopens where you left it.',
     icon: 'tabs',
   },
   {
-    title: 'Sidebar File Tree',
+    // source: Renderer.swift (default .metal since v1.5); vendored patch 0010 (display-link pacing)
+    title: 'Metal by Default',
     description:
-      'Manage files alongside the terminal with git status badges on every row. Create, rename, move, and trash files without leaving the app. See what your agent changed without opening a second app.',
-    icon: 'sidebar',
-  },
-  {
-    title: 'Measured Themes',
-    description:
-      `Ten built-in palettes, each verified against contrast standards across ${ASSERTION_COUNT} assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.`,
-    icon: 'palette',
-  },
-  {
-    title: 'GPU or CPU Rendering',
-    description:
-      'Metal GPU rendering by default, Core Text one config line away. High-throughput agent output scrolls without drama.',
+      'GPU rendering out of the box, paced to the display instead of a free-running timer, so a 60 fps spinner actually gets 60 frames. Core Text is one config line away.',
     icon: 'cpu',
   },
   {
-    title: 'Agent Status at a Glance',
+    // source: SmoothScroll.swift / SmoothScrollModel.swift (v1.5.0)
+    title: 'Scrolls Like a Mac App',
     description:
-      'Green dot when a command succeeds, red when it fails. OSC 133 shell integration does the tracking. No polling, no tab switching, no guessing.',
+      'Pixel-smooth trackpad scrolling with real momentum, carried by the OS events rather than a homemade timer. Ten thousand lines of agent output feel like a web page, not a slideshow.',
     icon: 'shell',
+  },
+  {
+    // source: PreferencesWindow.swift (PR #69); ⌘R live reload (AppDelegate.swift)
+    title: 'Settings, Both Ways',
+    description:
+      'A real Settings window on ⌘, that writes plain JSON, and ⌘R reloads either one live. Click or edit, whichever you trust more.',
+    icon: 'command',
   },
 ]
 
@@ -139,9 +142,6 @@ export const INSTALL_STEPS: InstallStep[] = [
     language: 'bash',
   },
 ]
-
-export const GATEKEEPER_COMMAND =
-  'xattr -dr com.apple.quarantine "Goblin Portal.app"'
 
 export interface ThemePalette {
   name: string

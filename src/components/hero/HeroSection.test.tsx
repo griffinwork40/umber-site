@@ -34,7 +34,7 @@ describe('HeroSection', () => {
 
   it('renders the GitHub CTA with correct href', () => {
     render(<HeroSection />)
-    expect(screen.getByRole('link', { name: 'Source on GitHub →' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Free and MIT licensed. Read the source →' })).toHaveAttribute(
       'href',
       SITE_META.repoUrl
     )
@@ -57,17 +57,33 @@ describe('HeroSection', () => {
   })
 
   it('surfaces proof points that already appear in page copy', () => {
+    // Intent: every proof-point label must be backed by copy elsewhere in site data.
+    // 'Swift and AppKit' appears in FEATURES[0].description.
+    // 'Signed and notarized' is backed by FAQ entry: 'signed with a Developer ID and notarized'.
+    // The contrast-assertion count appears in the FAQ answer and DEMO_TRANSCRIPT.
     render(<HeroSection />)
     const list = screen.getByRole('list', { name: 'Highlights' })
     expect(list).toHaveTextContent('Swift and AppKit')
-    expect(list).toHaveTextContent('No Electron')
+    expect(list).toHaveTextContent('Signed and notarized')
     expect(list).toHaveTextContent(`${ASSERTION_COUNT} contrast assertions`)
+    // 'No Electron' was replaced by 'Signed and notarized'
+    expect(list).not.toHaveTextContent('No Electron')
   })
 
-  it('keeps the secondary tagline and binary size', () => {
+  it('renders the updated detail with correct size and requirements', () => {
     render(<HeroSection />)
-    expect(screen.getByText('Your agents get the full machine, without paying framework taxes.')).toBeInTheDocument()
-    expect(screen.getByText('1.7 MB')).toBeInTheDocument()
+    // 2.5 MB replaces the old false '1.7 MB'
+    expect(screen.getByText('2.5 MB')).toBeInTheDocument()
+    // arm64-only, not Universal binary
+    expect(screen.getByText(/Apple silicon/)).toBeInTheDocument()
+    expect(screen.queryByText('1.7 MB')).not.toBeInTheDocument()
+    expect(screen.queryByText('Universal binary')).not.toBeInTheDocument()
+  })
+
+  it('keeps the secondary tagline', () => {
+    render(<HeroSection />)
+    expect(screen.getByText(/Run agents side by side/)).toBeInTheDocument()
+    expect(screen.getByText(/Your agents get the full machine, without paying framework taxes/)).toBeInTheDocument()
   })
 
   it('releases willChange immediately under prefers-reduced-motion', async () => {

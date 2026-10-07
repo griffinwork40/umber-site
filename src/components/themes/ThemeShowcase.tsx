@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { THEMES, ASSERTION_COUNT } from '@/lib/constants'
+import { THEMES, ASSERTION_COUNT, SITE_META } from '@/lib/constants'
 import ThemePreview, { previewFrameStyle } from './ThemePreview'
 import Badge from '@/components/ui/Badge'
+import Button from '@/components/ui/Button'
 
 const sectionStyle = {
   backgroundColor: 'var(--color-surface)',
@@ -111,6 +112,16 @@ export default function ThemeShowcase() {
           className="theme-preview-frame"
         >
           <ThemePreview theme={current} />
+        </div>
+
+        {/* Download CTA */}
+        <div style={{ marginTop: 'var(--space-8)', display: 'flex', alignItems: 'center', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
+          <Button href={SITE_META.dmgUrl} variant="primary">
+            Download {SITE_META.version}
+          </Button>
+          <span style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>
+            Ships with all ten. Pick one in Settings.
+          </span>
         </div>
       </div>
     </section>

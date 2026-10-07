@@ -23,8 +23,15 @@ const headingStyle: React.CSSProperties = {
   fontSize: 'var(--text-h2)',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
-  marginBottom: 'var(--space-8)',
+  marginBottom: 'var(--space-4)',
   color: 'var(--color-fg)',
+}
+
+const introStyle: React.CSSProperties = {
+  color: 'var(--color-muted)',
+  fontSize: '1.0625rem',
+  lineHeight: 1.6,
+  marginBottom: 'var(--space-8)',
 }
 
 const groupsStyle: React.CSSProperties = {
@@ -77,7 +84,10 @@ export default function KeymapSection() {
     <section id="keymap" className="earned-path" style={{ backgroundColor: 'var(--color-bg)', position: 'relative' as const }}>
       <div style={sectionStyle}>
         <div style={labelStyle}>reference</div>
-        <h2 style={headingStyle}>Keyboard Shortcuts</h2>
+        <h2 style={headingStyle}>Mouse optional</h2>
+        <p style={introStyle}>
+          The ones worth learning on day one. &#x2318;&#x21E7;P finds everything else.
+        </p>
         <div style={groupsStyle} className="keymap-grid">
           {KEYMAP.map((group) => (
             <div key={group.group} style={groupStyle}>

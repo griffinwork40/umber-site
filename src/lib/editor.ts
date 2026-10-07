@@ -11,28 +11,32 @@ export interface EditorFeature {
 
 export const EDITOR_FEATURES: EditorFeature[] = [
   {
-    title: 'Syntax Highlighting',
+    // source: SourceControlViewController.swift (+Actions), PR #132; ⌃⇧G AppMenu.swift:306-308
+    title: 'Source Control',
     description:
-      '23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. A regex tokenizer, not tree-sitter: about 200 lines of Swift you can actually read.',
-    icon: 'syntax',
+      '⌃⇧G opens a real Source Control panel: stage, unstage, discard (it asks first), commit with ⌘Enter, push and pull. A first push sets the upstream for you.',
+    icon: 'sidebar',
   },
   {
-    title: 'Command Palette & Symbols',
+    // source: DiffViewerPane.swift, DiffViewerPane+Highlighting.swift
+    title: 'Side-by-Side Diffs',
     description:
-      '⌘⇧P fuzzy-filters every app command. ⌘⇧O jumps to symbols. ⌘L goes to a line number. All keyboard-driven, no mouse required.',
-    icon: 'command',
-  },
-  {
-    title: 'Code Folding & Navigation',
-    description:
-      'Indent-based fold and unfold with ⌘⌥[ and ⌘⌥]. Sticky scroll keeps the enclosing scope visible. Bracket pair highlighting.',
+      'Click a changed file and get a side-by-side diff with synchronized scrolling. The agent\'s work, laid out for judgment.',
     icon: 'fold',
   },
   {
-    title: 'Multi-Cursor Editing',
+    // source: FileViewerPane+Highlighting.swift:7-17, SyntaxLanguage.swift (23 groups)
+    title: 'Syntax Highlighting',
     description:
-      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code, without VS Code.',
-    icon: 'cursor',
+      '23 languages from a regex tokenizer, not tree-sitter. It may mis-color a raw string literal. It will never ship a grammar binary nobody can read.',
+    icon: 'syntax',
+  },
+  {
+    // source: CommandPalette.swift, SymbolOutline.swift, FileViewerPane+Navigation.swift, +MultiSelect.swift
+    title: 'Palette, Symbols, Multi-Cursor',
+    description:
+      '⌘⇧P for every command, ⌘⇧O for symbols, ⌘L for a line, ⌘D for the next occurrence. Same muscle memory as VS Code, without VS Code.',
+    icon: 'command',
   },
 ]
 
@@ -46,13 +50,15 @@ export interface ShowcaseItem {
 
 export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
-    title: 'Agent workspaces in action',
+    // source: ShellDirectory.swift (kernel cwd), FileTreeViewController+FileOps.swift,
+    // FileOperationPolicy.swift, SpaceViewController+FileMutation.swift (v1.7.0)
+    title: 'The sidebar does the bookkeeping',
     description:
-      'Each project gets its own Space with a full file tree, git status, and as many terminal tabs as you need. Your agents see the same directory structure you do.',
+      'The file tree follows the focused shell\'s working directory by asking the kernel, so no dotfile can break it. Git status on every row, branch and ahead/behind on top.',
     bullets: [
-      'Sidebar follows the focused shell\'s working directory automatically',
-      'Git status badges on every file: staged, modified, untracked, deleted',
-      'Double-click any file to open it in the built-in editor',
+      'New file, rename, move and duplicate, all inline',
+      'Move to Trash always asks first, and nothing is ever deleted outright',
+      'Open tabs follow a rename or a move, and a tab with unsaved changes is never closed',
     ],
     image: '/images/goblin-portal-workspace.png',
     imageAlt: 'Goblin Portal workspace showing a project file tree with multiple terminal tabs and git status indicators',
@@ -60,7 +66,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     title: 'Edit without leaving the terminal',
     description:
-      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to work.',
+      'Open a file into an editor tab next to your terminals. Review what your agent wrote, make the fix, get back to work.',
     bullets: [
       'Syntax highlighting for 23 languages, no grammar bundles',
       'Line numbers, indent guides, and a column guide at 80 characters',

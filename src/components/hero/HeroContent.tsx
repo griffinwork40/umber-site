@@ -141,7 +141,7 @@ export default function HeroContent() {
       {/* Tagline */}
       <p style={taglineStyle}>{SITE_META.tagline}</p>
       <p style={subTaglineStyle}>
-        Your agents get the full machine, without paying framework taxes.
+        Run agents side by side, get pinged when one finishes, review the diff in the same window. Your agents get the full machine, without paying framework taxes.
       </p>
 
       {/* Primary CTA: dominant download */}
@@ -156,14 +156,14 @@ export default function HeroContent() {
           Download {SITE_META.version}
         </a>
         <span style={detailStyle}>
-          <span style={detailStrongStyle}>1.7 MB</span>
-          Universal binary
+          <span style={detailStrongStyle}>{SITE_META.downloadSize}</span>
+          {SITE_META.requirements}
         </span>
       </div>
 
       {/* Secondary: text link, not a button */}
       <a href={SITE_META.repoUrl} style={githubLinkStyle}>
-        Source on GitHub →
+        Free and MIT licensed. Read the source →
       </a>
 
       {/* Proof row: engineering facts, surfaced instead of buried in prose */}

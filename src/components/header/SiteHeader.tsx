@@ -91,12 +91,12 @@ export default function SiteHeader() {
       </a>
       <nav aria-label="Page sections" className="site-header-nav">
         <ul style={navListStyle}>
-          <li><a href="#features" style={navLinkStyle}>Features</a></li>
           <li><a href="#agents" style={navLinkStyle}>Agents</a></li>
-          <li><a href="#editor" style={navLinkStyle}>Editor</a></li>
+          <li><a href="#features" style={navLinkStyle}>Features</a></li>
+          <li><a href="#workspace" style={navLinkStyle}>Workspace</a></li>
           <li><a href="#themes" style={navLinkStyle}>Themes</a></li>
+          <li><a href="#faq" style={navLinkStyle}>FAQ</a></li>
           <li><a href="#install" style={navLinkStyle}>Install</a></li>
-          <li><a href="#keymap" style={navLinkStyle}>Keymap</a></li>
         </ul>
       </nav>
       <div style={rightGroupStyle}>

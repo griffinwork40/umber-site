@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import KeymapSection from './KeymapSection'
 
@@ -7,9 +7,16 @@ describe('KeymapSection', () => {
     render(<KeymapSection />)
   })
 
-  it('renders the h2 heading', () => {
+  it('renders the h2 heading "Mouse optional."', () => {
     render(<KeymapSection />)
-    expect(screen.getByRole('heading', { level: 2, name: 'Keyboard Shortcuts' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Mouse optional' })).toBeInTheDocument()
+  })
+
+  it('renders the intro paragraph', () => {
+    render(<KeymapSection />)
+    expect(
+      screen.getByText(/The ones worth learning on day one/i),
+    ).toBeInTheDocument()
   })
 
   it('renders multiple tables (one per group)', () => {
@@ -64,5 +71,20 @@ describe('KeymapSection', () => {
   it('has a section element with id="keymap"', () => {
     const { container } = render(<KeymapSection />)
     expect(container.querySelector('section#keymap')).toBeInTheDocument()
+  })
+
+  it('renders ⌘⇧A shortcut (new)', () => {
+    render(<KeymapSection />)
+    expect(screen.getByText('⌘⇧A')).toBeInTheDocument()
+  })
+
+  it('renders ⌘⇧E shortcut (new)', () => {
+    render(<KeymapSection />)
+    expect(screen.getByText('⌘⇧E')).toBeInTheDocument()
+  })
+
+  it('renders ⌃⇧G shortcut (new)', () => {
+    render(<KeymapSection />)
+    expect(screen.getByText('⌃⇧G')).toBeInTheDocument()
   })
 })

@@ -1,5 +1,6 @@
 import React from 'react'
-import { AGENT_TOOLS, type AgentPoint } from '@/lib/constants'
+import { AGENT_TOOLS } from '@/lib/constants'
+import { AGENT_LOOP, type AgentLoopPoint } from '@/lib/agents'
 
 const sectionStyle = {
   padding: 'var(--space-12) var(--space-6) 120px',
@@ -7,6 +8,13 @@ const sectionStyle = {
   position: 'relative',
   '--local-accent': 'var(--accent-agents)',
 } as React.CSSProperties
+
+const innerStyle: React.CSSProperties = {
+  maxWidth: 1100,
+  margin: '0 auto',
+  position: 'relative',
+  zIndex: 1,
+}
 
 const labelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-mono)',
@@ -18,19 +26,13 @@ const labelStyle: React.CSSProperties = {
   marginBottom: 'var(--space-3)',
 }
 
-const innerStyle: React.CSSProperties = {
-  maxWidth: 1100,
-  margin: '0 auto',
-  position: 'relative',
-  zIndex: 1,
-}
-
 const headingStyle: React.CSSProperties = {
   fontSize: 'var(--text-h2)',
   fontFamily: 'var(--font-display)',
   fontWeight: 700,
-  marginBottom: 'var(--space-3)',
+  marginBottom: 'var(--space-4)',
   color: 'var(--color-fg)',
+  letterSpacing: '-0.02em',
 }
 
 const leadStyle: React.CSSProperties = {
@@ -38,125 +40,120 @@ const leadStyle: React.CSSProperties = {
   color: 'var(--color-muted)',
   lineHeight: 1.7,
   maxWidth: 640,
-  marginBottom: 'var(--space-8)',
+  marginBottom: 'var(--space-10)',
 }
 
-const gridStyle: React.CSSProperties = {
+/* ── Agent loop grid ────────────────────────────────────────────────────────── */
+const loopGridStyle: React.CSSProperties = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-  gap: 'var(--space-4)',
-  marginBottom: 'var(--space-8)',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: 'var(--space-5)',
+  marginBottom: 'var(--space-10)',
 }
 
-const toolCardStyle: React.CSSProperties = {
+const loopCardStyle: React.CSSProperties = {
   backgroundColor: 'var(--color-surface)',
-  borderRadius: 'var(--radius-3)',
-  padding: 'var(--space-5)',
+  borderRadius: 'var(--radius-4)',
+  padding: 'var(--space-6)',
   display: 'flex',
   flexDirection: 'column',
-  gap: 'var(--space-2)',
+  gap: 'var(--space-3)',
+  border: '1px solid var(--color-border)',
+}
+
+const loopTitleStyle: React.CSSProperties = {
+  fontSize: '0.9375rem',
+  fontWeight: 600,
+  color: 'var(--local-accent)',
+  lineHeight: 1.3,
+  margin: 0,
+}
+
+const loopDetailStyle: React.CSSProperties = {
+  fontSize: '0.875rem',
+  color: 'var(--color-muted)',
+  lineHeight: 1.65,
+  margin: 0,
+}
+
+/* ── Tools row ──────────────────────────────────────────────────────────────── */
+const toolsRowLabelStyle: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.6875rem',
+  fontWeight: 500,
+  letterSpacing: '0.06em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--color-muted)',
+  marginBottom: 'var(--space-3)',
+}
+
+const toolsRowStyle: React.CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap' as const,
+  gap: 'var(--space-3)',
+}
+
+const toolChipStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'var(--space-1)',
+  padding: 'var(--space-3) var(--space-4)',
+  borderRadius: 'var(--radius-3)',
+  border: '1px solid var(--color-border)',
+  backgroundColor: 'var(--color-surface)',
+  minWidth: 200,
+  flex: '1 1 200px',
 }
 
 const toolNameStyle: React.CSSProperties = {
-  fontSize: '0.9375rem',
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.8125rem',
   fontWeight: 600,
   color: 'var(--color-fg)',
-  fontFamily: 'var(--font-mono)',
 }
 
 const toolDescStyle: React.CSSProperties = {
-  fontSize: '0.8125rem',
+  fontSize: '0.75rem',
   color: 'var(--color-muted)',
   lineHeight: 1.5,
   margin: 0,
 }
 
-const pointsStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 'var(--space-4)',
-  maxWidth: 640,
-}
-
-const pointStyle: React.CSSProperties = {
-  display: 'flex',
-  gap: 'var(--space-3)',
-  alignItems: 'baseline',
-}
-
-const bulletStyle: React.CSSProperties = {
-  color: 'var(--local-accent)',
-  fontFamily: 'var(--font-mono)',
-  fontSize: '0.875rem',
-  flexShrink: 0,
-  lineHeight: 1.6,
-}
-
-const pointTextStyle: React.CSSProperties = {
-  fontSize: '0.9375rem',
-  color: 'var(--color-fg)',
-  lineHeight: 1.6,
-}
-
-const emphStyle: React.CSSProperties = {
-  color: 'var(--local-accent)',
-  fontWeight: 600,
-  fontStyle: 'normal',
-}
-
-const SELLING_POINTS = [
-  {
-    text: 'agents run in terminals',
-    detail: '. The terminal should not be competing with them for CPU, RAM, or your attention.',
-  },
-  {
-    text: 'OSC 133 command tracking',
-    detail: '. See which agent task succeeded or failed at a glance, across every tab, without reading scroll-back.',
-  },
-  {
-    text: 'Split panes',
-    detail: '. Run an agent and its supervisor side by side. ⌘⇧\\ to split, ⌘⇧H/J/K/L to navigate.',
-  },
-  {
-    text: 'tmux-native',
-    detail: '. Proper focus events, DCS passthrough, and mouse reporting. Your tmux sessions work the way you expect.',
-  },
-]
-
-function ToolCard({ tool }: { tool: AgentPoint }) {
+function LoopCard({ point }: { point: AgentLoopPoint }) {
   return (
-    <div style={toolCardStyle}>
-      <span style={toolNameStyle}>{tool.name}</span>
-      <p style={toolDescStyle}>{tool.description}</p>
+    <div style={loopCardStyle}>
+      <h3 style={loopTitleStyle}>{point.title}</h3>
+      <p style={loopDetailStyle}>{point.detail}</p>
     </div>
   )
 }
 
 export default function AgentSection() {
   return (
-    <section id="agents" className="earned-path deep-field" style={sectionStyle}>
+    <section id="agents" aria-labelledby="agents-heading" className="earned-path deep-field" style={sectionStyle}>
       <div style={innerStyle}>
         <div style={labelStyle}>agent-native</div>
-        <h2 style={headingStyle}>Built for AI agents</h2>
+        <h2 id="agents-heading" style={headingStyle}>
+          Your agent is working. You are allowed to leave.
+        </h2>
         <p style={leadStyle}>
-          The best terminal agents run in your shell, not in a browser tab. Goblin Portal
-          gives them a fast, native host and otherwise leaves them alone.
+          The best agents run in a shell, not a browser tab. Goblin Portal gives them a fast
+          native host, keeps an eye on them while you are elsewhere, and never tries to be one
+          of them.
         </p>
 
-        <div style={gridStyle}>
-          {AGENT_TOOLS.map((tool) => (
-            <ToolCard key={tool.name} tool={tool} />
+        <div style={loopGridStyle}>
+          {AGENT_LOOP.map((point) => (
+            <LoopCard key={point.title} point={point} />
           ))}
         </div>
 
-        <div style={pointsStyle}>
-          {SELLING_POINTS.map((point) => (
-            <div key={point.text} style={pointStyle}>
-              <span style={bulletStyle}>→</span>
-              <p style={pointTextStyle}>
-                <em style={emphStyle}>{point.text}</em>
-                {point.detail}
-              </p>
+        <div style={toolsRowLabelStyle}>Runs whatever you run</div>
+        <div style={toolsRowStyle}>
+          {AGENT_TOOLS.map((tool) => (
+            <div key={tool.name} style={toolChipStyle}>
+              <span style={toolNameStyle}>{tool.name}</span>
+              <p style={toolDescStyle}>{tool.description}</p>
             </div>
           ))}
         </div>

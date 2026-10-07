@@ -127,10 +127,10 @@ export default function FeaturesSection() {
   const [hero, ...rest] = FEATURES
 
   return (
-    <section id="features" className="scope-rule contour-layer" style={sectionStyle}>
+    <section id="features" aria-labelledby="features-heading" className="scope-rule contour-layer" style={sectionStyle}>
       <div style={innerStyle}>
         <div style={labelStyle}>features</div>
-        <h2 style={headingStyle}>
+        <h2 id="features-heading" style={headingStyle}>
           No AI built in, on purpose
         </h2>
         <p style={subheadStyle}>

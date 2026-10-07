@@ -18,7 +18,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_META.siteUrl),
-  title: SITE_META.title,
+  title: SITE_META.seoTitle,
   description: SITE_META.description,
   alternates: {
     canonical: '/',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: SITE_META.title,
+    title: SITE_META.seoTitle,
     description: SITE_META.description,
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: SITE_META.title }],

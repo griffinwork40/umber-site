@@ -102,6 +102,6 @@ export const DEMO_TRANSCRIPT: readonly TranscriptLine[] = [
  */
 export const PROOF_POINTS: readonly string[] = [
   'Swift and AppKit',
-  'No Electron',
+  'Signed and notarized',
   `${ASSERTION_COUNT} contrast assertions`,
 ] as const
