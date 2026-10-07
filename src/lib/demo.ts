@@ -8,8 +8,11 @@
  * Re-exported from constants.ts so consumers can import from either path.
  */
 
-/** The number of contrast-compliance assertions run against the built-in themes. */
-export const ASSERTION_COUNT = 474 as const
+/**
+ * The number of contrast-compliance assertions run against the built-in themes.
+ * source: goblin-portal AFK.md:40 (check-theme-contrast.sh, "345 assertions"), v1.7.0
+ */
+export const ASSERTION_COUNT = 345 as const
 
 /**
  * Structured transcript for the demo agent session shown in ThemePreview.
@@ -77,7 +80,7 @@ export const DEMO_TRANSCRIPT: readonly TranscriptLine[] = [
       { ansiSlot: 2, text: '  + let accent = palette.accent' },
     ],
   },
-  // ✓ 474 assertions passed · 0 failed
+  // ✓ 345 assertions passed · 0 failed
   {
     segments: [
       { ansiSlot: 2, text: `✓ ${ASSERTION_COUNT} assertions passed` },
@@ -99,6 +102,6 @@ export const DEMO_TRANSCRIPT: readonly TranscriptLine[] = [
  */
 export const PROOF_POINTS: readonly string[] = [
   'Swift and AppKit',
-  'No Electron',
+  'Signed and notarized',
   `${ASSERTION_COUNT} contrast assertions`,
 ] as const

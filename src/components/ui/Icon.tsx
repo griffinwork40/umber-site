@@ -72,7 +72,27 @@ const PATHS: Record<string, React.ReactNode> = {
     </>
   ),
 
-  // Editor section
+  // Workspace / editor section
+  git: (
+    // Git branch indicator
+    <>
+      <circle cx="7" cy="5" r="2" strokeWidth="1.5" fill="none" stroke="currentColor" />
+      <circle cx="7" cy="19" r="2" strokeWidth="1.5" fill="none" stroke="currentColor" />
+      <circle cx="17" cy="9" r="2" strokeWidth="1.5" fill="none" stroke="currentColor" />
+      <line x1="7" y1="7" x2="7" y2="17" strokeWidth="1.5" stroke="currentColor" />
+      <path d="M7 7c0 4 10 6 10 0" strokeWidth="1.5" fill="none" stroke="currentColor" strokeLinecap="round" />
+    </>
+  ),
+  diff: (
+    // Side-by-side diff columns with +/- markers
+    <>
+      <rect x="2" y="3" width="9" height="18" rx="1.5" strokeWidth="1.5" fill="none" stroke="currentColor" />
+      <rect x="13" y="3" width="9" height="18" rx="1.5" strokeWidth="1.5" fill="none" stroke="currentColor" />
+      <line x1="5" y1="9" x2="8" y2="9" strokeWidth="1.5" stroke="currentColor" strokeLinecap="round" />
+      <line x1="6.5" y1="7.5" x2="6.5" y2="10.5" strokeWidth="1.5" stroke="currentColor" strokeLinecap="round" />
+      <line x1="16" y1="9" x2="19" y2="9" strokeWidth="1.5" stroke="currentColor" strokeLinecap="round" />
+    </>
+  ),
   syntax: (
     // Code brackets with highlight
     <>

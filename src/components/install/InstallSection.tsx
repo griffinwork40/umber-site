@@ -1,9 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { INSTALL_STEPS, GATEKEEPER_COMMAND, SITE_META } from '@/lib/constants'
+import { INSTALL_STEPS, SITE_META } from '@/lib/constants'
 import CodeBlock from '@/components/ui/CodeBlock'
-import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 
 const sectionStyle = {
@@ -38,16 +37,11 @@ const headingStyle: React.CSSProperties = {
   color: 'var(--color-fg)',
 }
 
-const requirementsStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 'var(--space-3)',
-  marginBottom: 'var(--space-8)',
-}
-
-const requirementsLabelStyle: React.CSSProperties = {
+const leadStyle: React.CSSProperties = {
   color: 'var(--color-muted)',
-  fontSize: '0.875rem',
+  fontSize: '1.0625rem',
+  lineHeight: 1.65,
+  marginBottom: 'var(--space-8)',
 }
 
 const downloadBoxStyle: React.CSSProperties = {
@@ -57,10 +51,10 @@ const downloadBoxStyle: React.CSSProperties = {
   borderRadius: 'var(--radius-4)',
   boxShadow: '0 0 0 1px var(--hairline), 0 30px 90px var(--color-shadow), 0 0 120px var(--glow-jade-soft)',
   textAlign: 'center' as const,
-  marginBottom: 'var(--space-8)',
+  marginBottom: 'var(--space-6)',
 }
 
-const downloadSubStyle: React.CSSProperties = {
+const requirementsStyle: React.CSSProperties = {
   color: 'var(--color-muted)',
   fontSize: '0.8125rem',
   marginTop: 'var(--space-3)',
@@ -134,74 +128,35 @@ const stepDescStyle: React.CSSProperties = {
   fontWeight: 500,
 }
 
-const calloutStyle: React.CSSProperties = {
-  marginTop: 'var(--space-8)',
-  padding: 'var(--space-5)',
-  backgroundColor: 'var(--color-surface)',
-  borderRadius: 'var(--radius-3)',
-}
-
-const calloutHeadingStyle: React.CSSProperties = {
-  fontWeight: 600,
-  marginBottom: 'var(--space-3)',
-  color: 'var(--color-fg)',
-  fontSize: '0.9375rem',
-}
-
-const calloutTextStyle: React.CSSProperties = {
+const closingLineStyle: React.CSSProperties = {
+  marginTop: 'var(--space-10)',
+  textAlign: 'center' as const,
   color: 'var(--color-muted)',
   fontSize: '0.875rem',
-  marginBottom: 'var(--space-4)',
-  lineHeight: 1.6,
+  fontStyle: 'italic',
 }
 
 export default function InstallSection() {
   const [showSource, setShowSource] = useState(false)
-  const [showGatekeeper, setShowGatekeeper] = useState(false)
 
   return (
-    <section id="install" className="scope-rule elevated-field" style={sectionStyle}>
+    <section id="install" aria-labelledby="install-heading" className="scope-rule elevated-field" style={sectionStyle}>
       <div style={innerStyle}>
         <div style={labelStyle}>get started</div>
-        <h2 style={headingStyle}>Install</h2>
-
-        <div style={requirementsStyle}>
-          <span style={requirementsLabelStyle}>Requirements:</span>
-          <Badge>macOS 14+</Badge>
-        </div>
+        <h2 id="install-heading" style={headingStyle}>Two and a half megabytes. No account.</h2>
+        <p style={leadStyle}>
+          Download it, drag it to Applications, open it. That is the whole onboarding.
+        </p>
 
         {/* DMG download — primary path */}
         <div style={downloadBoxStyle} className="install-stage">
           <Button href={SITE_META.dmgUrl} variant="primary" size="lg">
             Download Goblin Portal {SITE_META.version}
           </Button>
-          <p style={downloadSubStyle}>
-            Universal binary · signed &amp; notarized
+          <p style={requirementsStyle}>
+            {SITE_META.requirements} &middot; {SITE_META.license}
           </p>
         </div>
-
-        {/* Gatekeeper callout — collapsed by default */}
-        <div style={{ textAlign: 'center' as const, marginBottom: 'var(--space-4)' }}>
-          <button
-            style={toggleBtnStyle}
-            onClick={() => setShowGatekeeper(!showGatekeeper)}
-            aria-expanded={showGatekeeper}
-            type="button"
-          >
-            {showGatekeeper ? 'Hide' : 'Having trouble opening it?'}
-          </button>
-        </div>
-
-        {showGatekeeper && (
-          <aside style={calloutStyle} aria-label="Gatekeeper note">
-            <p style={calloutHeadingStyle}>Troubleshooting</p>
-            <p style={calloutTextStyle}>
-              The DMG is signed and notarized, so macOS should open it without
-              complaint. If you still see a Gatekeeper prompt, run this once:
-            </p>
-            <CodeBlock code={GATEKEEPER_COMMAND} language="bash" />
-          </aside>
-        )}
 
         {/* Build from source — secondary path */}
         <div style={dividerStyle}>
@@ -236,6 +191,8 @@ export default function InstallSection() {
             ))}
           </ol>
         )}
+
+        <p style={closingLineStyle}>You read the FAQ. Nobody reads the FAQ.</p>
       </div>
     </section>
   )

@@ -147,3 +147,31 @@ kbd {
     justify-content: center;
   }
 }
+
+/* ── FAQ section — faq/FaqSection.tsx ──────────────────────────────────────── */
+
+/*
+ * Rotate the + marker into an × when a <details> element is open.
+ * Uses the CSS :has() pseudo-class (supported in all modern browsers, iOS 15.4+).
+ * Falls back gracefully: marker simply does not rotate on older engines.
+ * Respects prefers-reduced-motion via --motion-duration (set to 0ms under that
+ * media query in tokens.css, so the transition duration collapses to zero).
+ */
+.faq-item[open] .faq-marker {
+  transform: rotate(45deg);
+}
+
+/* Remove the browser-default list triangle on <summary> */
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+.faq-summary::marker {
+  content: '';
+}
+
+/* Visible focus ring on summary — respects the site's accent colour */
+.faq-summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-2);
+}

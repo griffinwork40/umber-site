@@ -2,14 +2,14 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect } from 'vitest'
 import ThemeShowcase from './ThemeShowcase'
-import { THEMES } from '@/lib/constants'
+import { THEMES, SITE_META } from '@/lib/constants'
 
 describe('ThemeShowcase', () => {
   it('renders without throwing', () => {
     render(<ThemeShowcase />)
   })
 
-  it('renders all 5 theme names as tabs', () => {
+  it('renders every theme name as a tab', () => {
     render(<ThemeShowcase />)
     THEMES.forEach((theme) => {
       expect(screen.getByRole('tab', { name: new RegExp(theme.displayName) })).toBeInTheDocument()
@@ -91,5 +91,36 @@ describe('ThemeShowcase', () => {
     await userEvent.click(screen.getByRole('tab', { name: new RegExp(otherTheme.displayName) }))
     const panel = screen.getByRole('tabpanel')
     expect((panel as HTMLElement).style.getPropertyValue('--preview-glow')).toBe(otherTheme.cursor)
+  })
+
+  it('renders 10 theme tabs', () => {
+    render(<ThemeShowcase />)
+    expect(screen.getAllByRole('tab')).toHaveLength(10)
+  })
+
+  it('renders Gruvbox Dark tab', () => {
+    render(<ThemeShowcase />)
+    expect(screen.getByRole('tab', { name: /Gruvbox Dark/ })).toBeInTheDocument()
+  })
+
+  it('renders Rosé Pine tab', () => {
+    render(<ThemeShowcase />)
+    expect(screen.getByRole('tab', { name: /Ros/ })).toBeInTheDocument()
+  })
+
+  it('renders download CTA linking to dmgUrl', () => {
+    render(<ThemeShowcase />)
+    const cta = screen.getByRole('link', {
+      name: new RegExp(`Download ${SITE_META.version}`),
+    })
+    expect(cta).toBeInTheDocument()
+    expect(cta).toHaveAttribute('href', SITE_META.dmgUrl)
+  })
+
+  it('renders the "Ships with all ten" muted line', () => {
+    render(<ThemeShowcase />)
+    expect(
+      screen.getByText(/Ships with all ten\. Pick one in Settings\./),
+    ).toBeInTheDocument()
   })
 })

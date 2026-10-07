@@ -5,8 +5,9 @@
  * This is the ONLY file on the site that may contain hex values; all component files
  * must reference tokens from tokens.css or data from this file.
  *
- * Demo transcript and proof-copy data live in src/lib/demo.ts (re-exported below)
- * to keep this file under the 350-LOC limit.
+ * Demo transcript, release notes, keymap and editor data live in sibling files
+ * (demo.ts, release.ts, keymap.ts, editor.ts) and are re-exported below so every
+ * import of '@/lib/constants' keeps working. Split to stay under the 350-LOC limit.
  */
 
 export {
@@ -20,46 +21,27 @@ export { ASSERTION_COUNT }
 export const SITE_META = {
   siteUrl: 'https://goblinportal.app',
   title: 'Goblin Portal',
+  seoTitle: 'Goblin Portal: a Mac terminal for AI agents',
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
-    'The native macOS terminal for AI agents. Claude Code, Codex, Hermes, Agent AFK. Swift/AppKit. No Electron.',
+    'A native macOS terminal for AI agents. Run Claude Code, Codex, Hermes and Agent AFK in Swift and AppKit, not Electron. Free and MIT licensed.',
+  // source: v1.7.0 release assets (GoblinPortal-v1.7.0.dmg = 2,500,796 bytes; binary is arm64-only,
+  // LSMinimumSystemVersion 14.0; Developer ID signed + notarized + stapled, checked with spctl/stapler)
+  downloadSize: '2.5 MB',
+  requirements: 'macOS 14+ · Apple silicon',
+  license: 'MIT',
   version: 'v1.7.0',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
   dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.7.0/GoblinPortal-v1.7.0.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
-export interface ReleaseHighlight {
-  title: string
-  description: string
-  configExample?: string
-}
-
-export const RELEASE: {
-  version: string
-  date: string
-  highlights: ReleaseHighlight[]
-} = {
-  version: 'v1.7.0',
-  date: 'October 6, 2026',
-  highlights: [
-    {
-      title: 'VS Code-Style File Management',
-      description:
-        'The sidebar now manages files, not just displays them. New File and New Folder with inline naming, inline rename via Return or F2 (including case-only renames), Move to Trash via ⌘⌫ behind a confirmation, drag-to-move within the tree, and Cut / Copy / Paste / Duplicate — all without ever silently overwriting a file.',
-    },
-    {
-      title: 'Source Control Gets Its Own Tab',
-      description:
-        'The sidebar now has an Explorer / Source Control switcher. ⌘⇧E opens the file tree; ⌃⇧G opens Source Control. The tab is absent outside a git repo, so it only appears when it is useful.',
-    },
-    {
-      title: 'Open Tabs Follow Renames and Moves',
-      description:
-        'Renaming, moving, or trashing a file updates every open editor tab that was pointing at it. A tab with unsaved changes is never silently lost: it stays open and Goblin Portal tells you where the file went.',
-    },
-  ],
-}
+export { RELEASE } from './release'
+export type { ReleaseHighlight } from './release'
+export { KEYMAP } from './keymap'
+export type { KeymapEntry, KeymapGroup } from './keymap'
+export { EDITOR_FEATURES, SHOWCASE_ITEMS } from './editor'
+export type { EditorFeature, ShowcaseItem } from './editor'
 
 export interface Feature {
   title: string
@@ -77,32 +59,29 @@ export const FEATURES: Feature[] = [
   {
     title: 'Agent Workspaces',
     description:
-      'One Space per project root. Multiple agent sessions inside. Switch projects without losing context. Real macOS window tabs, not a reimplemented version of them.',
+      'One Space per project, as many agent sessions inside as you like. Real macOS window tabs, not a reimplemented version of them, and every Space reopens where you left it.',
     icon: 'tabs',
   },
   {
-    title: 'Sidebar File Tree',
+    // source: Renderer.swift (default .metal since v1.5); vendored patch 0010 (display-link pacing)
+    title: 'Metal by Default',
     description:
-      'Manage files alongside the terminal with git status badges on every row. Create, rename, move, and trash files without leaving the app. See what your agent changed without opening a second app.',
-    icon: 'sidebar',
-  },
-  {
-    title: 'Measured Themes',
-    description:
-      `Eight built-in palettes, each verified against contrast standards across ${ASSERTION_COUNT} assertions. Catppuccin Mocha, Nord, Dracula, and more. All of them legible.`,
-    icon: 'palette',
-  },
-  {
-    title: 'GPU or CPU Rendering',
-    description:
-      'Switch between Metal (GPU-accelerated) and Core Text rendering with one config line and a quick ⌘R. High-throughput agent output scrolls without drama.',
+      'GPU rendering out of the box, paced to the display instead of a free-running timer, so a 60 fps spinner actually gets 60 frames. Core Text is one config line away.',
     icon: 'cpu',
   },
   {
-    title: 'Agent Status at a Glance',
+    // source: SmoothScroll.swift / SmoothScrollModel.swift (v1.5.0)
+    title: 'Scrolls Like a Mac App',
     description:
-      'Green dot when a command succeeds, red when it fails. OSC 133 shell integration does the tracking. No polling, no tab switching, no guessing.',
+      'Pixel-smooth trackpad scrolling with real momentum, carried by the OS events rather than a homemade timer. Ten thousand lines of agent output feel like a web page, not a slideshow.',
     icon: 'shell',
+  },
+  {
+    // source: PreferencesWindow.swift (PR #69); ⌘R live reload (AppDelegate.swift)
+    title: 'Settings, Both Ways',
+    description:
+      'A real Settings window on ⌘, that writes plain JSON, and ⌘R reloads either one live. Click or edit, whichever you trust more.',
+    icon: 'command',
   },
 ]
 
@@ -152,7 +131,7 @@ export const INSTALL_STEPS: InstallStep[] = [
   },
   {
     step: 3,
-    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 7 patches)',
+    description: 'Bootstrap the vendored SwiftTerm dependency (clones and applies all 12 patches)',
     code: './Scripts/bootstrap-vendor.sh',
     language: 'bash',
   },
@@ -161,133 +140,6 @@ export const INSTALL_STEPS: InstallStep[] = [
     description: 'Build a release bundle and launch',
     code: './Scripts/make-app-bundle.sh release\nopen "build/Goblin Portal.app"',
     language: 'bash',
-  },
-]
-
-export const GATEKEEPER_COMMAND =
-  'xattr -dr com.apple.quarantine "Goblin Portal.app"'
-
-export interface KeymapEntry {
-  shortcut: string
-  description: string
-}
-
-export interface KeymapGroup {
-  group: string
-  entries: KeymapEntry[]
-}
-
-export const KEYMAP: KeymapGroup[] = [
-  {
-    group: 'Spaces & Documents',
-    entries: [
-      { shortcut: '⌘N', description: 'New Space (window tab)' },
-      { shortcut: '⌘T', description: 'New document in current Space' },
-      { shortcut: '⌘⇧[', description: 'Previous Space' },
-      { shortcut: '⌘⇧]', description: 'Next Space' },
-      { shortcut: '⌘⌥←', description: 'Previous document' },
-      { shortcut: '⌘⌥→', description: 'Next document' },
-      { shortcut: '⌘1-⌘9', description: 'Jump to document by index' },
-    ],
-  },
-  {
-    group: 'View & Splits',
-    entries: [
-      { shortcut: '⌘B', description: 'Toggle sidebar' },
-      { shortcut: '⌘⇧\\', description: 'Split pane right' },
-      { shortcut: '⌘⇧-', description: 'Split pane down' },
-      { shortcut: '⌘⇧H/J/K/L', description: 'Focus pane left / down / up / right' },
-      { shortcut: '⌃⌘F', description: 'Full screen' },
-      { shortcut: '⌘R', description: 'Reload config' },
-      { shortcut: '⌘,', description: 'Open Settings' },
-    ],
-  },
-  {
-    group: 'Font Size',
-    entries: [
-      { shortcut: '⌘+', description: 'Zoom in (persists across tabs and relaunches)' },
-      { shortcut: '⌘-', description: 'Zoom out' },
-      { shortcut: '⌘0', description: 'Reset zoom to config font.size' },
-    ],
-  },
-  {
-    group: 'Line Editing',
-    entries: [
-      { shortcut: '⌘⌫', description: 'Delete to start of line (^U)' },
-      { shortcut: '⌘⌦', description: 'Delete to end of line (^K)' },
-      { shortcut: '⌘←', description: 'Jump to start of line (^A)' },
-      { shortcut: '⌘→', description: 'Jump to end of line (^E)' },
-      { shortcut: '⌥←', description: 'Jump back one word' },
-      { shortcut: '⌥→', description: 'Jump forward one word' },
-    ],
-  },
-]
-
-export interface EditorFeature {
-  title: string
-  description: string
-  icon: string
-}
-
-export const EDITOR_FEATURES: EditorFeature[] = [
-  {
-    title: 'Syntax Highlighting',
-    description:
-      '23 languages out of the box. Swift, TypeScript, Python, Rust, Go, Markdown, and more. Tree-sitter grammars with scope-aware token coloring.',
-    icon: 'syntax',
-  },
-  {
-    title: 'Command Palette & Symbols',
-    description:
-      '⌘⇧P fuzzy-filters every app command. ⌘⇧O jumps to symbols. ⌘L goes to a line number. All keyboard-driven, no mouse required.',
-    icon: 'command',
-  },
-  {
-    title: 'Code Folding & Navigation',
-    description:
-      'Indent-based fold and unfold with ⌘⌥[ and ⌘⌥]. Sticky scroll keeps the enclosing scope visible. Bracket pair highlighting.',
-    icon: 'fold',
-  },
-  {
-    title: 'Multi-Cursor Editing',
-    description:
-      '⌘D selects the next occurrence. Full multi-cursor support for parallel edits across a file. Same muscle memory as VS Code, without VS Code.',
-    icon: 'cursor',
-  },
-]
-
-export interface ShowcaseItem {
-  title: string
-  description: string
-  bullets: string[]
-  image: string
-  imageAlt: string
-}
-
-export const SHOWCASE_ITEMS: ShowcaseItem[] = [
-  {
-    title: 'Agent workspaces in action',
-    description:
-      'Each project gets its own Space with a full file tree, git status, and as many terminal tabs as you need. Your agents see the same directory structure you do.',
-    bullets: [
-      'Sidebar follows the focused shell\'s working directory automatically',
-      'Git status badges on every file: staged, modified, untracked, deleted',
-      'Double-click any file to open it in the built-in editor',
-    ],
-    image: '/images/goblin-portal-workspace.png',
-    imageAlt: 'Goblin Portal workspace showing a project file tree with multiple terminal tabs and git status indicators',
-  },
-  {
-    title: 'Edit without leaving the terminal',
-    description:
-      'Open files from the sidebar directly into a syntax-highlighted editor tab. Review what your agent wrote, make a quick fix, get back to work.',
-    bullets: [
-      'Syntax highlighting for 23 languages with tree-sitter grammars',
-      'Line numbers, indent guides, and a column guide at 80 characters',
-      'Auto-indent, bracket matching, and indent-rainbow coloring',
-    ],
-    image: '/images/goblin-portal-editor.png',
-    imageAlt: 'Goblin Portal editor tab showing syntax-highlighted TypeScript alongside the terminal',
   },
 ]
 
@@ -303,7 +155,8 @@ export interface ThemePalette {
 }
 
 /**
- * Eight theme palettes, hex values verbatim from ThemeValues.swift.
+ * Ten theme palettes, hex values verbatim from ThemeValues.swift
+ * (Gruvbox Dark and Rosé Pine from ThemeValues+CommunityPresets.swift).
  * This is the canonical source on the site for all theme colours.
  */
 export const THEMES: ThemePalette[] = [
@@ -424,6 +277,36 @@ export const THEMES: ThemePalette[] = [
       '#BD93F9', '#FF79C6', '#8BE9FD', '#F8F8F2',
       '#6272A4', '#FF6E6E', '#69FF94', '#FFFFA5',
       '#D6ACFF', '#FF92DF', '#A4FFFF', '#FFFFFF',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'gruvbox-dark',
+    displayName: 'Gruvbox Dark',
+    background: '#282828',
+    foreground: '#EBDBB2',
+    cursor: '#EBDBB2',
+    selection: '#665C54',
+    ansi: [
+      '#282828', '#CC241D', '#98971A', '#D79921',
+      '#458588', '#B16286', '#689D6A', '#A89984',
+      '#928374', '#FB4934', '#B8BB26', '#FABD2F',
+      '#83A598', '#D3869B', '#8EC07C', '#EBDBB2',
+    ],
+    isDefault: false,
+  },
+  {
+    name: 'rose-pine',
+    displayName: 'Rosé Pine',
+    background: '#191724',
+    foreground: '#E0DEF4',
+    cursor: '#E0DEF4',
+    selection: '#403D52',
+    ansi: [
+      '#26233A', '#EB6F92', '#31748F', '#F6C177',
+      '#9CCFD8', '#C4A7E7', '#EBBCBA', '#E0DEF4',
+      '#6E6A86', '#EB6F92', '#31748F', '#F6C177',
+      '#9CCFD8', '#C4A7E7', '#EBBCBA', '#E0DEF4',
     ],
     isDefault: false,
   },

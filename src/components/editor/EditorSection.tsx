@@ -91,17 +91,23 @@ const cardDescStyle: React.CSSProperties = {
   margin: 0,
 }
 
+/** Map feature titles to icon names for the two new cards that have dedicated icons. */
+function resolveIcon(feature: { title: string; icon: string }): string {
+  if (feature.title === 'Source Control') return 'git'
+  if (feature.title === 'Side-by-Side Diffs') return 'diff'
+  return feature.icon
+}
 
 export default function EditorSection() {
   return (
-    <section id="editor" className="earned-path contour-layer" style={sectionStyle}>
+    <section id="workspace" aria-labelledby="workspace-heading" className="earned-path contour-layer" style={sectionStyle}>
       <div style={innerStyle}>
-        <div style={labelStyle}>editor</div>
-        <h2 style={headingStyle}>More than a terminal</h2>
+        <div style={labelStyle}>workspace</div>
+        <h2 id="workspace-heading" style={headingStyle}>Review the diff where the agent wrote it</h2>
         <p style={subheadStyle}>
-          Open files from the sidebar into editor tabs that sit alongside your
-          terminals. Syntax highlighting, code folding, symbol outline, multi-cursor.
-          Enough to review and edit without switching apps, which is all most people actually need.
+          A file tree that follows your shell, a Source Control panel, side-by-side diffs and an
+          editor for the quick fix. Enough to review and edit without switching apps, which is all
+          most people actually need.
         </p>
 
         <div style={showcaseStackStyle}>
@@ -114,7 +120,11 @@ export default function EditorSection() {
           {EDITOR_FEATURES.map((feature) => (
             <article key={feature.title} style={cardStyle}>
               <div style={iconWrapStyle}>
-                <Icon name={feature.icon} size={18} style={{ color: 'var(--local-accent)' }} />
+                <Icon
+                  name={resolveIcon(feature)}
+                  size={18}
+                  style={{ color: 'var(--local-accent)' }}
+                />
               </div>
               <h3 style={cardTitleStyle}>{feature.title}</h3>
               <p style={cardDescStyle}>{feature.description}</p>
