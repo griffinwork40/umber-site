@@ -10,21 +10,24 @@ import KeymapSection from '@/components/keymap/KeymapSection'
 import FaqSection from '@/components/faq/FaqSection'
 import InstallSection from '@/components/install/InstallSection'
 import Footer from '@/components/footer/Footer'
+import { getLatestRelease } from '@/lib/latest-release'
 
-export default function Page() {
+export default async function Page() {
+  const release = await getLatestRelease()
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader dmgUrl={release.dmgUrl} />
       <main id="main-content">
-        <HeroSection />
+        <HeroSection release={release} />
         <AgentSection />
         <FeaturesSection />
         <EditorSection />
         <WhatsNew />
-        <ThemeShowcase />
+        <ThemeShowcase dmgUrl={release.dmgUrl} version={release.version} />
         <KeymapSection />
         <FaqSection />
-        <InstallSection />
+        <InstallSection dmgUrl={release.dmgUrl} version={release.version} />
       </main>
       <Footer />
     </>
