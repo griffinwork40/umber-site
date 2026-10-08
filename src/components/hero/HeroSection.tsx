@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import HeroContent from './HeroContent'
 import HeroScreenshot from './HeroScreenshot'
+import type { ReleaseInfo } from '@/lib/latest-release'
 
 const sectionStyle: React.CSSProperties = {
   minHeight: '100vh',
@@ -25,7 +26,11 @@ const innerStyle: React.CSSProperties = {
   zIndex: 1,
 }
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  release: ReleaseInfo
+}
+
+export default function HeroSection({ release }: HeroSectionProps) {
   const [visible, setVisible] = useState(false)
   // After the entrance animation settles, clear willChange so the element
   // no longer holds a promoted compositor layer on a static element.
@@ -64,7 +69,7 @@ export default function HeroSection() {
       }}
     >
       <div style={innerStyle} className="hero-inner">
-        <HeroContent />
+        <HeroContent release={release} />
         <HeroScreenshot />
       </div>
     </section>
