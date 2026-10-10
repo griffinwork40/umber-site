@@ -6,7 +6,7 @@
 
 Goblin Portal is a macOS terminal application designed for running AI coding agents like Claude Code, Codex, Hermes, and Agent AFK. Built entirely in Swift and AppKit, it delivers native macOS performance without Electron, V8, or a renderer process. The RAM that other terminals consume goes back to your agent.
 
-Current version: v1.1.0 (September 16, 2026).
+Current version: v1.12.0 (October 10, 2026).
 
 ## Key Features
 
@@ -71,7 +71,7 @@ If macOS Gatekeeper blocks the app:
 
 ### Pre-built DMG
 
-Download: https://github.com/griffinwork40/goblin-portal/releases/download/v1.1.0/GoblinPortal-v1.1.0.dmg
+Download: https://github.com/griffinwork40/goblin-portal/releases/download/v1.12.0/GoblinPortal-v1.12.0.dmg
 
 ## Keyboard Shortcuts
 
@@ -117,14 +117,13 @@ Eight built-in themes, all contrast-verified across 474 assertions:
 7. Nord
 8. Dracula
 
-## What's New in v1.1.0
+## What's New in v1.12.0
 
-Released September 16, 2026.
+Released October 10, 2026.
 
-- **New Icon**: Acid-green >_ prompt with a layered portal bloom. The Goblin Portal identity lives in the colour, not a literal portal shape.
-- **CLI --wait for $EDITOR**: GoblinPortal --wait <file> opens a file in the editor and blocks until the tab closes. Set it as your $EDITOR for git commit messages, crontab, and anything else that expects a blocking editor.
-- **Ghostty Engine Removed**: SwiftTerm is now the sole terminal engine. Smaller binary, cleaner build, simpler codebase.
-- **Vertical Splits**: Split panes vertically with Cmd+Shift+-. The v2 split architecture now supports both horizontal and vertical layouts.
+- **Sidebar follows tmux**: With tmux, the sidebar tracks the active pane directory through window and pane switches. Over ssh or mosh it stops following and shows a quiet note ("remote: host" or "following paused") instead of opening a remote path locally. A remote OSC 7 report is never treated as a local path.
+- **Typing actions only work in a shell**: Insert Path, cd Here, Send Path (Cmd+Shift+C), and Run in Terminal (Cmd+Shift+R) check what is in front before sending. If vim, an agent, ssh, or a script is running, they refuse with a beep. Send Path and Run in Terminal also grey out in the menu.
+- **No empty frame on cd**: The file tree lists folders off the main thread. The previous tree stays on screen until the new listing lands, so there is no empty frame when you change directory.
 
 ## Links
 

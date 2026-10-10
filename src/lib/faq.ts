@@ -1,5 +1,5 @@
 /**
- * FAQ copy. Each answer is limited to what the goblin-portal repo or the v1.8.0
+ * FAQ copy. Each answer is limited to what the goblin-portal repo or the v1.12.0
  * release assets can back up; the source sits beside every entry.
  */
 
@@ -24,7 +24,7 @@ export const FAQ: FaqEntry[] = [
       'Nothing. It is MIT licensed and the source is on GitHub. No account, no login, and nobody will ask you to "jump on a quick call".',
   },
   {
-    // source: v1.8.0 binary is arm64-only (lipo -info), LSMinimumSystemVersion 14.0
+    // source: v1.12.0 binary is arm64-only (lipo -info), LSMinimumSystemVersion 14.0
     question: 'Will it run on my Mac?',
     answer:
       'If it runs macOS 14 Sonoma or later on Apple silicon, yes. The release build is arm64 only, so Intel Macs are not supported.',
@@ -36,7 +36,7 @@ export const FAQ: FaqEntry[] = [
       'Absolutely not. Native Mac, on purpose. Windows is someone else\'s problem.',
   },
   {
-    // source: spctl -a: "Notarized Developer ID"; stapler validate passed on the v1.8.0 bundle
+    // source: spctl -a: "Notarized Developer ID"; stapler validate passed on the v1.12.0 bundle
     question: 'Will macOS let me open it?',
     answer:
       'Yes. Releases are signed with a Developer ID and notarized by Apple, so it opens like any other app. No terminal incantations required.',
