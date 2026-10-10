@@ -14,26 +14,26 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.8.0',
-  date: 'October 7, 2026',
+  version: 'v1.12.0',
+  date: 'October 10, 2026',
   highlights: [
     {
-      // source: goblin-portal #160 (StarterConfig.swift, check-starter-config.sh), #161 (PreferencesDiff.swift)
-      title: 'Your Config File Is Actually Read',
+      // source: goblin-portal #206 (ShellDirectory.swift, SidebarViewController+Directory.swift)
+      title: 'The Sidebar Follows the Right Folder',
       description:
-        'The starter config.json that ⌘, writes was not valid JSON, so every setting in it was quietly ignored. It parses now, and the Settings window\'s Apply writes only the keys you changed instead of switching your renderer back to Core Text.',
+        'With tmux, the sidebar tracks the active pane directory through window and pane switches. Over ssh or mosh it stops following and shows a quiet note ("remote: host" or "following paused") instead of opening a remote path locally. A remote OSC 7 report is never treated as a local path.',
     },
     {
-      // source: goblin-portal #164 (AppMenu+Window.swift, GoblinPortalTerminalView+Clear.swift), #165 (check-palette-covers-menu.sh)
-      title: 'The Menus a Mac App Should Have',
+      // source: goblin-portal #206 (TerminalActions.swift, SidebarViewController+Actions.swift)
+      title: 'Typing Actions Only Work in a Shell',
       description:
-        'Minimize (⌘M), Zoom, Hide Others (⌥⌘H), a Help menu (⌘?), and Clear Buffer (⌘K), which wipes the focused pane\'s screen and scrollback. Every menu action is also in the ⌘⇧P command palette, and a gate script checks that none go missing.',
+        'Insert Path, cd Here, Send Path (⌘⇧C), and Run in Terminal (⌘⇧R) now check what is in front before sending. If vim, an agent, ssh, or a script is running, they refuse with a beep. Send Path and Run in Terminal also grey out in the menu.',
     },
     {
-      // source: goblin-portal #162 (SpaceWindowController+InitialFrame.swift), #163 (PaneDimming.swift, APCA Lc 45 floor)
-      title: 'A Sensible First Window and Readable Splits',
+      // source: goblin-portal #206, closes #158 (FileTreeViewController+Refresh.swift)
+      title: 'No Empty Frame on cd',
       description:
-        'The first window opens at 1100×680, centred, and a cramped 500×532 frame saved by older versions is repaired. Unfocused split panes dim only as far as keeps their text readable, measured for every built-in theme.',
+        'The file tree lists folders off the main thread. The previous tree stays on screen until the new listing lands, so there is no empty frame when you change directory. A reveal requested mid-load is queued, not lost.',
     },
   ],
 }

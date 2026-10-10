@@ -1,7 +1,7 @@
 /**
  * Keyboard shortcut reference.
  * Source: goblin-portal app/Sources/GoblinPortal/KeyBindings.swift, AppMenu.swift, AppMenu+Window.swift and
- * AppMenu+Navigate.swift (v1.8.0).
+ * AppMenu+Navigate.swift (v1.12.0).
  * Re-exported from src/lib/constants.ts; split out to keep that file under the 350-LOC limit.
  */
 
