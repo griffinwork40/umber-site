@@ -14,26 +14,32 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.8.0',
-  date: 'October 7, 2026',
+  version: 'v1.12.2',
+  date: 'October 11, 2026',
   highlights: [
     {
-      // source: goblin-portal #160 (StarterConfig.swift, check-starter-config.sh), #161 (PreferencesDiff.swift)
-      title: 'Your Config File Is Actually Read',
+      // source: goblin-portal #206 (feat: sidebar follows tmux, honest over ssh, guarded typing, async tree — v1.12.0)
+      title: 'The Sidebar Follows tmux and ssh',
       description:
-        'The starter config.json that ⌘, writes was not valid JSON, so every setting in it was quietly ignored. It parses now, and the Settings window\'s Apply writes only the keys you changed instead of switching your renderer back to Core Text.',
+        'The directory sidebar now tracks your active tmux pane and stays honest over ssh, showing the remote path when it can read it and nothing when it cannot. Typing actions are guarded so keystrokes never go to a process that is not the shell.',
     },
     {
-      // source: goblin-portal #164 (AppMenu+Window.swift, GoblinPortalTerminalView+Clear.swift), #165 (check-palette-covers-menu.sh)
-      title: 'The Menus a Mac App Should Have',
+      // source: goblin-portal #202 (close confirmation, exited shell keeps tab, Dock attention — v1.11.0), #203 (5000-line scrollback — v1.11.0)
+      title: 'Never Lose Agent Output',
       description:
-        'Minimize (⌘M), Zoom, Hide Others (⌥⌘H), a Help menu (⌘?), and Clear Buffer (⌘K), which wipes the focused pane\'s screen and scrollback. Every menu action is also in the ⌘⇧P command palette, and a gate script checks that none go missing.',
+        'Closing a tab with a running process now asks first. An exited shell keeps its tab and scrollback so you can read the output before it disappears. Goblin Portal bounces the Dock icon when a long-running agent finishes in the background. Default scrollback raised from 1,000 to 5,000 lines.',
     },
     {
-      // source: goblin-portal #162 (SpaceWindowController+InitialFrame.swift), #163 (PaneDimming.swift, APCA Lc 45 floor)
-      title: 'A Sensible First Window and Readable Splits',
+      // source: goblin-portal #153 (ligatures — v1.10.0), #151 (combining marks — v1.10.0), #152 (fontThicken — v1.10.0)
+      title: 'Ligature Control and Rendering Fixes',
       description:
-        'The first window opens at 1100×680, centred, and a cramped 500×532 frame saved by older versions is repaired. Unfocused split panes dim only as far as keeps their text readable, measured for every built-in theme.',
+        'Set "ligatures": false in config.json to stop fonts like JetBrains Mono from joining -> and =>. Combining marks after wide CJK characters now land over the right cell. The font-thicken setting is gone on macOS 15 where it was already a no-op.',
+    },
+    {
+      // source: goblin-portal #214 (prefer kernel cwd over stale OSC 7 — v1.12.2), #211 (NSLocalNetworkUsageDescription — v1.12.1), #216 (honest fontThicken warning — v1.12.2)
+      title: 'Directory Follow and LAN Access Fixes',
+      description:
+        'Directory follow now prefers the kernel-resolved working directory over a stale shell OSC 7 report, so cd X && cmd no longer leaves the sidebar pointing at the wrong folder. Programs run in the terminal can now reach the local network without a silent denial.',
     },
   ],
 }
