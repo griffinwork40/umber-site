@@ -14,32 +14,26 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.12.2',
+  version: 'v1.13.0',
   date: 'October 11, 2026',
   highlights: [
     {
-      // source: goblin-portal #206 (feat: sidebar follows tmux, honest over ssh, guarded typing, async tree, v1.12.0)
-      title: 'The Sidebar Follows tmux and ssh',
+      // source: goblin-portal #227 (T2.5, NotificationPermissionPolicy.swift, check-notification-permission.sh, v1.13.0)
+      title: 'No Permission Prompt at Launch',
       description:
-        'The sidebar now follows your active tmux pane through window switches, pane switches and cd. Over ssh it pauses and names the remote host instead of guessing, and a remote path is never opened as a local one. Insert Path, cd Here and the other shell-directed actions refuse to type into vim, an agent REPL or an ssh session.',
+        'Goblin Portal no longer asks for notification permission the moment it opens. It asks the first time it has something to tell you: a long command finishing in a background tab, or a notification from a tool running in the terminal. The notification that triggered the request is still delivered once you allow it. Dock bounces and badges never needed permission and work either way.',
     },
     {
-      // source: goblin-portal #202 (close confirmation, exited shell keeps tab, Dock attention, v1.11.0), #203 (5000-line scrollback, v1.11.0), #208 (restart in the right directory, v1.12.2)
-      title: 'Never Lose Agent Output',
+      // source: goblin-portal #224 (DirectoryListing.sorted, FileTreeViewController+Loading.swift, check-child-sorting.sh, v1.13.0)
+      title: 'Sorting Moved Off the Main Thread',
       description:
-        'Closing a tab, a split, a window or the app with a running process now asks first, once, naming the jobs. A shell that exits keeps its tab and scrollback, says why it exited, and Return starts a fresh shell in the same directory, even after cd X && exec cmd. A bell or notification from a background tab bounces the Dock and badges it. Default scrollback is now 5,000 lines, up from 1,000.',
+        'When the sidebar reloads a folder in the background, it now sorts the entries in the background as well, so the main thread only has to show the result. Folders still come first, hidden files still come last, and expanded folders and your selection survive the reload.',
     },
     {
-      // source: goblin-portal #153 (ligatures, v1.10.0), #151 (combining marks, v1.10.0), #152 (fontThicken, v1.10.0)
-      title: 'Ligature Control and CJK Rendering',
+      // source: goblin-portal #226 (TmuxDirectory.swift socket uid check, GOBLIN_PORTAL_DIAG nil reasons, closes #209, v1.13.0)
+      title: 'Safer tmux Following',
       description:
-        'Set "ligatures": false in config.json to stop fonts like JetBrains Mono from joining -> and =>, in both renderers. Combining marks after wide CJK characters now draw over the character they belong to. The Font Thicken control left Settings, because it has no effect on macOS 15 and later.',
-    },
-    {
-      // source: goblin-portal #166 T1.5 (config-warnings banner, v1.9.0, a9d41188), #211 (NSLocalNetworkUsageDescription, v1.12.1)
-      title: 'Config Errors You Can See, and LAN Access',
-      description:
-        'A mistake in config.json now shows a banner in the window, so a launch from Finder or the Dock no longer ignores your settings in silence. Programs you run in the terminal can reach your local network instead of being quietly denied.',
+        'The sidebar now only follows tmux servers whose socket belongs to you, so a socket left by another user in a shared directory is ignored. When following pauses, launching from a terminal with GOBLIN_PORTAL_DIAG=1 prints the reason, for example a tmux started with its own -S socket.',
     },
   ],
 }
