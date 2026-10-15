@@ -89,7 +89,7 @@ export const FEATURES: Feature[] = [
     // #203 (5000-line scrollback, v1.11.0), #208 (restart in the right directory, v1.12.2)
     title: 'Never Lose Agent Output',
     description:
-      'Closing a tab or window with a running process asks first, naming the jobs. A shell that exits keeps its tab and scrollback, and Return restarts in the same directory. Default scrollback is 5,000 lines. A background tab finishing bounces the Dock.',
+      'Closing a tab or window with a running process asks first, naming the jobs. A shell that exits with an error keeps its tab and scrollback, and Return restarts it in the same directory. Default scrollback is 5,000 lines. A bell or notification from a background tab bounces the Dock.',
     icon: 'shell',
   },
   {
