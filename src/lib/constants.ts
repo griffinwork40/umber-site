@@ -84,6 +84,23 @@ export const FEATURES: Feature[] = [
       'A real Settings window on ⌘, that writes plain JSON, and ⌘R reloads either one live. Click or edit, whichever you trust more.',
     icon: 'command',
   },
+  {
+    // source: goblin-portal #202 (close confirmation, exited shell keeps tab, Dock attention, v1.11.0),
+    // #203 (5000-line scrollback, v1.11.0), #208 (restart in the right directory, v1.12.2)
+    title: 'Never Lose Agent Output',
+    description:
+      'Closing a tab or window with a running process asks first, naming the jobs. A shell that exits keeps its tab and scrollback, and Return restarts in the same directory. Default scrollback is 5,000 lines. A background tab finishing bounces the Dock.',
+    icon: 'shell',
+  },
+  {
+    // source: goblin-portal #235 (TitlebarStyle.swift, SpaceWindowController+Titlebar.swift,
+    // check-titlebar-layout.sh; measured 41 rows compact vs 39 standard, 1100x680 window,
+    // sidebar visible), built on #234 (safe-area layout), v1.14.0
+    title: 'Compact Titlebar',
+    description:
+      'Set "titlebar": "compact" in config.json and the terminal moves into the titlebar band, giving a default-size window two more rows. Stays clear of the traffic lights, sidebar toggle, tab bar, and warning banner. ⌘R switches live.',
+    icon: 'command',
+  },
 ]
 
 export interface AgentPoint {
