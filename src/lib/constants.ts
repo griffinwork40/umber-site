@@ -25,15 +25,15 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'A native macOS terminal for AI agents. Run Claude Code, Codex, Hermes and Agent AFK in Swift and AppKit, not Electron. Free and MIT licensed.',
-  // source: v1.14.0 release assets (GoblinPortal-v1.14.0.dmg = 2,588,418 bytes; binary is arm64-only,
+  // source: v1.14.1 release assets (GoblinPortal-v1.14.1.dmg = 2,601,540 bytes; binary is arm64-only,
   // LSMinimumSystemVersion 14.0; the app is Developer ID signed + notarized + stapled (spctl: accepted,
   // Notarized Developer ID); the DMG carries a stapled ticket but no code signature of its own, as before)
   downloadSize: '2.5 MB',
   requirements: 'macOS 14+ · Apple silicon',
   license: 'MIT',
-  version: 'v1.14.0',
+  version: 'v1.14.1',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.14.0/GoblinPortal-v1.14.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.14.1/GoblinPortal-v1.14.1.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 

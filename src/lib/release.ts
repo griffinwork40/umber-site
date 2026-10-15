@@ -14,16 +14,14 @@ export const RELEASE: {
   date: string
   highlights: ReleaseHighlight[]
 } = {
-  version: 'v1.14.0',
-  date: 'October 12, 2026',
+  version: 'v1.14.1',
+  date: 'October 15, 2026',
   highlights: [
     {
-      // source: goblin-portal #235 (TitlebarStyle.swift, SpaceWindowController+Titlebar.swift, check-titlebar-layout.sh;
-      // measured 41 rows compact vs 39 standard, 1100x680 window, sidebar visible), built on #234 (safe-area layout), v1.14.0
-      title: 'A Compact Titlebar',
+      // source: goblin-portal #238 (fix: Return confirms the close alert, v1.14.1)
+      title: 'Return Closes — Not Cancels',
       description:
-        'Set "titlebar": "compact" in config.json and the terminal moves up into the titlebar band wherever nothing else needs it, which gives a default-size window two more rows. It stays clear of the traffic lights, the sidebar toggle, the native tab bar and the config warning banner, and ⌘R switches an open window either way. In compact mode the window title is hidden and the band over the terminal no longer drags the window. The default titlebar is unchanged.',
-      configExample: '"titlebar": "compact"',
+        '⌘W on a tab or window running a process asks you to confirm. Pressing Return (or Enter) now closes it. Previously the default button was Cancel, so Enter did nothing useful. Escape still cancels.',
     },
   ],
 }
