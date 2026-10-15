@@ -25,15 +25,15 @@ export const SITE_META = {
   tagline: 'A Mac terminal that takes AI agents seriously.',
   description:
     'A native macOS terminal for AI agents. Run Claude Code, Codex, Hermes and Agent AFK in Swift and AppKit, not Electron. Free and MIT licensed.',
-  // source: v1.14.0 release assets (GoblinPortal-v1.14.0.dmg = 2,588,418 bytes; binary is arm64-only,
+  // source: v1.14.1 release assets (GoblinPortal-v1.14.1.dmg = 2,601,540 bytes; binary is arm64-only,
   // LSMinimumSystemVersion 14.0; the app is Developer ID signed + notarized + stapled (spctl: accepted,
   // Notarized Developer ID); the DMG carries a stapled ticket but no code signature of its own, as before)
   downloadSize: '2.5 MB',
   requirements: 'macOS 14+ · Apple silicon',
   license: 'MIT',
-  version: 'v1.14.0',
+  version: 'v1.14.1',
   repoUrl: 'https://github.com/griffinwork40/goblin-portal',
-  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.14.0/GoblinPortal-v1.14.0.dmg',
+  dmgUrl: 'https://github.com/griffinwork40/goblin-portal/releases/download/v1.14.1/GoblinPortal-v1.14.1.dmg',
   releasesUrl: 'https://github.com/griffinwork40/goblin-portal/releases',
 } as const
 
@@ -82,6 +82,23 @@ export const FEATURES: Feature[] = [
     title: 'Settings, Both Ways',
     description:
       'A real Settings window on ⌘, that writes plain JSON, and ⌘R reloads either one live. Click or edit, whichever you trust more.',
+    icon: 'command',
+  },
+  {
+    // source: goblin-portal #202 (close confirmation, exited shell keeps tab, Dock attention, v1.11.0),
+    // #203 (5000-line scrollback, v1.11.0), #208 (restart in the right directory, v1.12.2)
+    title: 'Never Lose Agent Output',
+    description:
+      'Closing a tab or window with a running process asks first, naming the jobs. A shell that exits with an error keeps its tab and scrollback, and Return restarts it in the same directory. Default scrollback is 5,000 lines. A bell or notification from a background tab bounces the Dock.',
+    icon: 'shell',
+  },
+  {
+    // source: goblin-portal #235 (TitlebarStyle.swift, SpaceWindowController+Titlebar.swift,
+    // check-titlebar-layout.sh; measured 41 rows compact vs 39 standard, 1100x680 window,
+    // sidebar visible), built on #234 (safe-area layout), v1.14.0
+    title: 'Compact Titlebar',
+    description:
+      'Set "titlebar": "compact" in config.json and the terminal moves into the titlebar band, giving a default-size window two more rows. Stays clear of the traffic lights, sidebar toggle, tab bar, and warning banner. ⌘R switches live.',
     icon: 'command',
   },
 ]
