@@ -4,70 +4,75 @@ import { describe, it, expect } from 'vitest'
 import ThemeShowcase from './ThemeShowcase'
 import { THEMES, SITE_META } from '@/lib/constants'
 
+const defaultProps = {
+  dmgUrl: SITE_META.dmgUrl,
+  version: SITE_META.version,
+}
+
 describe('ThemeShowcase', () => {
   it('renders without throwing', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
   })
 
   it('renders every theme name as a tab', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     THEMES.forEach((theme) => {
       expect(screen.getByRole('tab', { name: new RegExp(theme.displayName) })).toBeInTheDocument()
     })
   })
 
   it('marks umber as the default theme with a badge', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     // The default badge should appear
     expect(screen.getByText('default')).toBeInTheDocument()
   })
 
   it('umber tab is selected by default (easter egg theme)', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tab', { name: /Umber/ })).toHaveAttribute('aria-selected', 'true')
   })
 
   it('non-default themes are not selected initially', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tab', { name: /Tokyo Night/ })).toHaveAttribute('aria-selected', 'false')
   })
 
   it('clicking a theme tab selects it', async () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     await userEvent.click(screen.getByRole('tab', { name: /Tokyo Night/ }))
     expect(screen.getByRole('tab', { name: /Tokyo Night/ })).toHaveAttribute('aria-selected', 'true')
   })
 
   it('clicking a theme tab deselects umber', async () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     await userEvent.click(screen.getByRole('tab', { name: /Tokyo Night/ }))
     expect(screen.getByRole('tab', { name: /Umber/ })).toHaveAttribute('aria-selected', 'false')
   })
 
   it('renders a tabpanel for the active theme', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tabpanel')).toBeInTheDocument()
   })
 
   it('has section element with id="themes"', () => {
-    const { container } = render(<ThemeShowcase />)
+    const { container } = render(<ThemeShowcase {...defaultProps} />)
     expect(container.querySelector('section#themes')).toBeInTheDocument()
   })
 
   it('has h2 heading', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('heading', { level: 2, name: 'Measured themes' })).toBeInTheDocument()
   })
 
   // --- Issue #20: preview-frame wiring ---
 
   it('tabpanel has class theme-preview-frame', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tabpanel')).toHaveClass('theme-preview-frame')
   })
 
   it('tabpanel --preview-glow equals THEMES[0].cursor for initial default', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     const defaultTheme = THEMES.find((t) => t.isDefault) ?? THEMES[0]
     const panel = screen.getByRole('tabpanel')
     // The style is set via inline style on the element
@@ -75,7 +80,7 @@ describe('ThemeShowcase', () => {
   })
 
   it('swatch row renders 16 children', () => {
-    const { container } = render(<ThemeShowcase />)
+    const { container } = render(<ThemeShowcase {...defaultProps} />)
     // The swatch row is a div[aria-hidden] WITHOUT role="presentation" (the
     // title-bar div has role="presentation" and also aria-hidden, so we exclude it).
     // Each swatch child is a <span> with an inline backgroundColor.
@@ -85,7 +90,7 @@ describe('ThemeShowcase', () => {
   })
 
   it('clicking another tab changes --preview-glow to the new theme cursor', async () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     // Pick a non-default theme to switch to
     const otherTheme = THEMES.find((t) => !t.isDefault)!
     await userEvent.click(screen.getByRole('tab', { name: new RegExp(otherTheme.displayName) }))
@@ -94,22 +99,22 @@ describe('ThemeShowcase', () => {
   })
 
   it('renders 10 theme tabs', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getAllByRole('tab')).toHaveLength(10)
   })
 
   it('renders Gruvbox Dark tab', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tab', { name: /Gruvbox Dark/ })).toBeInTheDocument()
   })
 
   it('renders Rosé Pine tab', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(screen.getByRole('tab', { name: /Ros/ })).toBeInTheDocument()
   })
 
   it('renders download CTA linking to dmgUrl', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     const cta = screen.getByRole('link', {
       name: new RegExp(`Download ${SITE_META.version}`),
     })
@@ -118,7 +123,7 @@ describe('ThemeShowcase', () => {
   })
 
   it('renders the "Ships with all ten" muted line', () => {
-    render(<ThemeShowcase />)
+    render(<ThemeShowcase {...defaultProps} />)
     expect(
       screen.getByText(/Ships with all ten\. Pick one in Settings\./),
     ).toBeInTheDocument()

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { INSTALL_STEPS, SITE_META } from '@/lib/constants'
+import type { ReleaseInfo } from '@/lib/latest-release'
 import CodeBlock from '@/components/ui/CodeBlock'
 import Button from '@/components/ui/Button'
 
@@ -136,7 +137,9 @@ const closingLineStyle: React.CSSProperties = {
   fontStyle: 'italic',
 }
 
-export default function InstallSection() {
+type InstallSectionProps = Pick<ReleaseInfo, 'dmgUrl' | 'version'>
+
+export default function InstallSection({ dmgUrl, version }: InstallSectionProps) {
   const [showSource, setShowSource] = useState(false)
 
   return (
@@ -150,8 +153,8 @@ export default function InstallSection() {
 
         {/* DMG download — primary path */}
         <div style={downloadBoxStyle} className="install-stage">
-          <Button href={SITE_META.dmgUrl} variant="primary" size="lg">
-            Download Goblin Portal {SITE_META.version}
+          <Button href={dmgUrl} variant="primary" size="lg">
+            Download Goblin Portal {version}
           </Button>
           <p style={requirementsStyle}>
             {SITE_META.requirements} &middot; {SITE_META.license}

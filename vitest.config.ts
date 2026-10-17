@@ -13,6 +13,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // 'server-only' is a Next.js guard that throws in non-RSC environments.
+      // In vitest (jsdom) we replace it with an empty no-op so the module can
+      // be imported for testing the pure parse logic that lives alongside it.
+      'server-only': path.resolve(__dirname, './src/test/server-only-mock.ts'),
     },
   },
 })

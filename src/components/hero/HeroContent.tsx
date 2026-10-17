@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { SITE_META, PROOF_POINTS } from '@/lib/constants'
+import type { ReleaseInfo } from '@/lib/latest-release'
 
 const contentStyle: React.CSSProperties = {
   display: 'flex',
@@ -118,7 +119,11 @@ const githubLinkStyle: React.CSSProperties = {
   transition: 'color 150ms ease',
 }
 
-export default function HeroContent() {
+interface HeroContentProps {
+  release: ReleaseInfo
+}
+
+export default function HeroContent({ release }: HeroContentProps) {
   return (
     <div style={contentStyle} className="hero-content">
       {/* Icon + version badge */}
@@ -130,7 +135,7 @@ export default function HeroContent() {
           height={48}
           style={{ borderRadius: 'var(--radius-3)' }}
         />
-        <a href={SITE_META.releasesUrl} style={versionStyle}>{SITE_META.version}</a>
+        <a href={SITE_META.releasesUrl} style={versionStyle}>{release.version}</a>
       </div>
 
       {/* Heading */}
@@ -147,16 +152,16 @@ export default function HeroContent() {
       {/* Primary CTA: dominant download */}
       <div style={ctaGroupStyle}>
         <a
-          href={SITE_META.dmgUrl}
+          href={release.dmgUrl}
           style={primaryBtnStyle}
           className="hero-cta"
-          download={`GoblinPortal-${SITE_META.version}.dmg`}
+          download={`GoblinPortal-${release.version}.dmg`}
           rel="noopener noreferrer"
         >
-          Download {SITE_META.version}
+          Download {release.version}
         </a>
         <span style={detailStyle}>
-          <span style={detailStrongStyle}>{SITE_META.downloadSize}</span>
+          <span style={detailStrongStyle}>{release.downloadSize}</span>
           {SITE_META.requirements}
         </span>
       </div>

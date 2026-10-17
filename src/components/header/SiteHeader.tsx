@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import { SITE_META } from '@/lib/constants'
+
 import Button from '@/components/ui/Button'
 
 const headerStyle: React.CSSProperties = {
@@ -60,7 +60,11 @@ const rightGroupStyle: React.CSSProperties = {
  * roughly when the hero headline leaves view. */
 export const HEADER_REVEAL_Y = 320
 
-export default function SiteHeader() {
+interface SiteHeaderProps {
+  dmgUrl: string
+}
+
+export default function SiteHeader({ dmgUrl }: SiteHeaderProps) {
   const [visible, setVisible] = useState(false)
   const rafId = useRef(0)
   const lastVisible = useRef(false)
@@ -100,7 +104,7 @@ export default function SiteHeader() {
         </ul>
       </nav>
       <div style={rightGroupStyle}>
-        <Button href={SITE_META.dmgUrl} variant="primary">
+        <Button href={dmgUrl} variant="primary">
           Download
         </Button>
       </div>

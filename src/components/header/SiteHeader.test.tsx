@@ -1,6 +1,7 @@
 import { render, screen, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import SiteHeader, { HEADER_REVEAL_Y } from './SiteHeader'
+import { SITE_META } from '@/lib/constants'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -60,25 +61,25 @@ describe('SiteHeader', () => {
   // ── 1. Initial visibility ──────────────────────────────────────────────────
 
   it('renders without throwing', () => {
-    render(<SiteHeader />)
+    render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
   })
 
   it('header is hidden at mount (visible = false)', () => {
-    const { container } = render(<SiteHeader />)
+    const { container } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
     const header = container.querySelector('header')!
     // The hiddenStyle applies transform: translateY(-100%) when not visible
     expect(header.getAttribute('style')).toMatch(/translateY\(-100%\)/)
   })
 
   it('has the site navigation aria-label', () => {
-    render(<SiteHeader />)
+    render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
     expect(screen.getByRole('banner', { name: 'Site navigation' })).toBeInTheDocument()
   })
 
   // ── 2. Visible after scroll > HEADER_REVEAL_Y ─────────────────────────────
 
   it('becomes visible after scrollY exceeds HEADER_REVEAL_Y', () => {
-    const { container } = render(<SiteHeader />)
+    const { container } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     act(() => {
       setScrollY(HEADER_REVEAL_Y + 1)
@@ -91,7 +92,7 @@ describe('SiteHeader', () => {
   })
 
   it('remains hidden when scrollY is exactly at HEADER_REVEAL_Y (not greater)', () => {
-    const { container } = render(<SiteHeader />)
+    const { container } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     act(() => {
       setScrollY(HEADER_REVEAL_Y)
@@ -104,7 +105,7 @@ describe('SiteHeader', () => {
   })
 
   it('hides again after scrolling back below threshold', () => {
-    const { container } = render(<SiteHeader />)
+    const { container } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     // Scroll down to reveal
     act(() => {
@@ -127,7 +128,7 @@ describe('SiteHeader', () => {
   // ── 3. cancelAnimationFrame called on unmount when frame is pending ────────
 
   it('calls cancelAnimationFrame on unmount when a frame is pending', () => {
-    const { unmount } = render(<SiteHeader />)
+    const { unmount } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     // Schedule a rAF by scrolling (but do NOT flush it, so it stays pending)
     act(() => {
@@ -146,7 +147,7 @@ describe('SiteHeader', () => {
   })
 
   it('does not call cancelAnimationFrame on unmount when no frame is pending', () => {
-    const { unmount } = render(<SiteHeader />)
+    const { unmount } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     // No scroll, no rAF enqueued
     act(() => {
@@ -159,7 +160,7 @@ describe('SiteHeader', () => {
   // ── 4. Dedup guard — setVisible not called when shouldShow === lastVisible ─
 
   it('does not schedule a second rAF for the same scroll event (throttle guard)', () => {
-    render(<SiteHeader />)
+    render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     act(() => {
       setScrollY(HEADER_REVEAL_Y + 1)
@@ -174,7 +175,7 @@ describe('SiteHeader', () => {
   })
 
   it('does not trigger a re-render when shouldShow equals lastVisible (dedup)', () => {
-    const { container } = render(<SiteHeader />)
+    const { container } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     // First: scroll past threshold — changes lastVisible from false → true
     act(() => {
@@ -201,7 +202,7 @@ describe('SiteHeader', () => {
   it('registers the scroll listener with { passive: true }', () => {
     const addEventListenerSpy = vi.spyOn(window, 'addEventListener')
 
-    render(<SiteHeader />)
+    render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     const scrollCall = addEventListenerSpy.mock.calls.find(
       ([event]) => event === 'scroll'
@@ -214,7 +215,7 @@ describe('SiteHeader', () => {
   it('removes the scroll listener on unmount', () => {
     const removeEventListenerSpy = vi.spyOn(window, 'removeEventListener')
 
-    const { unmount } = render(<SiteHeader />)
+    const { unmount } = render(<SiteHeader dmgUrl={SITE_META.dmgUrl} />)
 
     act(() => {
       unmount()

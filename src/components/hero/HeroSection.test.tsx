@@ -4,6 +4,13 @@ import { act } from 'react'
 import HeroSection from './HeroSection'
 import { SITE_META, ASSERTION_COUNT } from '@/lib/constants'
 
+const defaultRelease = {
+  version: SITE_META.version,
+  dmgUrl: SITE_META.dmgUrl,
+  downloadSize: SITE_META.downloadSize,
+  publishedAt: '',
+}
+
 describe('HeroSection', () => {
   beforeEach(() => {
     vi.useFakeTimers()
@@ -14,26 +21,26 @@ describe('HeroSection', () => {
   })
 
   it('renders without throwing', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
   })
 
   it('renders h1 with text "Goblin Portal"', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByRole('heading', { level: 1, name: 'Goblin Portal' })).toBeInTheDocument()
   })
 
   it('renders the tagline', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByText(SITE_META.tagline)).toBeInTheDocument()
   })
 
   it('renders the Download CTA linking to the DMG', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByRole('link', { name: new RegExp(`Download ${SITE_META.version}`) })).toHaveAttribute('href', expect.stringContaining('.dmg'))
   })
 
   it('renders the GitHub CTA with correct href', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByRole('link', { name: 'Free and MIT licensed. Read the source →' })).toHaveAttribute(
       'href',
       SITE_META.repoUrl
@@ -41,17 +48,17 @@ describe('HeroSection', () => {
   })
 
   it('renders app icon with correct alt text', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByAltText('Goblin Portal app icon')).toBeInTheDocument()
   })
 
   it('renders screenshot with correct alt text', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByAltText(/Goblin Portal running agent-afk/)).toBeInTheDocument()
   })
 
   it('has aria-labelledby="hero-heading" on the section', () => {
-    const { container } = render(<HeroSection />)
+    const { container } = render(<HeroSection release={defaultRelease} />)
     const section = container.querySelector('section')
     expect(section).toHaveAttribute('aria-labelledby', 'hero-heading')
   })
@@ -61,7 +68,7 @@ describe('HeroSection', () => {
     // 'Swift and AppKit' appears in FEATURES[0].description.
     // 'Signed and notarized' is backed by FAQ entry: 'signed with a Developer ID and notarized'.
     // The contrast-assertion count appears in the FAQ answer and DEMO_TRANSCRIPT.
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     const list = screen.getByRole('list', { name: 'Highlights' })
     expect(list).toHaveTextContent('Swift and AppKit')
     expect(list).toHaveTextContent('Signed and notarized')
@@ -71,7 +78,7 @@ describe('HeroSection', () => {
   })
 
   it('renders the updated detail with correct size and requirements', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     // 2.5 MB replaces the old false '1.7 MB'
     expect(screen.getByText('2.5 MB')).toBeInTheDocument()
     // arm64-only, not Universal binary
@@ -81,7 +88,7 @@ describe('HeroSection', () => {
   })
 
   it('keeps the secondary tagline', () => {
-    render(<HeroSection />)
+    render(<HeroSection release={defaultRelease} />)
     expect(screen.getByText(/Run agents side by side/)).toBeInTheDocument()
     expect(screen.getByText(/Your agents get the full machine, without paying framework taxes/)).toBeInTheDocument()
   })
@@ -100,7 +107,7 @@ describe('HeroSection', () => {
       dispatchEvent: vi.fn(),
     }))
 
-    const { container } = render(<HeroSection />)
+    const { container } = render(<HeroSection release={defaultRelease} />)
     const section = container.querySelector('section')!
 
     expect(section.style.willChange).toBe('transform, opacity')
@@ -117,7 +124,7 @@ describe('HeroSection', () => {
   })
 
   it('sets willChange to "auto" after the entrance animation completes', async () => {
-    const { container } = render(<HeroSection />)
+    const { container } = render(<HeroSection release={defaultRelease} />)
     const section = container.querySelector('section')!
 
     // Before timers run: willChange should promote the element for the animation

@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { THEMES, ASSERTION_COUNT, SITE_META } from '@/lib/constants'
+import { THEMES, ASSERTION_COUNT } from '@/lib/constants'
+import type { ReleaseInfo } from '@/lib/latest-release'
 import ThemePreview, { previewFrameStyle } from './ThemePreview'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
@@ -66,7 +67,9 @@ const getTabStyle = (isActive: boolean): React.CSSProperties => ({
   transition: 'color 150ms ease, background-color 150ms ease, border-color 150ms ease',
 })
 
-export default function ThemeShowcase() {
+type ThemeShowcaseProps = Pick<ReleaseInfo, 'dmgUrl' | 'version'>
+
+export default function ThemeShowcase({ dmgUrl, version }: ThemeShowcaseProps) {
   const defaultTheme = THEMES.find((t) => t.isDefault) ?? THEMES[0]
   const [activeTheme, setActiveTheme] = useState(defaultTheme.name)
 
@@ -116,8 +119,8 @@ export default function ThemeShowcase() {
 
         {/* Download CTA */}
         <div style={{ marginTop: 'var(--space-8)', display: 'flex', alignItems: 'center', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
-          <Button href={SITE_META.dmgUrl} variant="primary">
-            Download {SITE_META.version}
+          <Button href={dmgUrl} variant="primary">
+            Download {version}
           </Button>
           <span style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>
             Ships with all ten. Pick one in Settings.
